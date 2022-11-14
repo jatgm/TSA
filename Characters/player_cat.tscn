@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ce44n1yxe3k83" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Spritesheet.png" id="1_l0hrr"]
 [ext_resource type="Script" path="res://Characters/player_cat.gd" id="1_vuodd"]
-[ext_resource type="PackedScene" uid="uid://defwxqf37tqcy" path="res://Hitboxes/hitbox.tscn" id="3_4k6by"]
+[ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="3_w85h8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_arlvo"]
 size = Vector2(8, 8)
@@ -346,8 +346,8 @@ transitions = ["idle", "walk", SubResource("AnimationNodeStateMachineTransition_
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_jw7hs"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o66um"]
-size = Vector2(34.5, 12)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpejx"]
+size = Vector2(26, 8.50075)
 
 [node name="PlayerCat" type="CharacterBody2D"]
 collision_layer = 2
@@ -377,15 +377,15 @@ parameters/idle/blend_position = Vector2(-0.279352, -0.0240175)
 parameters/walk/blend_position = Vector2(0, 0)
 
 [node name="HitboxPivot" type="Node2D" parent="."]
-position = Vector2(0, 2)
-rotation = -1.5708
-
-[node name="Hitbox" parent="HitboxPivot" instance=ExtResource("3_4k6by")]
 position = Vector2(0, 4)
-collision_layer = 8
+rotation = -1.5708
+skew = 0.0122173
 
-[node name="CollisionShape2d" parent="HitboxPivot/Hitbox" index="0"]
-position = Vector2(-22.75, -4)
-shape = SubResource("RectangleShape2D_o66um")
+[node name="InteractionManager" parent="HitboxPivot" instance=ExtResource("3_w85h8")]
+position = Vector2(0, 4)
 
-[editable path="HitboxPivot/Hitbox"]
+[node name="CollisionShape2d" parent="HitboxPivot/InteractionManager" index="0"]
+position = Vector2(-19, -3.74993)
+shape = SubResource("RectangleShape2D_qpejx")
+
+[editable path="HitboxPivot/InteractionManager"]

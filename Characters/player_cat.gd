@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 #when script starts we get this var
 @onready var animation_tree = $AnimationTree
+@onready var interaction_manager = $HitboxPivot/InteractionManager
 @onready var state_machine = animation_tree.get("parameters/playback")
 
 signal is_sprinting
@@ -28,6 +29,8 @@ func _physics_process(_delta): # happens 60 times a sec, underscore can represen
 	if Input.is_action_just_released("sprint"):
 		move_speed = 100
 		emit_signal("stop_sprinting")
+	if Input.is_action_just_pressed("interact"):
+		interaction_manager.initiate_interaction()
 		
 	update_animation_parameters(input_direction)
 	

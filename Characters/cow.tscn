@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://ot0ciwk4aly"]
+[gd_scene load_steps=18 format=3 uid="uid://ot0ciwk4aly"]
 
 [ext_resource type="Script" path="res://Characters/cow.gd" id="1_dlo2a"]
 [ext_resource type="Texture2D" uid="uid://ca6wljpj6kji4" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Free Cow Sprites.png" id="2_enxwb"]
-[ext_resource type="PackedScene" uid="uid://t5mpss2tbn22" path="res://Hitboxes/hurtbox.tscn" id="3_fvoad"]
+[ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="3_e2uo4"]
+[ext_resource type="Script" path="res://Hitboxes/cow_interaction.gd" id="4_c083k"]
 
 [sub_resource type="Animation" id="Animation_5w3qr"]
 length = 0.001
@@ -85,8 +86,8 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_px4un"]
 size = Vector2(22, 12)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_144m6"]
-size = Vector2(22, 12)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owc8e"]
+size = Vector2(28, 21.75)
 
 [node name="Cow" type="CharacterBody2D"]
 script = ExtResource("1_dlo2a")
@@ -113,14 +114,13 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_o7c4n")
 position = Vector2(1, 7)
 shape = SubResource("RectangleShape2D_px4un")
 
-[node name="Hurtbox" parent="." instance=ExtResource("3_fvoad")]
-collision_mask = 8
+[node name="InteractionManager" parent="." instance=ExtResource("3_e2uo4")]
+script = ExtResource("4_c083k")
 
-[node name="CollisionShape2d" parent="Hurtbox" index="0"]
-position = Vector2(1, 7)
-shape = SubResource("RectangleShape2D_144m6")
+[node name="CollisionShape2d" parent="InteractionManager" index="0"]
+position = Vector2(1, 4.875)
+shape = SubResource("RectangleShape2D_owc8e")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
-[editable path="Hurtbox"]
+[editable path="InteractionManager"]

@@ -51,6 +51,3 @@ func pick_new_state():
 
 func _on_timer_timeout():
 	pick_new_state()
-
-func _on_hurtbox_area_entered(area):
-	print("test")
