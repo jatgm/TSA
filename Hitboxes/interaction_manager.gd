@@ -1,6 +1,8 @@
 extends Area2D
 
-var current_interaction 
+class_name InteractionManager
+
+var current_interaction : InteractionManager
 
 func initiate_interaction() -> void:
 	if current_interaction != null:

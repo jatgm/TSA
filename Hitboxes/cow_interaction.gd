@@ -1,4 +1,4 @@
-extends "res://Hitboxes/interaction_manager.gd"
+extends InteractionManager
 
 func recieve_interaction() -> void:
 	print("test")

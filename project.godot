@@ -8,6 +8,16 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Area2D",
+"class": &"InteractionManager",
+"language": &"GDScript",
+"path": "res://Hitboxes/interaction_manager.gd"
+}]
+_global_script_class_icons={
+"InteractionManager": ""
+}
+
 [application]
 
 config/name="TSA"
