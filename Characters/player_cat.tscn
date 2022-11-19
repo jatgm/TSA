@@ -385,7 +385,7 @@ skew = 0.0122173
 position = Vector2(0, 4)
 
 [node name="CollisionShape2d" parent="HitboxPivot/InteractionManager" index="0"]
-position = Vector2(-19, -3.74993)
+position = Vector2(-19, -4)
 shape = SubResource("RectangleShape2D_qpejx")
 
 [editable path="HitboxPivot/InteractionManager"]
