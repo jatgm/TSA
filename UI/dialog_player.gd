@@ -40,7 +40,8 @@ func finish():
 	background.visible = false
 	name_background.visible = false
 	in_progress = false
-	get_tree().paused = false
+
+	#get_tree().paused = false
 		
 func start_dialogue():
 	if in_progress:
@@ -49,5 +50,6 @@ func start_dialogue():
 		background.visible = true
 		name_background.visible = true
 		in_progress = true
+		print("sdfsaldfjasfidsnkfoi")
 		#selected_text = scene_text[current_index]["dialogue"]
 		show_text()

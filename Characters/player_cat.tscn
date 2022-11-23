@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bkcjtqm4hpny0"]
+[gd_scene load_steps=32 format=3 uid="uid://bkcjtqm4hpny0"]
 
 [ext_resource type="Texture2D" uid="uid://ce44n1yxe3k83" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Basic Charakter Spritesheet.png" id="1_l0hrr"]
 [ext_resource type="Script" path="res://Characters/player_cat.gd" id="1_vuodd"]
@@ -349,6 +349,9 @@ transitions = ["idle", "walk", SubResource("AnimationNodeStateMachineTransition_
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpejx"]
 size = Vector2(26, 8.50075)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyi5y"]
+size = Vector2(44.5376, 44.0033)
+
 [node name="PlayerCat" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_vuodd")
@@ -387,5 +390,12 @@ position = Vector2(0, 4)
 [node name="CollisionShape2d" parent="HitboxPivot/InteractionManager" index="0"]
 position = Vector2(-19, -4)
 shape = SubResource("RectangleShape2D_qpejx")
+
+[node name="Bound" parent="HitboxPivot/InteractionManager" index="1"]
+collision_layer = 2
+
+[node name="CollisionShape2d" parent="HitboxPivot/InteractionManager/Bound" index="0"]
+position = Vector2(-1.11759e-08, -4)
+shape = SubResource("RectangleShape2D_iyi5y")
 
 [editable path="HitboxPivot/InteractionManager"]

@@ -1,12 +1,22 @@
 {
     "1" : {
-        "name" : "Jason",
-        "dialogue" : "Fortnieb POOP",
+        "name" : "Cow",
+        "dialogue" : "I am a cow!!!!! !XDXDXDXDD MOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO)))))))))",
         "expression" : "Happy"
     },
     "2" : {
-        "name" : "Eliza",
-        "dialogue" : "meow",
+        "name" : "Cow",
+        "dialogue" : "arf",
+        "expression" : "Sad"
+    },
+    "3" : {
+        "name" : "Cow",
+        "dialogue" : "asdfkjasdfbsafijasnfidsjnfhnajsiof",
+        "expression" : "Sad"
+    },
+    "4" : {
+        "name" : "Cow",
+        "dialogue" : "fortnite balenciaga tshirt",
         "expression" : "Sad"
     }
 }

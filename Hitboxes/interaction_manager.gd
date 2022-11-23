@@ -10,7 +10,10 @@ func initiate_interaction() -> void:
 		# run the "recieve_interaction()" func on the InteractionManager it's interacting with
 
 func recieve_interaction() -> void:
-	print("no interacti0on defined")
+	pass
+	
+func exit_bound() -> void: # These two can be overriden 
+	pass
 
 func _on_interaction_manager_area_entered(area):
 	current_interaction = area
@@ -18,3 +21,7 @@ func _on_interaction_manager_area_entered(area):
 func _on_interaction_manager_area_exited(area):
 	if current_interaction == area:
 		current_interaction = null
+
+func _on_bound_area_exited(area):
+
+	exit_bound()

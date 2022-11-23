@@ -718,6 +718,7 @@ metadata/_edit_lock_ = true
 [node name="Camera2d" type="Camera2D" parent="."]
 position = Vector2(219, 97)
 current = true
+zoom = Vector2(5, 5)
 script = SubResource("GDScript_kohig")
 
 [node name="Cow" parent="." instance=ExtResource("9_76myf")]
@@ -727,7 +728,7 @@ position = Vector2(29, 57)
 position = Vector2(215, 29)
 
 [node name="Cow4" parent="." instance=ExtResource("9_76myf")]
-position = Vector2(185, 164)
+position = Vector2(277, 97)
 
 [node name="Cow3" parent="." instance=ExtResource("9_76myf")]
 position = Vector2(259, 187)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ot0ciwk4aly"]
+[gd_scene load_steps=20 format=3 uid="uid://ot0ciwk4aly"]
 
 [ext_resource type="Script" path="res://Characters/cow.gd" id="1_dlo2a"]
 [ext_resource type="Texture2D" uid="uid://ca6wljpj6kji4" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Free Cow Sprites.png" id="2_enxwb"]
@@ -90,6 +90,9 @@ size = Vector2(22, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_owc8e"]
 size = Vector2(28, 21.75)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oqbkm"]
+size = Vector2(88, 62)
+
 [node name="Cow" type="CharacterBody2D"]
 script = ExtResource("1_dlo2a")
 
@@ -122,8 +125,11 @@ script = ExtResource("4_c083k")
 position = Vector2(1, 4.875)
 shape = SubResource("RectangleShape2D_owc8e")
 
+[node name="CollisionShape2d" parent="InteractionManager/Bound" index="0"]
+position = Vector2(1, 5)
+shape = SubResource("RectangleShape2D_oqbkm")
+
 [node name="DialogPlayer" parent="InteractionManager" instance=ExtResource("5_kwekf")]
-follow_viewport_enabled = false
 scene_file_text = "res://json/world_dialogue.json"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

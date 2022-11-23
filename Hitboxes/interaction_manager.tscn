@@ -9,5 +9,12 @@ script = ExtResource("1_bkejs")
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]
 
+[node name="Bound" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="Bound"]
+
 [connection signal="area_entered" from="." to="." method="_on_interaction_manager_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_interaction_manager_area_exited"]
+[connection signal="area_exited" from="Bound" to="." method="_on_bound_area_exited"]
