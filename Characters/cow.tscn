@@ -122,7 +122,9 @@ script = ExtResource("4_c083k")
 position = Vector2(1, 4.875)
 shape = SubResource("RectangleShape2D_owc8e")
 
-[node name="DialogPlayer" parent="." instance=ExtResource("5_kwekf")]
+[node name="DialogPlayer" parent="InteractionManager" instance=ExtResource("5_kwekf")]
+follow_viewport_enabled = false
+scene_file_text = "res://json/world_dialogue.json"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
