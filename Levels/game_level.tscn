@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://mclu6qxw1qdw"]
+[gd_scene load_steps=17 format=3 uid="uid://mclu6qxw1qdw"]
 
 [ext_resource type="PackedScene" uid="uid://bkcjtqm4hpny0" path="res://Characters/player_cat.tscn" id="1_5q0c2"]
 [ext_resource type="Texture2D" uid="uid://bregcrcsxe011" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/ground tiles/new tiles/Grass hill tiles v.2.png" id="2_kblci"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://lk8r3yf356jl" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Wooden House.png" id="5_xwypc"]
 [ext_resource type="Texture2D" uid="uid://cxomjp305g1pw" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Fences.png" id="6_ep5ka"]
 [ext_resource type="Texture2D" uid="uid://diawvqwuwqdqf" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/ground tiles/old tiles/Hills.png" id="7_6dwfi"]
-[ext_resource type="Script" path="res://Characters/Camera2d.gd" id="8_83trx"]
 [ext_resource type="PackedScene" uid="uid://ot0ciwk4aly" path="res://Characters/cow.tscn" id="9_76myf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_blool"]
@@ -668,57 +667,22 @@ sources/4 = SubResource("TileSetAtlasSource_oitiu")
 sources/5 = SubResource("TileSetAtlasSource_c4yu8")
 sources/6 = SubResource("TileSetAtlasSource_euuvd")
 
-[sub_resource type="Animation" id="Animation_5ffy0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
+[sub_resource type="GDScript" id="GDScript_kohig"]
+script/source = "extends Camera2D
 
-[sub_resource type="Animation" id="Animation_ojtgh"]
-resource_name = "sprint"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.9, 0.9)]
-}
+@onready var animation_player = $AnimationPlayer
 
-[sub_resource type="Animation" id="Animation_giutx"]
-resource_name = "sprintstop"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.9, 0.9), Vector2(1, 1)]
-}
+func _on_player_cat_is_sprinting():
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_4cctx"]
-_data = {
-"RESET": SubResource("Animation_5ffy0"),
-"sprint": SubResource("Animation_ojtgh"),
-"sprintstop": SubResource("Animation_giutx")
-}
+	animation_player.play(\"sprint\")
+
+func _on_player_cat_stop_sprinting():
+	
+	animation_player.play(\"sprintstop\")
+
+
+
+"
 
 [node name="GameLevel" type="Node2D"]
 y_sort_enabled = true
@@ -754,12 +718,7 @@ metadata/_edit_lock_ = true
 [node name="Camera2d" type="Camera2D" parent="."]
 position = Vector2(219, 97)
 current = true
-script = ExtResource("8_83trx")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2d"]
-libraries = {
-"": SubResource("AnimationLibrary_4cctx")
-}
+script = SubResource("GDScript_kohig")
 
 [node name="Cow" parent="." instance=ExtResource("9_76myf")]
 position = Vector2(29, 57)
@@ -772,6 +731,3 @@ position = Vector2(185, 164)
 
 [node name="Cow3" parent="." instance=ExtResource("9_76myf")]
 position = Vector2(259, 187)
-
-[connection signal="is_sprinting" from="PlayerCat" to="Camera2d" method="_on_player_cat_is_sprinting"]
-[connection signal="stop_sprinting" from="PlayerCat" to="Camera2d" method="_on_player_cat_stop_sprinting"]

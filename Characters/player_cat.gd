@@ -8,11 +8,6 @@ extends CharacterBody2D
 @onready var interaction_manager = $HitboxPivot/InteractionManager
 @onready var state_machine = animation_tree.get("parameters/playback")
 
-signal is_sprinting
-signal stop_sprinting
-
-var sprint = false
-
 func _ready():
 	update_animation_parameters(starting_direction)
 
@@ -23,12 +18,6 @@ func _physics_process(_delta): # happens 60 times a sec, underscore can represen
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	)
 	
-	if Input.is_action_just_pressed("sprint"):
-		move_speed = 140
-		emit_signal("is_sprinting")
-	if Input.is_action_just_released("sprint"):
-		move_speed = 100
-		emit_signal("stop_sprinting")
 	if Input.is_action_just_pressed("interact"):
 		interaction_manager.initiate_interaction()
 		

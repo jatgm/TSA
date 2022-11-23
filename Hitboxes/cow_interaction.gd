@@ -1,4 +1,5 @@
 extends InteractionManager
 
 func recieve_interaction() -> void:
-	print("test")
+	$DialoguePlayer.start_dialogue()
+	
