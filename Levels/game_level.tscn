@@ -719,6 +719,8 @@ metadata/_edit_lock_ = true
 position = Vector2(219, 97)
 current = true
 zoom = Vector2(5, 5)
+smoothing_enabled = true
+smoothing_speed = 9.0
 script = SubResource("GDScript_kohig")
 
 [node name="Cow" parent="." instance=ExtResource("9_76myf")]

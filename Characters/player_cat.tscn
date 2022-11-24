@@ -350,7 +350,7 @@ transitions = ["idle", "walk", SubResource("AnimationNodeStateMachineTransition_
 size = Vector2(26, 8.50075)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyi5y"]
-size = Vector2(44.5376, 44.0033)
+size = Vector2(18.2199, 18.0014)
 
 [node name="PlayerCat" type="CharacterBody2D"]
 collision_layer = 2
@@ -395,7 +395,7 @@ shape = SubResource("RectangleShape2D_qpejx")
 collision_layer = 2
 
 [node name="CollisionShape2d" parent="HitboxPivot/InteractionManager/Bound" index="0"]
-position = Vector2(-1.11759e-08, -4)
+position = Vector2(-3.85568e-06, -4)
 shape = SubResource("RectangleShape2D_iyi5y")
 
 [editable path="HitboxPivot/InteractionManager"]

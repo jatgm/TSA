@@ -23,5 +23,5 @@ func _on_interaction_manager_area_exited(area):
 		current_interaction = null
 
 func _on_bound_area_exited(area):
-
+	current_interaction = null
 	exit_bound()
