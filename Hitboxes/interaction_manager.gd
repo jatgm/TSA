@@ -10,10 +10,10 @@ func initiate_interaction() -> void:
 		# run the "recieve_interaction()" func on the InteractionManager it's interacting with
 
 func recieve_interaction() -> void:
-	pass
+	$DialogPlayer.start_dialogue()
 	
 func exit_bound() -> void: # These two can be overriden 
-	pass
+	$DialogPlayer.finish()
 
 func _on_interaction_manager_area_entered(area):
 	current_interaction = area

@@ -1,9 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://ot0ciwk4aly"]
+[gd_scene load_steps=19 format=3 uid="uid://ot0ciwk4aly"]
 
 [ext_resource type="Script" path="res://Characters/cow.gd" id="1_dlo2a"]
 [ext_resource type="Texture2D" uid="uid://ca6wljpj6kji4" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Free Cow Sprites.png" id="2_enxwb"]
 [ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="3_e2uo4"]
-[ext_resource type="Script" path="res://Hitboxes/cow_interaction.gd" id="4_c083k"]
 [ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="5_kwekf"]
 
 [sub_resource type="Animation" id="Animation_5w3qr"]
@@ -119,7 +118,6 @@ position = Vector2(1, 7)
 shape = SubResource("RectangleShape2D_px4un")
 
 [node name="InteractionManager" parent="." instance=ExtResource("3_e2uo4")]
-script = ExtResource("4_c083k")
 
 [node name="CollisionShape2d" parent="InteractionManager" index="0"]
 position = Vector2(1, 4.875)
