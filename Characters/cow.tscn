@@ -1,9 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://ot0ciwk4aly"]
+[gd_scene load_steps=20 format=3 uid="uid://ot0ciwk4aly"]
 
 [ext_resource type="Script" path="res://Characters/cow.gd" id="1_dlo2a"]
 [ext_resource type="Texture2D" uid="uid://ca6wljpj6kji4" path="res://Art/Sprout Lands - Sprites - Basic pack/Characters/Free Cow Sprites.png" id="2_enxwb"]
 [ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="3_e2uo4"]
 [ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="5_kwekf"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_geapy"]
+polygon = PackedVector2Array(-9, 10, -8, 10, -8, 12, -6, 12, -6, 10, -2, 10, -2, 12, 0, 12, 0, 10, 3, 10, 3, 12, 5, 12, 5, 8, 11, 8, 11, 7, 12, 7, 12, 3, 13, 3, 13, 2, 14, 2, 14, -1, 13, -1, 13, -2, 11, -2, 11, -1, 9, -1, 9, -3, 8, -3, 8, -4, 6, -4, 6, -2, 4, -2, 4, -4, 2, -4, 2, -3, 1, -3, 1, -2, 1, -1, 0, -1, 0, -2, -2, -2, -2, -1, -3, -1, -3, 0, -7, 0, -7, 1, -9, 1)
 
 [sub_resource type="Animation" id="Animation_5w3qr"]
 length = 0.001
@@ -99,6 +102,9 @@ script = ExtResource("1_dlo2a")
 texture = ExtResource("2_enxwb")
 hframes = 3
 vframes = 2
+
+[node name="LightOccluder2d" type="LightOccluder2D" parent="Sprite2d"]
+occluder = SubResource("OccluderPolygon2D_geapy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

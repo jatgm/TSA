@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dw2fwkr6y8g32"]
+[gd_scene load_steps=18 format=3 uid="uid://dw2fwkr6y8g32"]
 
 [ext_resource type="Texture2D" uid="uid://bregcrcsxe011" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/ground tiles/new tiles/Grass hill tiles v.2.png" id="2_kblci"]
 [ext_resource type="Texture2D" uid="uid://dkchprnwawryh" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Water.png" id="3_y3g68"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://diawvqwuwqdqf" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/ground tiles/old tiles/Hills.png" id="7_6dwfi"]
 [ext_resource type="PackedScene" uid="uid://bt5eokyn64m8k" path="res://Characters/cat.tscn" id="8_2nhls"]
 [ext_resource type="PackedScene" uid="uid://ot0ciwk4aly" path="res://Characters/cow.tscn" id="9_76myf"]
+[ext_resource type="Texture2D" uid="uid://ce54jiim0gd2l" path="res://Art/light.png" id="9_uhcav"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_blool"]
 texture = ExtResource("2_kblci")
@@ -567,7 +568,7 @@ texture = ExtResource("7_6dwfi")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -5, -8, -5, 8, -8, 8)
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:1/0 = 0
 2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:1/0/physics_layer_0/angular_velocity = 0.0
@@ -718,6 +719,7 @@ script = SubResource("GDScript_kohig")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(219, 97)
+color = Color(0.25098, 0.352941, 0.819608, 1)
 
 [node name="Cow" parent="." instance=ExtResource("9_76myf")]
 position = Vector2(29, 57)
@@ -736,3 +738,9 @@ position = Vector2(214, 95)
 
 [node name="RemoteTransform2d" type="RemoteTransform2D" parent="cat"]
 remote_path = NodePath("../../Camera2d")
+
+[node name="PointLight2d" type="PointLight2D" parent="cat"]
+energy = 0.21
+shadow_enabled = true
+texture = ExtResource("9_uhcav")
+texture_scale = 0.6
