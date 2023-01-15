@@ -710,7 +710,7 @@ layer_2/tile_data = PackedInt32Array()
 metadata/_edit_lock_ = true
 
 [node name="Camera2d" type="Camera2D" parent="."]
-position = Vector2(216, 109)
+position = Vector2(214, 95)
 current = true
 zoom = Vector2(5, 5)
 smoothing_speed = 4.0
@@ -732,7 +732,7 @@ position = Vector2(277, 97)
 position = Vector2(259, 187)
 
 [node name="cat" parent="." instance=ExtResource("8_2nhls")]
-position = Vector2(216, 109)
+position = Vector2(214, 95)
 
 [node name="RemoteTransform2d" type="RemoteTransform2D" parent="cat"]
 remote_path = NodePath("../../Camera2d")
