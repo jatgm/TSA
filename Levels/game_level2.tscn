@@ -1,12 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://mclu6qxw1qdw"]
+[gd_scene load_steps=17 format=3 uid="uid://dw2fwkr6y8g32"]
 
-[ext_resource type="PackedScene" uid="uid://bkcjtqm4hpny0" path="res://Characters/player_cat.tscn" id="1_5q0c2"]
 [ext_resource type="Texture2D" uid="uid://bregcrcsxe011" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/ground tiles/new tiles/Grass hill tiles v.2.png" id="2_kblci"]
 [ext_resource type="Texture2D" uid="uid://dkchprnwawryh" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Water.png" id="3_y3g68"]
 [ext_resource type="Texture2D" uid="uid://c148piw08ok0h" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/ground tiles/old tiles/Tilled Dirt.png" id="4_eyswj"]
 [ext_resource type="Texture2D" uid="uid://lk8r3yf356jl" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Wooden House.png" id="5_xwypc"]
 [ext_resource type="Texture2D" uid="uid://cxomjp305g1pw" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/Fences.png" id="6_ep5ka"]
 [ext_resource type="Texture2D" uid="uid://diawvqwuwqdqf" path="res://Art/Sprout Lands - Sprites - Basic pack/Tilesets/ground tiles/old tiles/Hills.png" id="7_6dwfi"]
+[ext_resource type="PackedScene" uid="uid://bt5eokyn64m8k" path="res://Characters/cat.tscn" id="8_2nhls"]
 [ext_resource type="PackedScene" uid="uid://ot0ciwk4aly" path="res://Characters/cow.tscn" id="9_76myf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_blool"]
@@ -687,12 +687,6 @@ func _on_player_cat_stop_sprinting():
 [node name="GameLevel" type="Node2D"]
 y_sort_enabled = true
 
-[node name="PlayerCat" parent="." instance=ExtResource("1_5q0c2")]
-position = Vector2(219, 97)
-
-[node name="RemoteTransform2d" type="RemoteTransform2D" parent="PlayerCat"]
-remote_path = NodePath("../../Camera2d")
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_pxigg")
 format = 2
@@ -716,7 +710,7 @@ layer_2/tile_data = PackedInt32Array()
 metadata/_edit_lock_ = true
 
 [node name="Camera2d" type="Camera2D" parent="."]
-position = Vector2(219, 97)
+position = Vector2(216, 109)
 current = true
 zoom = Vector2(5, 5)
 smoothing_speed = 4.0
@@ -736,3 +730,9 @@ position = Vector2(277, 97)
 
 [node name="Cow3" parent="." instance=ExtResource("9_76myf")]
 position = Vector2(259, 187)
+
+[node name="cat" parent="." instance=ExtResource("8_2nhls")]
+position = Vector2(216, 109)
+
+[node name="RemoteTransform2d" type="RemoteTransform2D" parent="cat"]
+remote_path = NodePath("../../Camera2d")
