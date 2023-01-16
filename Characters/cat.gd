@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var move_speed : float = 100
+@export var move_speed : float = 140
 @export var starting_direction : Vector2 = Vector2(0, 1)
 
 #when script starts we get this var
@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var sprite_2d = $Sprite2d
 @onready var interaction_manager = $HitboxPivot/InteractionManager
 @onready var state_machine = animation_tree.get("parameters/playback")
+
 
 func _physics_process(_delta): # happens 60 times a sec, underscore can represent unused variable
 	
@@ -26,6 +27,7 @@ func _physics_process(_delta): # happens 60 times a sec, underscore can represen
 	
 	if Input.is_action_just_pressed("interact"):
 		interaction_manager.initiate_interaction()
+	
 	
 func update_animation_parameters(move_input : Vector2):
 	if move_input != Vector2.ZERO:
