@@ -25,6 +25,10 @@ func load_scene_text():
 func show_text():
 	current_index = str((current_index).to_int() + 1)
 	text_label.text = scene_text[current_index]["dialogue"]
+	if scene_text[current_index]["name"] == "":
+		name_background.visible = false
+	else:
+		name_background.visible = true
 	name_label.text = scene_text[current_index]["name"]
 
 func next_line():

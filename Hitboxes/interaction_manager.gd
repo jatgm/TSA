@@ -15,13 +15,21 @@ func recieve_interaction() -> void:
 func exit_bound() -> void: # These two can be overriden 
 	$DialogPlayer.finish()
 
+func hover() -> void:
+	pass
+	
+func unhover() -> void:
+	pass
+
 func _on_interaction_manager_area_entered(area):
 	current_interaction = area
+	hover()
 	
 func _on_interaction_manager_area_exited(area):
 	if current_interaction == area:
 		current_interaction = null
+	unhover()
 
-func _on_bound_area_exited(area):
+func _on_bound_area_exited(_area):
 	current_interaction = null
 	exit_bound()

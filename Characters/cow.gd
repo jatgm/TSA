@@ -7,7 +7,7 @@ var idle_time = 5
 var walk_time = 2
 
 @onready var animation_tree = $AnimationTree
-@onready var sprite = $Sprite2d
+@onready var sprite = $InteractionManager/Sprite2d
 @onready var timer = $Timer
 @onready var state_machine = animation_tree.get("parameters/playback")
 
