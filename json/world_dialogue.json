@@ -5,8 +5,8 @@
 		"expression" : "Happy"
 	},
 	"2" : {
-		"name" : "Cow",
-		"dialogue" : "arf",
+		"name" : "",
+		"dialogue" : "I see. There's a yard sale nearby.",
 		"expression" : "Sad"
 	},
 	"3" : {
