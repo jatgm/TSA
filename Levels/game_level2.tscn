@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://c15pxvb28v48w"]
 
-[ext_resource type="Texture2D" path="res://Art/Tiles/New Piskel (1).png" id="1_qbchd"]
+[ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_qbchd"]
 [ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="4_0nk8p"]
-[ext_resource type="PackedScene" path="res://objects/Note.tscn" id="4_33w5q"]
-[ext_resource type="PackedScene" path="res://Characters/cat.tscn" id="8_2nhls"]
-[ext_resource type="PackedScene" path="res://Characters/cow.tscn" id="9_76myf"]
-[ext_resource type="Texture2D" path="res://Art/Tiles/streetlamp.png" id="11_ar2qh"]
-[ext_resource type="Texture2D" path="res://Art/asdf.png" id="12_1nd8q"]
+[ext_resource type="PackedScene" uid="uid://cn8m43h8b6548" path="res://objects/Note.tscn" id="4_33w5q"]
+[ext_resource type="PackedScene" uid="uid://bt5eokyn64m8k" path="res://Characters/cat.tscn" id="8_2nhls"]
+[ext_resource type="PackedScene" uid="uid://ot0ciwk4aly" path="res://Characters/cow.tscn" id="9_76myf"]
+[ext_resource type="Texture2D" uid="uid://chmpxfyftorxk" path="res://Art/Tiles/streetlamp.png" id="11_ar2qh"]
+[ext_resource type="Texture2D" uid="uid://ddfhmn1s0farm" path="res://Art/asdf.png" id="12_1nd8q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5mte"]
 texture = ExtResource("1_qbchd")
