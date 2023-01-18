@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dw2fwkr6y8g32"]
+[gd_scene load_steps=12 format=3 uid="uid://j4bdrlth1jch"]
 
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_qbchd"]
 [ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="4_0nk8p"]
-[ext_resource type="PackedScene" uid="uid://cn8m43h8b6548" path="res://Note.tscn" id="4_33w5q"]
+[ext_resource type="PackedScene" uid="uid://cn8m43h8b6548" path="res://shaders/Note.tscn" id="4_33w5q"]
 [ext_resource type="PackedScene" uid="uid://bt5eokyn64m8k" path="res://Characters/cat.tscn" id="8_2nhls"]
 [ext_resource type="PackedScene" uid="uid://ot0ciwk4aly" path="res://Characters/cow.tscn" id="9_76myf"]
 [ext_resource type="Texture2D" uid="uid://chmpxfyftorxk" path="res://Art/Tiles/streetlamp.png" id="11_ar2qh"]
@@ -96,6 +96,7 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(262157, 196609, 2, 262158, 196609, 2, 262159, 196609, 2, 262160, 196609, 2, 262161, 196609, 2)
+metadata/_edit_lock_ = true
 
 [node name="Camera2d" type="Camera2D" parent="."]
 position = Vector2(490, 176)
@@ -115,7 +116,7 @@ position = Vector2(29, 57)
 position = Vector2(215, 29)
 
 [node name="Cow4" parent="." instance=ExtResource("9_76myf")]
-position = Vector2(544, 171)
+position = Vector2(626, 265)
 
 [node name="Cow3" parent="." instance=ExtResource("9_76myf")]
 position = Vector2(259, 187)

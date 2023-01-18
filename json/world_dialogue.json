@@ -6,12 +6,12 @@
 	},
 	"2" : {
 		"name" : "",
-		"dialogue" : "I see. There's a yard sale nearby.",
+		"dialogue" : "... missing cat? I'm a missing cat!      What if my owner is looking for me?",
 		"expression" : "Sad"
 	},
 	"3" : {
-		"name" : "Cow",
-		"dialogue" : "asdfkjasdfbsafijasnfidsjnfhnajsiof",
+		"name" : "",
+		"dialogue" : "I better go!",
 		"expression" : "Sad"
 	},
 	"4" : {
