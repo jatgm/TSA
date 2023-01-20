@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_qbchd"]
 [ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="4_0nk8p"]
 [ext_resource type="PackedScene" uid="uid://cn8m43h8b6548" path="res://objects/Note.tscn" id="4_33w5q"]
+[ext_resource type="Script" path="res://objects/Streetlamp.gd" id="7_5bve3"]
 [ext_resource type="PackedScene" uid="uid://bt5eokyn64m8k" path="res://Characters/cat.tscn" id="8_2nhls"]
-[ext_resource type="PackedScene" uid="uid://ot0ciwk4aly" path="res://Characters/cow.tscn" id="9_76myf"]
 [ext_resource type="Texture2D" uid="uid://chmpxfyftorxk" path="res://Art/Tiles/streetlamp.png" id="11_ar2qh"]
 [ext_resource type="Texture2D" uid="uid://ddfhmn1s0farm" path="res://Art/asdf.png" id="12_1nd8q"]
 
@@ -109,18 +109,6 @@ script = SubResource("GDScript_kohig")
 position = Vector2(211, 110)
 color = Color(0.258824, 0.301961, 0.607843, 1)
 
-[node name="Cow" parent="." instance=ExtResource("9_76myf")]
-position = Vector2(29, 57)
-
-[node name="Cow2" parent="." instance=ExtResource("9_76myf")]
-position = Vector2(215, 29)
-
-[node name="Cow4" parent="." instance=ExtResource("9_76myf")]
-position = Vector2(626, 265)
-
-[node name="Cow3" parent="." instance=ExtResource("9_76myf")]
-position = Vector2(259, 187)
-
 [node name="cat" parent="." instance=ExtResource("8_2nhls")]
 position = Vector2(490, 176)
 
@@ -133,6 +121,7 @@ material = SubResource("ShaderMaterial_x2uvm")
 [node name="Streetlamp" type="Sprite2D" parent="."]
 position = Vector2(560, 130)
 texture = ExtResource("11_ar2qh")
+script = ExtResource("7_5bve3")
 
 [node name="PointLight2d" type="PointLight2D" parent="Streetlamp"]
 position = Vector2(-18, 19)
@@ -141,3 +130,13 @@ shadow_enabled = true
 shadow_color = Color(1, 0.396078, 0.670588, 0)
 texture = ExtResource("12_1nd8q")
 texture_scale = 0.37
+
+[node name="ControlsText" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ControlsText"]
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 399.0
+offset_bottom = 270.0
+text = "WASD to move
+E to interact"

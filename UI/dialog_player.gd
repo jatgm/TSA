@@ -56,4 +56,5 @@ func start_dialogue():
 		in_progress = true
 		print("sdfsaldfjasfidsnkfoi")
 		#selected_text = scene_text[current_index]["dialogue"]
+		visible = true
 		show_text()

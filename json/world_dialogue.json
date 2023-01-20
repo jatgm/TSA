@@ -8,20 +8,5 @@
 		"name" : "",
 		"dialogue" : "... missing cat? I'm a missing cat!      What if my owner is looking for me?",
 		"expression" : "Sad"
-	},
-	"3" : {
-		"name" : "",
-		"dialogue" : "I better go!",
-		"expression" : "Sad"
-	},
-	"4" : {
-		"name" : "Cow",
-		"dialogue" : "fortnite balenciaga tshirt",
-		"expression" : "Sad"
-	},
-	"5" : {
-		"name" : "Player",
-		"dialogue" : "very interesting......",
-		"expression" : "Confused"
 	}
 }

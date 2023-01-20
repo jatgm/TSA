@@ -20,7 +20,7 @@ func hover() -> void:
 	
 func unhover() -> void:
 	pass
-
+	
 func _on_interaction_manager_area_entered(area):
 	current_interaction = area
 	hover()
