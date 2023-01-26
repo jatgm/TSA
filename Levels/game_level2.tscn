@@ -97,7 +97,7 @@ tracks/1/path = NodePath("../Streetlamp")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 176.7, 445.5),
+"times": PackedFloat32Array(0, 176.7, 414.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],

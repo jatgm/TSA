@@ -1,10 +1,21 @@
-MR = [10, 7, 8, 2, 3, 3, 5, 0, 6, 1]
-OR = [3, 5, 2, 3, 1, 6, 3, 2, 4, 3]
+def makeMeAPrettyPicture(size):
+    prefix = ""
+    stars = ""
+    spaces = ""
+    
+    for i in range(size):
+        if (size-i) % 2 == 0:
+            prefix = "$"
+        else:
+            prefix = "^"
 
-for i in range(10):
-    if MR[i]>OR[i]:
-        print("Game " + str(i+1) + ": win")
-    if MR[i]<OR[i]:
-        print("Game " + str(i+1) + ": loss")
-    if MR[i]==OR[i]:
-        print("Game " + str(i+1) + ": draw")
+        for _ in range(size-i):
+            stars += "*"
+        for _ in range(size - len(stars)):
+            spaces += " "
+
+        print(f"{prefix}{spaces}{stars}||xx||")
+        stars = ""
+        spaces = ""
+
+makeMeAPrettyPicture(100)
