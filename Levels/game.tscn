@@ -1,16 +1,16 @@
 [gd_scene load_steps=16 format=3 uid="uid://c15pxvb28v48w"]
 
-[ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_qbchd"]
-[ext_resource type="Script" path="res://Levels/NightFilter.gd" id="2_x5knw"]
-[ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="4_0nk8p"]
-[ext_resource type="PackedScene" uid="uid://cn8m43h8b6548" path="res://objects/Note.tscn" id="4_33w5q"]
-[ext_resource type="Script" path="res://objects/Streetlamp.gd" id="7_5bve3"]
-[ext_resource type="PackedScene" uid="uid://bt5eokyn64m8k" path="res://Characters/cat.tscn" id="8_2nhls"]
-[ext_resource type="Texture2D" uid="uid://chmpxfyftorxk" path="res://Art/Tiles/streetlamp.png" id="11_ar2qh"]
-[ext_resource type="Texture2D" uid="uid://ddfhmn1s0farm" path="res://Art/asdf.png" id="12_1nd8q"]
+[ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
+[ext_resource type="Script" path="res://Levels/NightFilter.gd" id="2_k1blf"]
+[ext_resource type="PackedScene" uid="uid://bt5eokyn64m8k" path="res://Characters/cat.tscn" id="3_1qfu2"]
+[ext_resource type="PackedScene" uid="uid://cn8m43h8b6548" path="res://objects/Note.tscn" id="4_5eapv"]
+[ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="5_fnka4"]
+[ext_resource type="Texture2D" uid="uid://chmpxfyftorxk" path="res://Art/Tiles/streetlamp.png" id="6_ehbo0"]
+[ext_resource type="Script" path="res://objects/Streetlamp.gd" id="7_hbl3w"]
+[ext_resource type="Texture2D" uid="uid://ddfhmn1s0farm" path="res://Art/asdf.png" id="8_6ni4i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5mte"]
-texture = ExtResource("1_qbchd")
+texture = ExtResource("1_dbw02")
 texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -134,7 +134,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x2uvm"]
 resource_local_to_scene = true
-shader = ExtResource("4_0nk8p")
+shader = ExtResource("5_fnka4")
 shader_parameter/flash_color = Color(1, 1, 0, 1)
 shader_parameter/opacity = 0.0
 
@@ -166,33 +166,33 @@ script = SubResource("GDScript_kohig")
 [node name="NightFilter" type="CanvasModulate" parent="."]
 position = Vector2(211, 110)
 color = Color(0.372549, 0.427451, 0.768627, 1)
-script = ExtResource("2_x5knw")
+script = ExtResource("2_k1blf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NightFilter"]
 libraries = {
 "": SubResource("AnimationLibrary_kutmm")
 }
 
-[node name="cat" parent="." instance=ExtResource("8_2nhls")]
+[node name="cat" parent="." instance=ExtResource("3_1qfu2")]
 position = Vector2(490, 176)
 
 [node name="RemoteTransform2d" type="RemoteTransform2D" parent="cat"]
 remote_path = NodePath("../../Camera2d")
 
-[node name="Note" parent="." instance=ExtResource("4_33w5q")]
+[node name="Note" parent="." instance=ExtResource("4_5eapv")]
 material = SubResource("ShaderMaterial_x2uvm")
 
 [node name="Streetlamp" type="Sprite2D" parent="."]
 position = Vector2(560, 130)
-texture = ExtResource("11_ar2qh")
-script = ExtResource("7_5bve3")
+texture = ExtResource("6_ehbo0")
+script = ExtResource("7_hbl3w")
 
 [node name="PointLight2d" type="PointLight2D" parent="Streetlamp"]
 position = Vector2(-18, 19)
 energy = 0.35
 shadow_enabled = true
 shadow_color = Color(1, 0.396078, 0.670588, 0)
-texture = ExtResource("12_1nd8q")
+texture = ExtResource("8_6ni4i")
 texture_scale = 0.37
 
 [node name="ControlsText" type="CanvasLayer" parent="."]
