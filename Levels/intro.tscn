@@ -178,12 +178,11 @@ _data = {
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a3xrw"]
 emission_shape = 3
-emission_box_extents = Vector3(150, 150, 1)
+emission_box_extents = Vector3(170, 50, 0)
 particle_flag_disable_z = true
 gravity = Vector3(-30, 300, 0)
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-turbulence_enabled = true
 
 [node name="introscene" type="Node2D"]
 y_sort_enabled = true
@@ -290,6 +289,6 @@ libraries = {
 }
 
 [node name="GpuParticles2d" type="GPUParticles2D" parent="."]
-position = Vector2(490, 176)
-amount = 900
+position = Vector2(490, 98)
+amount = 600
 process_material = SubResource("ParticleProcessMaterial_a3xrw")
