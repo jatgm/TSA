@@ -178,7 +178,7 @@ _data = {
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a3xrw"]
 emission_shape = 3
-emission_box_extents = Vector3(170, 50, 0)
+emission_box_extents = Vector3(150, 20, 0)
 particle_flag_disable_z = true
 gravity = Vector3(-30, 300, 0)
 orbit_velocity_min = 0.0
@@ -225,9 +225,6 @@ position = Vector2(490, 176)
 
 [node name="RemoteTransform2d" type="RemoteTransform2D" parent="cat"]
 remote_path = NodePath("../../Camera2d")
-
-[node name="RemoteTransform2d2" type="RemoteTransform2D" parent="cat"]
-remote_path = NodePath("../../GpuParticles2d")
 
 [node name="Note" parent="." instance=ExtResource("4_5eapv")]
 material = SubResource("ShaderMaterial_x2uvm")
@@ -289,6 +286,6 @@ libraries = {
 }
 
 [node name="GpuParticles2d" type="GPUParticles2D" parent="."]
-position = Vector2(490, 98)
+position = Vector2(490, 87)
 amount = 600
 process_material = SubResource("ParticleProcessMaterial_a3xrw")
