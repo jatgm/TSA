@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dvj6wmwkipvpf"]
+[gd_scene load_steps=22 format=3 uid="uid://dvj6wmwkipvpf"]
 
 [ext_resource type="Script" path="res://Levels/intro.gd" id="1_ahy1b"]
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://chmpxfyftorxk" path="res://Art/Tiles/streetlamp.png" id="6_ehbo0"]
 [ext_resource type="Script" path="res://objects/Streetlamp.gd" id="7_hbl3w"]
 [ext_resource type="Texture2D" uid="uid://ddfhmn1s0farm" path="res://Art/asdf.png" id="8_6ni4i"]
+[ext_resource type="AudioStream" uid="uid://d32ihwrjashe" path="res://Audio/Sound Effects - Ventilation Noise And Light Buzz Ambience - Version 2.mp3" id="10_u3l6a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5mte"]
 texture = ExtResource("1_dbw02")
@@ -242,6 +243,14 @@ shadow_color = Color(1, 0.396078, 0.670588, 0)
 texture = ExtResource("8_6ni4i")
 texture_scale = 0.37
 metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer2d" type="AudioStreamPlayer2D" parent="Streetlamp"]
+position = Vector2(-22, -20)
+stream = ExtResource("10_u3l6a")
+volume_db = 3.0
+autoplay = true
+max_distance = 200.0
+panning_strength = 1.58
 
 [node name="blackbars" type="CanvasLayer" parent="."]
 layer = 0
