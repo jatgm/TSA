@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://brpwalubv8yfm"]
+[gd_scene load_steps=4 format=3 uid="uid://brpwalubv8yfm"]
 
 [ext_resource type="Script" path="res://Levels/tsa.gd" id="1_antgr"]
 [ext_resource type="PackedScene" uid="uid://dvj6wmwkipvpf" path="res://Levels/intro.tscn" id="1_cblco"]
+[ext_resource type="Script" path="res://Levels/PauseMenu.gd" id="3_u3a1h"]
 
 [node name="TSA" type="Node"]
 process_mode = 3
@@ -10,13 +11,61 @@ script = ExtResource("1_antgr")
 [node name="introscene" parent="." instance=ExtResource("1_cblco")]
 process_mode = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+layer = 100
 visible = false
+script = ExtResource("3_u3a1h")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.356863)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -50.5
+offset_right = 46.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Resume" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+offset_right = 92.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Resume
+"
+
+[node name="Settings" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+offset_top = 35.0
+offset_right = 92.0
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings
+"
+
+[node name="Quit" type="Button" parent="PauseMenu/VBoxContainer"]
+layout_mode = 2
+offset_top = 70.0
+offset_right = 92.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit Game"
+
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Settings" to="PauseMenu" method="_on_settings_pressed"]
+[connection signal="pressed" from="PauseMenu/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]

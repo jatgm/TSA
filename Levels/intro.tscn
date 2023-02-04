@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dvj6wmwkipvpf"]
+[gd_scene load_steps=23 format=3 uid="uid://dvj6wmwkipvpf"]
 
 [ext_resource type="Script" path="res://Levels/intro.gd" id="1_ahy1b"]
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://objects/Streetlamp.gd" id="7_hbl3w"]
 [ext_resource type="Texture2D" uid="uid://ddfhmn1s0farm" path="res://Art/asdf.png" id="8_6ni4i"]
 [ext_resource type="AudioStream" uid="uid://d32ihwrjashe" path="res://Audio/Sound Effects - Ventilation Noise And Light Buzz Ambience - Version 2.mp3" id="10_u3l6a"]
+[ext_resource type="AudioStream" uid="uid://3lpmfauq102c" path="res://Audio/20 Minutes of Light Rain Sounds for Focus, Relaxing and Sleep 🌧️ Epidemic Ambience.mp3" id="11_w8y1i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5mte"]
 texture = ExtResource("1_dbw02")
@@ -298,3 +299,9 @@ root_node = NodePath("../Car")
 libraries = {
 "": SubResource("AnimationLibrary_hf8b6")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimationPlayer"]
+stream = ExtResource("11_w8y1i")
+volume_db = -5.0
+autoplay = true
+bus = &"SFX"
