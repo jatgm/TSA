@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://brpwalubv8yfm"]
+
+[ext_resource type="Script" path="res://Levels/tsa.gd" id="1_antgr"]
+[ext_resource type="PackedScene" uid="uid://dvj6wmwkipvpf" path="res://Levels/intro.tscn" id="1_cblco"]
+
+[node name="TSA" type="Node"]
+process_mode = 3
+script = ExtResource("1_antgr")
+
+[node name="introscene" parent="." instance=ExtResource("1_cblco")]
+process_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.356863)

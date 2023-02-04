@@ -134,6 +134,14 @@ _data = {
 "RESET": SubResource("Animation_kdyt8")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a3xrw"]
+emission_shape = 3
+emission_box_extents = Vector3(300, 40, 0)
+particle_flag_disable_z = true
+gravity = Vector3(-30, 300, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x2uvm"]
 resource_local_to_scene = true
 shader = ExtResource("5_fnka4")
@@ -177,14 +185,6 @@ _data = {
 "RESET": SubResource("Animation_ggnkw")
 }
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a3xrw"]
-emission_shape = 3
-emission_box_extents = Vector3(150, 20, 0)
-particle_flag_disable_z = true
-gravity = Vector3(-30, 300, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-
 [node name="introscene" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_ahy1b")
@@ -227,6 +227,11 @@ position = Vector2(490, 176)
 [node name="RemoteTransform2d" type="RemoteTransform2D" parent="cat"]
 remote_path = NodePath("../../Camera2d")
 
+[node name="GpuParticles2d" type="GPUParticles2D" parent="cat"]
+position = Vector2(0, -81)
+amount = 600
+process_material = SubResource("ParticleProcessMaterial_a3xrw")
+
 [node name="Note" parent="." instance=ExtResource("4_5eapv")]
 material = SubResource("ShaderMaterial_x2uvm")
 
@@ -247,10 +252,10 @@ metadata/_edit_lock_ = true
 [node name="AudioStreamPlayer2d" type="AudioStreamPlayer2D" parent="Streetlamp"]
 position = Vector2(-22, -20)
 stream = ExtResource("10_u3l6a")
-volume_db = 3.0
+volume_db = 10.0
 autoplay = true
 max_distance = 200.0
-panning_strength = 1.58
+panning_strength = 3.0
 
 [node name="blackbars" type="CanvasLayer" parent="."]
 layer = 0
@@ -293,8 +298,3 @@ root_node = NodePath("../Car")
 libraries = {
 "": SubResource("AnimationLibrary_hf8b6")
 }
-
-[node name="GpuParticles2d" type="GPUParticles2D" parent="."]
-position = Vector2(490, 87)
-amount = 600
-process_material = SubResource("ParticleProcessMaterial_a3xrw")
