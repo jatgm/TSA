@@ -137,7 +137,7 @@ _data = {
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a3xrw"]
 emission_shape = 3
-emission_box_extents = Vector3(300, 40, 0)
+emission_box_extents = Vector3(200, 200, 0)
 particle_flag_disable_z = true
 gravity = Vector3(-30, 300, 0)
 orbit_velocity_min = 0.0
@@ -229,7 +229,7 @@ position = Vector2(490, 176)
 remote_path = NodePath("../../Camera2d")
 
 [node name="GpuParticles2d" type="GPUParticles2D" parent="cat"]
-position = Vector2(0, -81)
+position = Vector2(-1, -119)
 amount = 600
 process_material = SubResource("ParticleProcessMaterial_a3xrw")
 
@@ -260,6 +260,7 @@ panning_strength = 3.0
 
 [node name="blackbars" type="CanvasLayer" parent="."]
 layer = 0
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="blackbars"]
 anchors_preset = 5

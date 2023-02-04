@@ -39,7 +39,6 @@ grow_vertical = 2
 alignment = 1
 
 [node name="Resume" type="Button" parent="PauseMenu/Selector"]
-layout_mode = 2
 offset_right = 92.0
 offset_bottom = 31.0
 grow_horizontal = 2
@@ -48,7 +47,6 @@ text = "Resume
 "
 
 [node name="Settings" type="Button" parent="PauseMenu/Selector"]
-layout_mode = 2
 offset_top = 35.0
 offset_right = 92.0
 offset_bottom = 66.0
@@ -58,7 +56,6 @@ text = "Settings
 "
 
 [node name="Quit" type="Button" parent="PauseMenu/Selector"]
-layout_mode = 2
 offset_top = 70.0
 offset_right = 92.0
 offset_bottom = 101.0
@@ -81,7 +78,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MasterLabel" type="Label" parent="PauseMenu/Settings"]
-layout_mode = 2
 offset_right = 118.0
 offset_bottom = 26.0
 size_flags_horizontal = 0
@@ -89,7 +85,6 @@ text = "Master Volume
 "
 
 [node name="MasterSlider" type="HSlider" parent="PauseMenu/Settings"]
-layout_mode = 2
 offset_top = 30.0
 offset_right = 234.0
 offset_bottom = 46.0
@@ -98,7 +93,6 @@ step = 0.0
 value = 1.0
 
 [node name="MusicLabel" type="Label" parent="PauseMenu/Settings"]
-layout_mode = 2
 offset_top = 50.0
 offset_right = 109.0
 offset_bottom = 76.0
@@ -107,15 +101,14 @@ text = "Music Volume
 "
 
 [node name="MusicSlider" type="HSlider" parent="PauseMenu/Settings"]
-layout_mode = 2
 offset_top = 80.0
 offset_right = 234.0
 offset_bottom = 96.0
 max_value = 1.0
+step = 0.0
 value = 1.0
 
 [node name="SFXLabel" type="Label" parent="PauseMenu/Settings"]
-layout_mode = 2
 offset_top = 100.0
 offset_right = 91.0
 offset_bottom = 126.0
@@ -124,15 +117,14 @@ text = "SFX Volume
 "
 
 [node name="SFXSlider" type="HSlider" parent="PauseMenu/Settings"]
-layout_mode = 2
 offset_top = 130.0
 offset_right = 234.0
 offset_bottom = 146.0
 max_value = 1.0
+step = 0.0
 value = 1.0
 
 [node name="BackButton" type="Button" parent="PauseMenu/Settings"]
-layout_mode = 2
 offset_top = 150.0
 offset_right = 45.0
 offset_bottom = 181.0
