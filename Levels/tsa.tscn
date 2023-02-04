@@ -24,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.356863)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu"]
+[node name="Selector" type="VBoxContainer" parent="PauseMenu"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -38,7 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Resume" type="Button" parent="PauseMenu/VBoxContainer"]
+[node name="Resume" type="Button" parent="PauseMenu/Selector"]
 layout_mode = 2
 offset_right = 92.0
 offset_bottom = 31.0
@@ -47,7 +47,7 @@ grow_vertical = 2
 text = "Resume
 "
 
-[node name="Settings" type="Button" parent="PauseMenu/VBoxContainer"]
+[node name="Settings" type="Button" parent="PauseMenu/Selector"]
 layout_mode = 2
 offset_top = 35.0
 offset_right = 92.0
@@ -57,7 +57,7 @@ grow_vertical = 2
 text = "Settings
 "
 
-[node name="Quit" type="Button" parent="PauseMenu/VBoxContainer"]
+[node name="Quit" type="Button" parent="PauseMenu/Selector"]
 layout_mode = 2
 offset_top = 70.0
 offset_right = 92.0
@@ -66,6 +66,83 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Quit Game"
 
-[connection signal="pressed" from="PauseMenu/VBoxContainer/Resume" to="PauseMenu" method="_on_resume_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/Settings" to="PauseMenu" method="_on_settings_pressed"]
-[connection signal="pressed" from="PauseMenu/VBoxContainer/Quit" to="PauseMenu" method="_on_quit_pressed"]
+[node name="Settings" type="VBoxContainer" parent="PauseMenu"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -20.0
+offset_right = 117.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MasterLabel" type="Label" parent="PauseMenu/Settings"]
+layout_mode = 2
+offset_right = 118.0
+offset_bottom = 26.0
+size_flags_horizontal = 0
+text = "Master Volume
+"
+
+[node name="MasterSlider" type="HSlider" parent="PauseMenu/Settings"]
+layout_mode = 2
+offset_top = 30.0
+offset_right = 234.0
+offset_bottom = 46.0
+max_value = 1.0
+step = 0.0
+value = 1.0
+
+[node name="MusicLabel" type="Label" parent="PauseMenu/Settings"]
+layout_mode = 2
+offset_top = 50.0
+offset_right = 109.0
+offset_bottom = 76.0
+size_flags_horizontal = 0
+text = "Music Volume
+"
+
+[node name="MusicSlider" type="HSlider" parent="PauseMenu/Settings"]
+layout_mode = 2
+offset_top = 80.0
+offset_right = 234.0
+offset_bottom = 96.0
+max_value = 1.0
+value = 1.0
+
+[node name="SFXLabel" type="Label" parent="PauseMenu/Settings"]
+layout_mode = 2
+offset_top = 100.0
+offset_right = 91.0
+offset_bottom = 126.0
+size_flags_horizontal = 0
+text = "SFX Volume
+"
+
+[node name="SFXSlider" type="HSlider" parent="PauseMenu/Settings"]
+layout_mode = 2
+offset_top = 130.0
+offset_right = 234.0
+offset_bottom = 146.0
+max_value = 1.0
+value = 1.0
+
+[node name="BackButton" type="Button" parent="PauseMenu/Settings"]
+layout_mode = 2
+offset_top = 150.0
+offset_right = 45.0
+offset_bottom = 181.0
+size_flags_horizontal = 0
+text = "Back"
+
+[connection signal="pressed" from="PauseMenu/Selector/Resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/Selector/Settings" to="PauseMenu" method="_on_settings_pressed"]
+[connection signal="pressed" from="PauseMenu/Selector/Quit" to="PauseMenu" method="_on_quit_pressed"]
+[connection signal="value_changed" from="PauseMenu/Settings/MasterSlider" to="PauseMenu" method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="PauseMenu/Settings/MusicSlider" to="PauseMenu" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="PauseMenu/Settings/SFXSlider" to="PauseMenu" method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="PauseMenu/Settings/BackButton" to="PauseMenu" method="_on_back_button_pressed"]

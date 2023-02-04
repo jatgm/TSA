@@ -253,7 +253,7 @@ metadata/_edit_lock_ = true
 [node name="AudioStreamPlayer2d" type="AudioStreamPlayer2D" parent="Streetlamp"]
 position = Vector2(-22, -20)
 stream = ExtResource("10_u3l6a")
-volume_db = 10.0
+volume_db = 20.0
 autoplay = true
 max_distance = 200.0
 panning_strength = 3.0
