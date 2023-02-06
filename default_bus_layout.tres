@@ -1,7 +1,8 @@
-[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://bereh8lg6sb0j"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://cohcmui3o34td"]
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_xl05l"]
 resource_name = "Reverb"
+wet = 0.51
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_ipga4"]
 resource_name = "Compressor"
