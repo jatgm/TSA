@@ -1,9 +1,9 @@
 [gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://bereh8lg6sb0j"]
 
-[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_3sli8"]
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_xl05l"]
 resource_name = "Reverb"
 
-[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_rvsvh"]
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_ipga4"]
 resource_name = "Compressor"
 
 [resource]
@@ -19,7 +19,13 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"Master"
-bus/2/effect/0/effect = SubResource("AudioEffectReverb_3sli8")
-bus/2/effect/0/enabled = true
-bus/2/effect/1/effect = SubResource("AudioEffectCompressor_rvsvh")
-bus/2/effect/1/enabled = true
+bus/3/name = &"Ambience"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"SFX"
+bus/3/effect/0/effect = SubResource("AudioEffectReverb_xl05l")
+bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource("AudioEffectCompressor_ipga4")
+bus/3/effect/1/enabled = true

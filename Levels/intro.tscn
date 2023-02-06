@@ -230,7 +230,7 @@ remote_path = NodePath("../../Camera2d")
 
 [node name="GpuParticles2d" type="GPUParticles2D" parent="cat"]
 position = Vector2(-1, -119)
-amount = 600
+amount = 1000
 process_material = SubResource("ParticleProcessMaterial_a3xrw")
 
 [node name="Note" parent="." instance=ExtResource("4_5eapv")]
@@ -253,14 +253,14 @@ metadata/_edit_lock_ = true
 [node name="AudioStreamPlayer2d" type="AudioStreamPlayer2D" parent="Streetlamp"]
 position = Vector2(-22, -20)
 stream = ExtResource("10_u3l6a")
-volume_db = 20.0
+volume_db = 10.0
 autoplay = true
 max_distance = 200.0
 panning_strength = 3.0
+bus = &"Ambience"
 
 [node name="blackbars" type="CanvasLayer" parent="."]
 layer = 0
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="blackbars"]
 anchors_preset = 5
@@ -305,4 +305,4 @@ libraries = {
 stream = ExtResource("11_w8y1i")
 volume_db = -5.0
 autoplay = true
-bus = &"SFX"
+bus = &"Ambience"
