@@ -1,0 +1,12 @@
+{
+	"1" : {
+		"name" : "",
+		"dialogue" : "zzz...",
+		"expression" : "Happy"
+	},
+	"2" : {
+		"name" : "",
+		"dialogue" : "zzz......",
+		"expression" : "Sad"
+	}
+}
