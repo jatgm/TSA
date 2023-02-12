@@ -73,5 +73,9 @@ func start_dialogue():
 		visible = true
 		show_text()
 
-func _on_timer_timeout():
+func reveal_character():
 	text_label.visible_characters += 1
+
+func _on_timer_timeout():
+	if char_count >= text_label.visible_characters:
+		reveal_character()

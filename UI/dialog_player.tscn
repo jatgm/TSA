@@ -6,6 +6,7 @@
 [node name="DialogPlayer" type="CanvasLayer"]
 process_mode = 1
 layer = 2
+visible = false
 follow_viewport_scale = 53.142
 script = ExtResource("1_djw81")
 
