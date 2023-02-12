@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+class_name DialogPlayer
+
 @onready @export_file("*.json") var scene_file_text
 @onready var background = $Background
 @onready var text_label = $Text
@@ -9,7 +11,13 @@ extends CanvasLayer
 var scene_text = {}
 var selected_text = []
 var current_index = "0"
+var char_count = 0
 var in_progress = false
+var line_finished = false
+
+func _process(delta):
+	if char_count <= text_label.visible_characters:
+		line_finished = true
 
 func _ready():
 	background.visible = false
@@ -23,8 +31,11 @@ func load_scene_text():
 		return JSON.parse_string(file.get_as_text())
 		
 func show_text():
+	line_finished = false
+	text_label.visible_characters = 0
 	current_index = str((current_index).to_int() + 1)
 	text_label.text = scene_text[current_index]["dialogue"]
+	char_count = len(scene_text[current_index]["dialogue"])
 	if scene_text[current_index]["name"] == "":
 		name_background.visible = false
 	else:
@@ -49,7 +60,10 @@ func finish():
 		
 func start_dialogue():
 	if in_progress:
-		next_line()
+		if line_finished:
+			next_line()
+		else:
+			text_label.visible_characters = 999
 	else:
 		background.visible = true
 		name_background.visible = true
@@ -58,3 +72,6 @@ func start_dialogue():
 		#selected_text = scene_text[current_index]["dialogue"]
 		visible = true
 		show_text()
+
+func _on_timer_timeout():
+	text_label.visible_characters += 1

@@ -7,6 +7,4 @@ extends Node2D
 func _ready():
 	animation_player.play('Intro')
 	
-func _process(_delta):
-	if Input.is_action_just_pressed("interact"):
-		dialog_player.start_dialogue()
+

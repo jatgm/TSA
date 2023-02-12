@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dvj6wmwkipvpf"]
+[gd_scene load_steps=26 format=3 uid="uid://dvj6wmwkipvpf"]
 
 [ext_resource type="Script" path="res://Levels/intro.gd" id="1_ahy1b"]
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://d32ihwrjashe" path="res://Audio/Sound Effects - Ventilation Noise And Light Buzz Ambience - Version 2.mp3" id="10_u3l6a"]
 [ext_resource type="AudioStream" uid="uid://3lpmfauq102c" path="res://Audio/20 Minutes of Light Rain Sounds for Focus, Relaxing and Sleep 🌧️ Epidemic Ambience.mp3" id="11_w8y1i"]
 [ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="12_qef3u"]
+[ext_resource type="Script" path="res://Hitboxes/Interactions/intro_dialog_interaction.gd" id="14_p5yrl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5mte"]
 texture = ExtResource("1_dbw02")
@@ -161,7 +162,7 @@ tracks/0/path = NodePath("../DialogPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1.6),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -171,14 +172,38 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../RainParticles/MuffledRainSound:autoplay")
+tracks/1/path = NodePath("../RainParticles/MuffledRainSound:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../blackbars:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../cat:moving")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_ggnkw"]
@@ -186,10 +211,34 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../RainParticles/MuffledRainSound:autoplay")
+tracks/0/path = NodePath("../RainParticles/MuffledRainSound:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../blackbars:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../cat:moving")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -239,8 +288,8 @@ libraries = {
 }
 
 [node name="cat" parent="." instance=ExtResource("3_1qfu2")]
-visible = false
 position = Vector2(490, 176)
+moving = false
 
 [node name="RemoteTransform2d" type="RemoteTransform2D" parent="cat"]
 remote_path = NodePath("../../Camera2d")
@@ -257,7 +306,7 @@ bus = &"Ambience"
 
 [node name="MuffledRainSound" type="AudioStreamPlayer" parent="RainParticles"]
 stream = ExtResource("6_oanr6")
-volume_db = -5.0
+volume_db = -3.0
 bus = &"SFX"
 
 [node name="Note" parent="." instance=ExtResource("4_5eapv")]
@@ -286,6 +335,7 @@ panning_strength = 3.0
 bus = &"Ambience"
 
 [node name="blackbars" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="blackbars"]
 anchors_preset = 5
@@ -298,6 +348,7 @@ grow_horizontal = 2
 color = Color(0, 0, 0, 1)
 
 [node name="FullBlack" type="ColorRect" parent="blackbars"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -336,4 +387,19 @@ libraries = {
 }
 
 [node name="DialogPlayer" parent="." instance=ExtResource("12_qef3u")]
+script = ExtResource("14_p5yrl")
 scene_file_text = "res://json/intro_dialogue.json"
+
+[node name="Label" type="Label" parent="DialogPlayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -85.5
+offset_top = -38.0
+offset_right = 85.5
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press [E] to continue..."

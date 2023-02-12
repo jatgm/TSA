@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var move_speed : float = 140
 @export var starting_direction : Vector2 = Vector2(0, 1)
+@export var moving: bool = true
 
 #when script starts we get this var
 @onready var animation_player = $AnimationPlayer
@@ -21,7 +22,8 @@ func _physics_process(_delta): # happens 60 times a sec, underscore can represen
 	velocity = input_direction.normalized() * move_speed
 
 	#built in function for characterbody new godot 4! :D
-	move_and_slide()
+	if moving:
+		move_and_slide()
 	
 	update_animation_parameters(input_direction)
 	

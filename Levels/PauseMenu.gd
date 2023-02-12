@@ -1,8 +1,5 @@
 extends CanvasLayer
 
-func _process(_delta):
-	print(AudioServer.get_bus_volume_db(0))
-
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if $Selector.visible == false:

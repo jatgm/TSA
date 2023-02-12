@@ -9,12 +9,18 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "CanvasLayer",
+"class": &"DialogPlayer",
+"language": &"GDScript",
+"path": "res://UI/dialog_player.gd"
+}, {
 "base": "Area2D",
 "class": &"InteractionManager",
 "language": &"GDScript",
 "path": "res://Hitboxes/interaction_manager.gd"
 }]
 _global_script_class_icons={
+"DialogPlayer": "",
 "InteractionManager": ""
 }
 
