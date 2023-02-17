@@ -30,7 +30,6 @@ position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_w18vd")
 
 [node name="DialogPlayer" parent="InteractionManager" instance=ExtResource("4_nqnyq")]
-visible = false
 scene_file_text = "res://json/world_dialogue.json"
 
 [node name="Sprite2d" type="Sprite2D" parent="InteractionManager"]
