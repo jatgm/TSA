@@ -15,7 +15,7 @@ var char_count = 0
 var in_progress = false
 var line_finished = false
 
-func _process(delta):
+func _process(_delta):
 	if char_count <= text_label.visible_characters:
 		line_finished = true
 

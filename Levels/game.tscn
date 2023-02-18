@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://c15pxvb28v48w"]
+[gd_scene load_steps=12 format=3 uid="uid://c15pxvb28v48w"]
 
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
-[ext_resource type="Script" path="res://Levels/NightFilter.gd" id="2_k1blf"]
 [ext_resource type="PackedScene" uid="uid://bt5eokyn64m8k" path="res://Characters/cat.tscn" id="3_1qfu2"]
 [ext_resource type="PackedScene" uid="uid://cn8m43h8b6548" path="res://objects/Note.tscn" id="4_5eapv"]
 [ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="5_fnka4"]
@@ -109,7 +108,6 @@ script = SubResource("GDScript_kohig")
 [node name="NightFilter" type="CanvasModulate" parent="."]
 position = Vector2(211, 110)
 color = Color(0.372549, 0.427451, 0.768627, 1)
-script = ExtResource("2_k1blf")
 
 [node name="cat" parent="." instance=ExtResource("3_1qfu2")]
 position = Vector2(490, 176)
