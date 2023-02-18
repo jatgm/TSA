@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://brpwalubv8yfm"]
+[gd_scene load_steps=5 format=3 uid="uid://brpwalubv8yfm"]
 
 [ext_resource type="Script" path="res://Levels/tsa.gd" id="1_antgr"]
 [ext_resource type="PackedScene" uid="uid://dvj6wmwkipvpf" path="res://Levels/intro.tscn" id="1_cblco"]
 [ext_resource type="Script" path="res://Levels/PauseMenu.gd" id="3_u3a1h"]
+[ext_resource type="Script" path="res://Levels/FPSCounter.gd" id="4_24j20"]
 
 [node name="TSA" type="Node"]
 process_mode = 3
@@ -106,6 +107,22 @@ value = 1.0
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Back"
+
+[node name="FPSCounter" type="CanvasLayer" parent="."]
+layer = 128
+script = ExtResource("4_24j20")
+
+[node name="Label" type="Label" parent="FPSCounter"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "FPS:"
 
 [connection signal="pressed" from="PauseMenu/Selector/Resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Selector/Settings" to="PauseMenu" method="_on_settings_pressed"]

@@ -334,7 +334,6 @@ blend_mode = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ot86i"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xeve0"]
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fu6q1"]
 states/End/position = Vector2(670, 114)

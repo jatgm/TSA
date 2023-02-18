@@ -331,7 +331,7 @@ bus = &"SFX"
 [node name="Lightning" type="AudioStreamPlayer" parent="cat/RainParticles"]
 stream = ExtResource("6_humli")
 volume_db = -7.0
-bus = &"Ambience"
+bus = &"SFX"
 
 [node name="Note" parent="." instance=ExtResource("4_5eapv")]
 material = SubResource("ShaderMaterial_x2uvm")
