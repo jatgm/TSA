@@ -100,9 +100,7 @@ metadata/_edit_lock_ = true
 
 [node name="Camera2d" type="Camera2D" parent="."]
 position = Vector2(490, 176)
-current = true
 zoom = Vector2(4, 4)
-smoothing_speed = 0.0
 script = SubResource("GDScript_kohig")
 
 [node name="NightFilter" type="CanvasModulate" parent="."]

@@ -199,6 +199,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Streetlamp")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"light_flicker"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ggnkw"]
 length = 0.001
@@ -291,9 +305,7 @@ metadata/_edit_lock_ = true
 
 [node name="Camera2d" type="Camera2D" parent="."]
 position = Vector2(490, 176)
-current = true
 zoom = Vector2(4, 4)
-smoothing_speed = 0.0
 script = SubResource("GDScript_kohig")
 
 [node name="NightFilter" type="CanvasModulate" parent="."]
@@ -302,7 +314,6 @@ color = Color(0.372549, 0.427451, 0.768627, 1)
 
 [node name="cat" parent="." instance=ExtResource("3_1qfu2")]
 position = Vector2(490, 176)
-moving = false
 
 [node name="RemoteTransform2d" type="RemoteTransform2D" parent="cat"]
 remote_path = NodePath("../../Camera2d")
@@ -337,7 +348,7 @@ script = ExtResource("7_hbl3w")
 
 [node name="PointLight2d" type="PointLight2D" parent="Streetlamp"]
 position = Vector2(-18, 19)
-energy = 0.35
+energy = 0.49
 shadow_enabled = true
 shadow_color = Color(1, 0.396078, 0.670588, 0)
 texture = ExtResource("8_6ni4i")

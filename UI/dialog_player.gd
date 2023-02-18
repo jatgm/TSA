@@ -2,7 +2,7 @@ extends CanvasLayer
 
 class_name DialogPlayer
 
-@onready @export_file("*.json") var scene_file_text
+@export_file("*.json") var scene_file_text
 @onready var background = $Background
 @onready var text_label = $Text
 @onready var name_background = $NameBackground
@@ -25,10 +25,8 @@ func _ready():
 	scene_text = load_scene_text()
 	
 func load_scene_text():
-	var file = File.new()
-	if file.file_exists(scene_file_text):
-		file.open(scene_file_text, File.READ)
-		return JSON.parse_string(file.get_as_text())
+	var file = FileAccess.open(scene_file_text, FileAccess.READ)
+	return JSON.parse_string(file.get_as_text())
 		
 func show_text():
 	line_finished = false
