@@ -1,12 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://dvj6wmwkipvpf"]
+[gd_scene load_steps=24 format=3 uid="uid://dvj6wmwkipvpf"]
 
 [ext_resource type="Script" path="res://Levels/intro.gd" id="1_ahy1b"]
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
-[ext_resource type="Script" path="res://Levels/NightFilter.gd" id="2_k1blf"]
 [ext_resource type="PackedScene" uid="uid://bt5eokyn64m8k" path="res://Characters/cat.tscn" id="3_1qfu2"]
 [ext_resource type="PackedScene" uid="uid://cn8m43h8b6548" path="res://objects/Note.tscn" id="4_5eapv"]
 [ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="5_fnka4"]
 [ext_resource type="Texture2D" uid="uid://chmpxfyftorxk" path="res://Art/Tiles/streetlamp.png" id="6_ehbo0"]
+[ext_resource type="AudioStream" uid="uid://bdngvgonjt718" path="res://Audio/lightningclap.mp3" id="6_humli"]
 [ext_resource type="AudioStream" uid="uid://cdtx7shxmx82f" path="res://Audio/mutedrain.mp3" id="6_oanr6"]
 [ext_resource type="Script" path="res://objects/Streetlamp.gd" id="7_hbl3w"]
 [ext_resource type="Texture2D" uid="uid://ddfhmn1s0farm" path="res://Art/asdf.png" id="8_6ni4i"]
@@ -81,63 +81,6 @@ script/source = "extends Camera2D
 
 "
 
-[sub_resource type="Animation" id="Animation_krchi"]
-resource_name = "DaylightCycle"
-length = 600.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 300, 600),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0.372549, 0.427451, 0.768627, 1), Color(1, 1, 1, 1), Color(0.372549, 0.427451, 0.768627, 1)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Streetlamp")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 176.7, 414.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [],
-"method": &"light_flicker"
-}, {
-"args": [],
-"method": &"light_off"
-}, {
-"args": [],
-"method": &"light_flicker"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_kdyt8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.372549, 0.427451, 0.768627, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kutmm"]
-_data = {
-"DaylightCycle": SubResource("Animation_krchi"),
-"RESET": SubResource("Animation_kdyt8")
-}
-
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a3xrw"]
 emission_shape = 3
 emission_box_extents = Vector3(200, 200, 0)
@@ -198,6 +141,18 @@ tracks/3/path = NodePath("../Streetlamp/LightHum:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../RainParticles/Lightning:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -295,6 +250,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../RainParticles/Lightning:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hf8b6"]
 _data = {
@@ -332,12 +299,6 @@ script = SubResource("GDScript_kohig")
 [node name="NightFilter" type="CanvasModulate" parent="."]
 position = Vector2(211, 110)
 color = Color(0.372549, 0.427451, 0.768627, 1)
-script = ExtResource("2_k1blf")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="NightFilter"]
-libraries = {
-"": SubResource("AnimationLibrary_kutmm")
-}
 
 [node name="cat" parent="." instance=ExtResource("3_1qfu2")]
 position = Vector2(490, 176)
@@ -360,6 +321,11 @@ bus = &"Ambience"
 stream = ExtResource("6_oanr6")
 volume_db = -3.0
 bus = &"SFX"
+
+[node name="Lightning" type="AudioStreamPlayer" parent="RainParticles"]
+stream = ExtResource("6_humli")
+volume_db = -5.0
+bus = &"Ambience"
 
 [node name="Note" parent="." instance=ExtResource("4_5eapv")]
 material = SubResource("ShaderMaterial_x2uvm")
@@ -384,7 +350,7 @@ stream = ExtResource("10_u3l6a")
 volume_db = 7.0
 max_distance = 200.0
 panning_strength = 3.0
-bus = &"Ambience"
+bus = &"SFX"
 
 [node name="blackbars" type="CanvasLayer" parent="."]
 
@@ -450,8 +416,8 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Press [E] to continue..."
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogPlayer"]
-root_node = NodePath("../../Car")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Car")
 libraries = {
 "": SubResource("AnimationLibrary_hf8b6")
 }

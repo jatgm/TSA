@@ -16,7 +16,8 @@ func _process(_delta):
 			start_dialogue()
 			
 	if line_finished and current_index == "8":
-		$AnimationPlayer.play('Cut')
+		$"../AnimationPlayer".play('Cut')
+		finish()
 
 func show_text():
 	line_finished = false
