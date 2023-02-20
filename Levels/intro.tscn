@@ -320,7 +320,6 @@ gravity = Vector2(-30, 300)
 
 [node name="RainSound" type="AudioStreamPlayer" parent="cat/RainParticles"]
 stream = ExtResource("11_w8y1i")
-volume_db = 3.0
 bus = &"Ambience"
 
 [node name="MuffledRainSound" type="AudioStreamPlayer" parent="cat/RainParticles"]
@@ -353,7 +352,7 @@ metadata/_edit_lock_ = true
 [node name="LightHum" type="AudioStreamPlayer2D" parent="Streetlamp"]
 position = Vector2(-22, -20)
 stream = ExtResource("10_u3l6a")
-volume_db = 7.0
+volume_db = 15.0
 max_distance = 200.0
 panning_strength = 3.0
 bus = &"SFX"
