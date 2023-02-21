@@ -25,7 +25,6 @@ func _physics_process(_delta): # happens 60 times a sec, underscore can represen
 	if moving:
 		move_and_slide()
 		update_animation_parameters(input_direction)
-		print("ba")
 	else:
 		sprite_2d.frame = 2
 	
