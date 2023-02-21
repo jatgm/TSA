@@ -1,6 +1,8 @@
 # TSA
 
-## Used the [coi-serviceworker](https://github.com/gzuidhof/coi-serviceworker) license by Guido Zuidhof in order to enable SharedArrayBuffer for the Github.io page- thank you!
+## Used the [coi-serviceworker](https://github.com/gzuidhof/coi-serviceworker) license by Guido Zuidhof in order to enable SharedArrayBuffer for the github.io page- thank you!
+
+Click [here](https://jatgm.github.io/TSA/builds/HTML%20Builds/build3/index.html) to play!
 
 >MIT License
 >
