@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://dvj6wmwkipvpf"]
+[gd_scene load_steps=26 format=3 uid="uid://dvj6wmwkipvpf"]
 
 [ext_resource type="Script" path="res://Levels/intro.gd" id="1_ahy1b"]
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
 [ext_resource type="Texture2D" uid="uid://bt1btga73qexr" path="res://Art/Tiles/New Piskel (2).png" id="2_2rssx"]
 [ext_resource type="PackedScene" uid="uid://bt5eokyn64m8k" path="res://Characters/cat.tscn" id="3_1qfu2"]
 [ext_resource type="PackedScene" uid="uid://cn8m43h8b6548" path="res://objects/Note.tscn" id="4_5eapv"]
+[ext_resource type="Script" path="res://Levels/RainParticles.gd" id="4_ris0b"]
 [ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="5_fnka4"]
 [ext_resource type="Texture2D" uid="uid://chmpxfyftorxk" path="res://Art/Tiles/streetlamp.png" id="6_ehbo0"]
 [ext_resource type="AudioStream" uid="uid://bdngvgonjt718" path="res://Audio/lightningclap.mp3" id="6_humli"]
@@ -155,11 +156,11 @@ shader_parameter/opacity = 0.0
 
 [sub_resource type="Animation" id="Animation_gdlbs"]
 resource_name = "Cut"
-length = 10.0
+length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../cat/RainParticles/MuffledRainSound:playing")
+tracks/0/path = NodePath("../RainParticles/MuffledRainSound:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -171,7 +172,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../cat/RainParticles/RainSound:playing")
+tracks/1/path = NodePath("../RainParticles/RainSound:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -207,7 +208,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../cat/RainParticles/Lightning:playing")
+tracks/4/path = NodePath("../RainParticles/Lightning:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -223,10 +224,10 @@ tracks/5/path = NodePath(".:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(1.3, 3),
-"transitions": PackedFloat32Array(0.277393, 1),
+"times": PackedFloat32Array(1.3, 3, 4.4, 6),
+"transitions": PackedFloat32Array(0.277393, 1, 2, 1),
 "update": 0,
-"values": [Vector2(747, 200), Vector2(468, 200)]
+"values": [Vector2(747, 200), Vector2(468, 200), Vector2(468, 200), Vector2(246, 200)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -236,6 +237,42 @@ tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../cat:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(3, 3.9),
+"transitions": PackedFloat32Array(0.176776, 1),
+"update": 0,
+"values": [Vector2(490, 215), Vector2(490, 176)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../cat:moving")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../cat/RemoteTransform2d:update_position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(6),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -260,7 +297,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../cat/RainParticles/MuffledRainSound:playing")
+tracks/1/path = NodePath("../RainParticles/MuffledRainSound:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -343,13 +380,25 @@ tracks/7/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../cat/RemoteTransform2d:update_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ggnkw"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../cat/RainParticles/MuffledRainSound:playing")
+tracks/0/path = NodePath("../RainParticles/MuffledRainSound:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -361,7 +410,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../cat/RainParticles/RainSound:playing")
+tracks/1/path = NodePath("../RainParticles/RainSound:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -397,7 +446,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../cat/RainParticles/Lightning:playing")
+tracks/4/path = NodePath("../RainParticles/Lightning:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -454,6 +503,30 @@ tracks/8/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../cat:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(490, 176)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../cat/RemoteTransform2d:update_position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hf8b6"]
 _data = {
@@ -482,7 +555,7 @@ layer_1/tile_data = PackedInt32Array(262157, 196609, 2, 262158, 196609, 2, 26215
 metadata/_edit_lock_ = true
 
 [node name="Camera2d" type="Camera2D" parent="."]
-position = Vector2(490, 176)
+position = Vector2(490, 215)
 zoom = Vector2(4, 4)
 script = SubResource("GDScript_kohig")
 
@@ -490,34 +563,37 @@ script = SubResource("GDScript_kohig")
 position = Vector2(211, 110)
 color = Color(0.372549, 0.427451, 0.768627, 1)
 
-[node name="cat" parent="." instance=ExtResource("3_1qfu2")]
-position = Vector2(490, 176)
-moving = false
-
-[node name="RemoteTransform2d" type="RemoteTransform2D" parent="cat"]
-remote_path = NodePath("../../Camera2d")
-
-[node name="RainParticles" type="CPUParticles2D" parent="cat"]
-position = Vector2(-1, -119)
+[node name="RainParticles" type="CPUParticles2D" parent="."]
+position = Vector2(489, 57)
 amount = 1000
 draw_order = 1
 emission_shape = 3
 emission_rect_extents = Vector2(200, 200)
 gravity = Vector2(-30, 300)
+script = ExtResource("4_ris0b")
 
-[node name="RainSound" type="AudioStreamPlayer" parent="cat/RainParticles"]
+[node name="RainSound" type="AudioStreamPlayer" parent="RainParticles"]
 stream = ExtResource("11_w8y1i")
 bus = &"Ambience"
 
-[node name="MuffledRainSound" type="AudioStreamPlayer" parent="cat/RainParticles"]
+[node name="MuffledRainSound" type="AudioStreamPlayer" parent="RainParticles"]
 stream = ExtResource("6_oanr6")
 volume_db = -3.0
 bus = &"SFX"
 
-[node name="Lightning" type="AudioStreamPlayer" parent="cat/RainParticles"]
+[node name="Lightning" type="AudioStreamPlayer" parent="RainParticles"]
 stream = ExtResource("6_humli")
 volume_db = -7.0
 bus = &"SFX"
+
+[node name="cat" parent="." instance=ExtResource("3_1qfu2")]
+visible = false
+position = Vector2(490, 176)
+moving = false
+
+[node name="RemoteTransform2d" type="RemoteTransform2D" parent="cat"]
+visible = false
+remote_path = NodePath("../../Camera2d")
 
 [node name="Note" parent="." instance=ExtResource("4_5eapv")]
 material = SubResource("ShaderMaterial_x2uvm")

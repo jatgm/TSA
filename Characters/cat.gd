@@ -24,8 +24,10 @@ func _physics_process(_delta): # happens 60 times a sec, underscore can represen
 	#built in function for characterbody new godot 4! :D
 	if moving:
 		move_and_slide()
-	
 		update_animation_parameters(input_direction)
+		print("ba")
+	else:
+		sprite_2d.frame = 2
 	
 	if Input.is_action_just_pressed("interact"):
 		interaction_manager.initiate_interaction()
