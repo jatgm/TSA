@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var move_speed : float = 140
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @export var moving: bool = true
+@export var is_sprite_visible: bool = true
 
 #when script starts we get this var
 @onready var animation_player = $AnimationPlayer
@@ -27,6 +28,11 @@ func _physics_process(_delta): # happens 60 times a sec, underscore can represen
 		update_animation_parameters(input_direction)
 	else:
 		sprite_2d.frame = 2
+		
+	if is_sprite_visible:
+		$Sprite2d.visible = true
+	else:
+		$Sprite2d.visible = false
 	
 	if Input.is_action_just_pressed("interact"):
 		interaction_manager.initiate_interaction()

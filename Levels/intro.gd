@@ -6,6 +6,3 @@ extends Node2D
 func _ready():
 	animation_player.play('Intro')
 	
-func reparent_rain():
-	$cat.add_child($RainParticles)
-	
