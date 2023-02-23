@@ -666,7 +666,7 @@ bus = &"SFX"
 
 [node name="Streetlamp2" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(752, 130)
+position = Vector2(784, 130)
 texture = ExtResource("6_ehbo0")
 script = ExtResource("7_hbl3w")
 
@@ -764,7 +764,7 @@ libraries = {
 }
 
 [node name="Phonebooth" type="Node2D" parent="."]
-position = Vector2(720, 134)
+position = Vector2(752, 134)
 
 [node name="InteractionManager" parent="Phonebooth" instance=ExtResource("18_us6mb")]
 position = Vector2(420.067, -77.859)
