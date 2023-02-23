@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dvj6wmwkipvpf"]
+[gd_scene load_steps=27 format=3 uid="uid://dvj6wmwkipvpf"]
 
 [ext_resource type="Script" path="res://Levels/intro.gd" id="1_ahy1b"]
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
@@ -15,6 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://3lpmfauq102c" path="res://Audio/20 Minutes of Light Rain Sounds for Focus, Relaxing and Sleep 🌧️ Epidemic Ambience.mp3" id="11_w8y1i"]
 [ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="12_qef3u"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/intro_dialog_interaction.gd" id="14_p5yrl"]
+[ext_resource type="Texture2D" uid="uid://vdas54pbu2p5" path="res://Art/car.png" id="16_0hrji"]
+[ext_resource type="Texture2D" uid="uid://dy4b6cfybpivn" path="res://yellowhouse.png" id="17_736yi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5mte"]
 texture = ExtResource("1_dbw02")
@@ -173,7 +175,7 @@ shader_parameter/opacity = 0.0
 
 [sub_resource type="Animation" id="Animation_gdlbs"]
 resource_name = "Cut"
-length = 6.0
+length = 8.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -241,7 +243,7 @@ tracks/5/path = NodePath(".:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(1.3, 3, 4.4, 6),
+"times": PackedFloat32Array(1.3, 3, 5.5, 7.1),
 "transitions": PackedFloat32Array(0.277393, 1, 2, 1),
 "update": 0,
 "values": [Vector2(747, 200), Vector2(468, 200), Vector2(468, 200), Vector2(246, 200)]
@@ -253,7 +255,7 @@ tracks/6/path = NodePath("../cat:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(3, 3.9),
+"times": PackedFloat32Array(3.4, 4.3),
 "transitions": PackedFloat32Array(0.176776, 1),
 "update": 0,
 "values": [Vector2(490, 215), Vector2(490, 176)]
@@ -265,7 +267,7 @@ tracks/7/path = NodePath("../cat:moving")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(6),
+"times": PackedFloat32Array(8),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -277,7 +279,7 @@ tracks/8/path = NodePath("../Camera2d")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(3),
+"times": PackedFloat32Array(3.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -291,7 +293,7 @@ tracks/9/path = NodePath("../cat/RemoteTransform2D:update_position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(6),
+"times": PackedFloat32Array(7.1),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -303,7 +305,7 @@ tracks/10/path = NodePath("../cat:is_sprite_visible")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(3),
+"times": PackedFloat32Array(3.4),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -602,12 +604,13 @@ moving = false
 remote_path = NodePath("../../Camera2d")
 
 [node name="RainParticles" type="CPUParticles2D" parent="cat"]
-position = Vector2(-1, -119)
+position = Vector2(0, -119)
 amount = 1000
 draw_order = 1
 emission_shape = 3
 emission_rect_extents = Vector2(200, 200)
 gravity = Vector2(-30, 300)
+color = Color(0.65098, 0.686275, 1, 1)
 
 [node name="RainSound" type="AudioStreamPlayer" parent="cat/RainParticles"]
 stream = ExtResource("11_w8y1i")
@@ -636,10 +639,9 @@ script = ExtResource("7_hbl3w")
 position = Vector2(-18, 19)
 energy = 0.49
 shadow_enabled = true
-shadow_color = Color(1, 0.396078, 0.670588, 0)
+shadow_filter = 1
 texture = ExtResource("8_6ni4i")
 texture_scale = 0.37
-metadata/_edit_lock_ = true
 
 [node name="LightHum" type="AudioStreamPlayer2D" parent="Streetlamp"]
 position = Vector2(-22, -20)
@@ -687,11 +689,19 @@ color = Color(0, 0, 0, 1)
 [node name="Car" type="Node2D" parent="."]
 position = Vector2(747, 200)
 
-[node name="ColorRect" type="ColorRect" parent="Car"]
-offset_left = -0.299988
-offset_right = 54.7
-offset_bottom = 32.0
-color = Color(0, 0, 0, 1)
+[node name="Car" type="Sprite2D" parent="Car"]
+position = Vector2(21, 15)
+scale = Vector2(2, 2)
+texture = ExtResource("16_0hrji")
+hframes = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="Car"]
+position = Vector2(-70, 12)
+rotation = 1.57079
+scale = Vector2(0.4, 1)
+color = Color(0.709804, 0.760784, 1, 1)
+texture = ExtResource("8_6ni4i")
+texture_scale = 0.5
 
 [node name="DialogPlayer" parent="." instance=ExtResource("12_qef3u")]
 script = ExtResource("14_p5yrl")
@@ -717,3 +727,7 @@ root_node = NodePath("../Car")
 libraries = {
 "": SubResource("AnimationLibrary_hf8b6")
 }
+
+[node name="Yellowhouse" type="Sprite2D" parent="."]
+position = Vector2(821, 40)
+texture = ExtResource("17_736yi")
