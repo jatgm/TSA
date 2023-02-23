@@ -150,6 +150,7 @@ var shake_magnitude = 2.0
 var shake_timer = 0.0
 
 func _process(delta):
+	print(position)
 	if shake_timer > 0.0:
 		var x = randf_range(-shake_magnitude, shake_magnitude)
 		var y = randf_range(-shake_magnitude, shake_magnitude)
@@ -158,9 +159,6 @@ func _process(delta):
 	elif $\"../cat/RemoteTransform2D\".update_position == false:
 		var target_position = cat.position
 		position = target_position
-	else:
-		position = Vector2(0, 0)
-
 
 func shake():
 	shake_timer = shake_duration
