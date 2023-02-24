@@ -2,23 +2,23 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy4b6cfybpivn"
-path="res://.godot/imported/yellowhouse.png-69b1468e205151ae38ec65c9e370556d.ctex"
+uid="uid://386o5j73jtcg"
+path="res://.godot/imported/phonebooth.png-5e1badcd33b4fc53a9959542bae6c429.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://yellowhouse.png"
-dest_files=["res://.godot/imported/yellowhouse.png-69b1468e205151ae38ec65c9e370556d.ctex"]
+source_file="res://Art/phonebooth.png"
+dest_files=["res://.godot/imported/phonebooth.png-5e1badcd33b4fc53a9959542bae6c429.ctex"]
 
 [params]
 
 compress/mode=0
-compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
+compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false

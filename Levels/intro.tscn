@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dvj6wmwkipvpf"]
+[gd_scene load_steps=33 format=3 uid="uid://dncfhk4dppqrx"]
 
 [ext_resource type="Script" path="res://Levels/intro.gd" id="1_ahy1b"]
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="12_qef3u"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/intro_dialog_interaction.gd" id="14_p5yrl"]
 [ext_resource type="Texture2D" uid="uid://vdas54pbu2p5" path="res://Art/car.png" id="16_0hrji"]
-[ext_resource type="Texture2D" uid="uid://386o5j73jtcg" path="res://pixil-frame-0_4.png" id="17_thssk"]
+[ext_resource type="Texture2D" uid="uid://386o5j73jtcg" path="res://Art/phonebooth.png" id="17_thssk"]
 [ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="18_us6mb"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/highlightinteraction.gd" id="19_c3f84"]
 
@@ -580,9 +580,11 @@ shader_parameter/opacity = 0.0
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hvpin"]
 polygon = PackedVector2Array(-14, -31, -13, -31, -13, -33, -12, -33, -12, -35, -10, -35, -10, -36, -8, -36, -8, -37, -6, -37, -6, -38, 7, -38, 7, -37, 9, -37, 9, -36, 11, -36, 11, -35, 13, -35, 13, -33, 14, -33, 14, -31, 15, -31, 15, -19, 14, -19, 14, -14, 15, -14, 15, 27, 14, 27, 14, 28, -13, 28, -13, 27, -14, 27, -14, -14, -13, -14, -13, -19, -14, -19)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gowyr"]
+
 [node name="introscene" type="Node2D"]
-y_sort_enabled = true
 position = Vector2(-134, -3)
+y_sort_enabled = true
 script = ExtResource("1_ahy1b")
 
 [node name="TileMap2" type="TileMap" parent="."]
@@ -657,28 +659,6 @@ texture = ExtResource("8_6ni4i")
 texture_scale = 0.37
 
 [node name="LightHum" type="AudioStreamPlayer2D" parent="Streetlamp"]
-position = Vector2(-22, -20)
-stream = ExtResource("10_u3l6a")
-volume_db = 15.0
-max_distance = 200.0
-panning_strength = 3.0
-bus = &"SFX"
-
-[node name="Streetlamp2" type="Sprite2D" parent="."]
-z_index = 1
-position = Vector2(784, 130)
-texture = ExtResource("6_ehbo0")
-script = ExtResource("7_hbl3w")
-
-[node name="PointLight2d" type="PointLight2D" parent="Streetlamp2"]
-position = Vector2(-18, 19)
-energy = 0.49
-shadow_enabled = true
-shadow_filter = 1
-texture = ExtResource("8_6ni4i")
-texture_scale = 0.37
-
-[node name="LightHum" type="AudioStreamPlayer2D" parent="Streetlamp2"]
 position = Vector2(-22, -20)
 stream = ExtResource("10_u3l6a")
 volume_db = 15.0
@@ -781,5 +761,9 @@ texture = ExtResource("17_thssk")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Phonebooth"]
 occluder = SubResource("OccluderPolygon2D_hvpin")
+
+[node name="NewPiskel(2)" type="Sprite2D" parent="."]
+position = Vector2(879, 0)
+texture = SubResource("CompressedTexture2D_gowyr")
 
 [editable path="Phonebooth/InteractionManager"]
