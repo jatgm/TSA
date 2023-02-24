@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://brpwalubv8yfm"]
 
 [ext_resource type="Script" path="res://Levels/tsa.gd" id="1_antgr"]
-[ext_resource type="PackedScene" uid="uid://dvj6wmwkipvpf" path="res://Levels/intro.tscn" id="1_cblco"]
+[ext_resource type="PackedScene" uid="uid://dncfhk4dppqrx" path="res://Levels/intro.tscn" id="1_cblco"]
 [ext_resource type="Script" path="res://Levels/PauseMenu.gd" id="3_u3a1h"]
 [ext_resource type="Script" path="res://Levels/FPSCounter.gd" id="4_24j20"]
 

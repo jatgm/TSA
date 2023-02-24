@@ -583,8 +583,8 @@ polygon = PackedVector2Array(-14, -31, -13, -31, -13, -33, -12, -33, -12, -35, -
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gowyr"]
 
 [node name="introscene" type="Node2D"]
-position = Vector2(-134, -3)
 y_sort_enabled = true
+position = Vector2(-134, -3)
 script = ExtResource("1_ahy1b")
 
 [node name="TileMap2" type="TileMap" parent="."]
