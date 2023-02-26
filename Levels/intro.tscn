@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dncfhk4dppqrx"]
+[gd_scene load_steps=28 format=3 uid="uid://dncfhk4dppqrx"]
 
 [ext_resource type="Script" path="res://Levels/intro.gd" id="1_ahy1b"]
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
@@ -16,9 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="12_qef3u"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/intro_dialog_interaction.gd" id="14_p5yrl"]
 [ext_resource type="Texture2D" uid="uid://vdas54pbu2p5" path="res://Art/car.png" id="16_0hrji"]
-[ext_resource type="Texture2D" uid="uid://386o5j73jtcg" path="res://Art/phonebooth.png" id="17_thssk"]
-[ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="18_us6mb"]
-[ext_resource type="Script" path="res://Hitboxes/Interactions/highlightinteraction.gd" id="19_c3f84"]
+[ext_resource type="PackedScene" uid="uid://dumybwan8kujd" path="res://objects/phonebooth.tscn" id="17_hoya0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d5mte"]
 texture = ExtResource("1_dbw02")
@@ -569,17 +567,6 @@ _data = {
 "RESET": SubResource("Animation_ggnkw")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2gws"]
-size = Vector2(20, 42)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r706y"]
-shader = ExtResource("5_fnka4")
-shader_parameter/flash_color = Color(1, 1, 0, 1)
-shader_parameter/opacity = 0.0
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hvpin"]
-polygon = PackedVector2Array(-14, -31, -13, -31, -13, -33, -12, -33, -12, -35, -10, -35, -10, -36, -8, -36, -8, -37, -6, -37, -6, -38, 7, -38, 7, -37, 9, -37, 9, -36, 11, -36, 11, -35, 13, -35, 13, -33, 14, -33, 14, -31, 15, -31, 15, -19, 14, -19, 14, -14, 15, -14, 15, 27, 14, 27, 14, 28, -13, 28, -13, 27, -14, 27, -14, -14, -13, -14, -13, -19, -14, -19)
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gowyr"]
 
 [node name="introscene" type="Node2D"]
@@ -743,27 +730,8 @@ libraries = {
 "": SubResource("AnimationLibrary_hf8b6")
 }
 
-[node name="Phonebooth" type="Node2D" parent="."]
-position = Vector2(752, 134)
-
-[node name="InteractionManager" parent="Phonebooth" instance=ExtResource("18_us6mb")]
-position = Vector2(420.067, -77.859)
-script = ExtResource("19_c3f84")
-
-[node name="CollisionShape2d" parent="Phonebooth/InteractionManager" index="0"]
-position = Vector2(-420.067, 83.859)
-shape = SubResource("RectangleShape2D_j2gws")
-
-[node name="Sprite2d" type="Sprite2D" parent="Phonebooth/InteractionManager"]
-material = SubResource("ShaderMaterial_r706y")
-position = Vector2(-420.067, 77.859)
-texture = ExtResource("17_thssk")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Phonebooth"]
-occluder = SubResource("OccluderPolygon2D_hvpin")
+[node name="Phonebooth" parent="." instance=ExtResource("17_hoya0")]
 
 [node name="NewPiskel(2)" type="Sprite2D" parent="."]
 position = Vector2(879, 0)
 texture = SubResource("CompressedTexture2D_gowyr")
-
-[editable path="Phonebooth/InteractionManager"]

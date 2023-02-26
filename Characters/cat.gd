@@ -37,7 +37,6 @@ func _physics_process(_delta): # happens 60 times a sec, underscore can represen
 	if Input.is_action_just_pressed("interact"):
 		interaction_manager.initiate_interaction()
 	
-	
 func update_animation_parameters(move_input : Vector2):
 	if move_input != Vector2.ZERO:
 

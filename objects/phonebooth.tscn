@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://dumybwan8kujd"]
+
+[ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="1_ve2gn"]
+[ext_resource type="Script" path="res://Hitboxes/phonebooth_manager.gd" id="2_08ie1"]
+[ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="3_v6rds"]
+[ext_resource type="Texture2D" uid="uid://386o5j73jtcg" path="res://Art/phonebooth.png" id="4_82j1o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2gws"]
+size = Vector2(20, 42)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r706y"]
+shader = ExtResource("3_v6rds")
+shader_parameter/flash_color = Color(1, 1, 0, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hvpin"]
+polygon = PackedVector2Array(-14, -31, -13, -31, -13, -33, -12, -33, -12, -35, -10, -35, -10, -36, -8, -36, -8, -37, -6, -37, -6, -38, 7, -38, 7, -37, 9, -37, 9, -36, 11, -36, 11, -35, 13, -35, 13, -33, 14, -33, 14, -31, 15, -31, 15, -19, 14, -19, 14, -14, 15, -14, 15, 27, 14, 27, 14, 28, -13, 28, -13, 27, -14, 27, -14, -14, -13, -14, -13, -19, -14, -19)
+
+[node name="Phonebooth" type="Node2D"]
+position = Vector2(752, 134)
+
+[node name="InteractionManager" parent="." instance=ExtResource("1_ve2gn")]
+position = Vector2(420.067, -77.859)
+script = ExtResource("2_08ie1")
+
+[node name="CollisionShape2d" parent="InteractionManager" index="0"]
+position = Vector2(-420.067, 83.859)
+shape = SubResource("RectangleShape2D_j2gws")
+
+[node name="Sprite2d" type="Sprite2D" parent="InteractionManager"]
+material = SubResource("ShaderMaterial_r706y")
+position = Vector2(-420.067, 77.859)
+texture = ExtResource("4_82j1o")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_hvpin")
+
+[editable path="InteractionManager"]
