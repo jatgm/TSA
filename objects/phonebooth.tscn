@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dumybwan8kujd"]
+[gd_scene load_steps=13 format=3 uid="uid://dumybwan8kujd"]
 
+[ext_resource type="Script" path="res://objects/phonebooth.gd" id="1_kkqy8"]
 [ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="1_ve2gn"]
 [ext_resource type="Script" path="res://Hitboxes/phonebooth_manager.gd" id="2_08ie1"]
 [ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="3_v6rds"]
@@ -16,8 +17,136 @@ shader_parameter/opacity = 0.0
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hvpin"]
 polygon = PackedVector2Array(-14, -31, -13, -31, -13, -33, -12, -33, -12, -35, -10, -35, -10, -36, -8, -36, -8, -37, -6, -37, -6, -38, 7, -38, 7, -37, 9, -37, 9, -36, 11, -36, 11, -35, 13, -35, 13, -33, 14, -33, 14, -31, 15, -31, 15, -19, 14, -19, 14, -14, 15, -14, 15, 27, 14, 27, 14, 28, -13, 28, -13, 27, -14, 27, -14, -14, -13, -14, -13, -19, -14, -19)
 
+[sub_resource type="Animation" id="Animation_r2hq6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../blackbars/ColorRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-288, 552)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../blackbars/ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-264, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../blackbars:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hvm8o"]
+resource_name = "add_blackbars"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../blackbars/ColorRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(-288, 648), Vector2(-288, 552)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../blackbars/ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(-264, -96), Vector2(-264, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../blackbars:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_56c18"]
+resource_name = "remove_blackbars"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../blackbars/ColorRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(-288, 552), Vector2(-288, 648)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../blackbars/ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(-264, 0), Vector2(-264, -96)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../blackbars:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vodbv"]
+_data = {
+"RESET": SubResource("Animation_r2hq6"),
+"add_blackbars": SubResource("Animation_hvm8o"),
+"remove_blackbars": SubResource("Animation_56c18")
+}
+
 [node name="Phonebooth" type="Node2D"]
+z_index = 1
 position = Vector2(752, 134)
+script = ExtResource("1_kkqy8")
 
 [node name="InteractionManager" parent="." instance=ExtResource("1_ve2gn")]
 position = Vector2(420.067, -77.859)
@@ -34,5 +163,53 @@ texture = ExtResource("4_82j1o")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_hvpin")
+
+[node name="Dim" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Dim"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.231373, 0.231373, 0.231373, 0)
+metadata/_edit_lock_ = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="blackbars" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="blackbars"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -840.0
+offset_right = 786.0
+offset_bottom = 95.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="blackbars"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -864.0
+offset_top = -96.0
+offset_right = 852.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Dim")
+libraries = {
+"": SubResource("AnimationLibrary_vodbv")
+}
+
+[connection signal="enter_phonebooth" from="InteractionManager" to="." method="_on_interaction_manager_enter_phonebooth"]
 
 [editable path="InteractionManager"]

@@ -13,7 +13,6 @@ config_version=5
 config/name="TSA"
 run/main_scene="res://Levels/tsa.tscn"
 config/features=PackedStringArray("4.0")
-run/max_fps=20
 config/icon="res://icon.svg"
 
 [display]
