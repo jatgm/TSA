@@ -1,13 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://dumybwan8kujd"]
+[gd_scene load_steps=16 format=3 uid="uid://dumybwan8kujd"]
 
 [ext_resource type="Script" path="res://objects/phonebooth.gd" id="1_kkqy8"]
 [ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="1_ve2gn"]
 [ext_resource type="Script" path="res://Hitboxes/phonebooth_manager.gd" id="2_08ie1"]
 [ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="3_v6rds"]
 [ext_resource type="Texture2D" uid="uid://386o5j73jtcg" path="res://Art/phonebooth.png" id="4_82j1o"]
+[ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="6_316up"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqdqw"]
+size = Vector2(28, 47)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2gws"]
 size = Vector2(20, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn5mb"]
+size = Vector2(122, 131)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r706y"]
 shader = ExtResource("3_v6rds")
@@ -69,7 +76,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
-"values": [Vector2(-288, 648), Vector2(-288, 552)]
+"values": [Vector2(-288, 648), Vector2(-282, 610)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -109,7 +116,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
-"values": [Vector2(-288, 552), Vector2(-288, 648)]
+"values": [Vector2(-282, 610), Vector2(-288, 648)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -147,6 +154,13 @@ _data = {
 z_index = 1
 position = Vector2(752, 134)
 script = ExtResource("1_kkqy8")
+open = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_jqdqw")
 
 [node name="InteractionManager" parent="." instance=ExtResource("1_ve2gn")]
 position = Vector2(420.067, -77.859)
@@ -156,15 +170,23 @@ script = ExtResource("2_08ie1")
 position = Vector2(-420.067, 83.859)
 shape = SubResource("RectangleShape2D_j2gws")
 
+[node name="CollisionShape2d" parent="InteractionManager/Bound" index="0"]
+position = Vector2(-420.067, 77.859)
+shape = SubResource("RectangleShape2D_nn5mb")
+
 [node name="Sprite2d" type="Sprite2D" parent="InteractionManager"]
 material = SubResource("ShaderMaterial_r706y")
 position = Vector2(-420.067, 77.859)
 texture = ExtResource("4_82j1o")
 
+[node name="DialogPlayer" parent="InteractionManager" instance=ExtResource("6_316up")]
+scene_file_text = "res://json/phonebooth_dialogue.json"
+
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_hvpin")
 
 [node name="Dim" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Dim"]
 anchors_preset = 15
@@ -176,6 +198,161 @@ color = Color(0.231373, 0.231373, 0.231373, 0)
 metadata/_edit_lock_ = true
 
 [node name="UI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect2" type="ColorRect" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -133.0
+offset_top = -261.5
+offset_right = 133.0
+offset_bottom = 261.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.298039, 0.0627451, 0.0235294, 1)
+
+[node name="Button" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -147.5
+offset_right = 39.0
+offset_bottom = -62.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button2" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -147.5
+offset_right = -43.0
+offset_bottom = -62.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button3" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 43.0
+offset_top = -147.5
+offset_right = 121.0
+offset_bottom = -62.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button4" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -57.5
+offset_right = 39.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button5" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -57.5
+offset_right = -43.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button6" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 43.0
+offset_top = -57.5
+offset_right = 121.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button7" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = 32.5
+offset_right = 39.0
+offset_bottom = 117.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button11" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = 123.0
+offset_right = 39.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button8" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = 32.5
+offset_right = -43.0
+offset_bottom = 117.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button9" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 43.0
+offset_top = 32.5
+offset_right = 121.0
+offset_bottom = 117.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="blackbars" type="CanvasLayer" parent="."]
 visible = false
@@ -185,8 +362,8 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -840.0
-offset_right = 786.0
-offset_bottom = 95.0
+offset_right = 876.0
+offset_bottom = 38.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 1)
 
@@ -199,7 +376,7 @@ anchor_bottom = 1.0
 offset_left = -864.0
 offset_top = -96.0
 offset_right = 852.0
-offset_bottom = -1.0
+offset_bottom = -58.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0, 0, 0, 1)
