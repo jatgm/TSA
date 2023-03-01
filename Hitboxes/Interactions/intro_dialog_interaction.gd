@@ -16,7 +16,7 @@ func _process(_delta):
 			start_dialogue()
 	
 	if Input.is_action_just_pressed("ui_text_backspace"):
-		$"../AnimationPlayer".play('Cut')
+		$"../AnimationPlayer".play('debugskip')
 		finish()
 	
 	if line_finished and current_index == "8":

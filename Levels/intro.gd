@@ -6,3 +6,5 @@ extends Node2D
 func _ready():
 	animation_player.play('Intro')
 	
+func play_car_animation():
+	$Car/AnimationPlayer.play("car_animation")

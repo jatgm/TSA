@@ -154,7 +154,6 @@ _data = {
 z_index = 1
 position = Vector2(752, 134)
 script = ExtResource("1_kkqy8")
-open = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -361,8 +360,8 @@ visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -840.0
-offset_right = 876.0
+offset_left = -264.0
+offset_right = 1452.0
 offset_bottom = 38.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 1)
@@ -373,10 +372,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -864.0
-offset_top = -96.0
-offset_right = 852.0
-offset_bottom = -58.0
+offset_left = -288.0
+offset_top = 552.0
+offset_right = 1428.0
+offset_bottom = 590.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0, 0, 0, 1)

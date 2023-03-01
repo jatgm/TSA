@@ -17,6 +17,7 @@ shader_parameter/flash_color = Color(1, 1, 0, 1)
 shader_parameter/opacity = 0.0
 
 [node name="Note" type="Node2D"]
+z_index = 1
 
 [node name="InteractionManager" parent="." instance=ExtResource("3_jj2p1")]
 position = Vector2(528, 146)
