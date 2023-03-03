@@ -1,0 +1,96 @@
+[gd_scene load_steps=17 format=3 uid="uid://lhemi3udisau"]
+
+[ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="1_5xnwy"]
+[ext_resource type="Texture2D" uid="uid://dqm0bt5mljyx" path="res://Art/doghead.png" id="1_av5sx"]
+[ext_resource type="Script" path="res://Characters/dog.gd" id="1_klys3"]
+[ext_resource type="Texture2D" uid="uid://l0q27e8tfugq" path="res://Art/dog.png" id="1_tn4c4"]
+[ext_resource type="Script" path="res://Characters/dog_sprite.gd" id="3_b358l"]
+[ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="4_sk5sx"]
+[ext_resource type="Script" path="res://Hitboxes/Interactions/dog_interaction.gd" id="5_0ritu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywtc5"]
+size = Vector2(42, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gonp"]
+size = Vector2(164, 154)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kv4ij"]
+shader = ExtResource("1_5xnwy")
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nv4cq"]
+atlas = ExtResource("1_tn4c4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ux6ed"]
+atlas = ExtResource("1_tn4c4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o3qvt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_av5sx")
+}],
+"loop": false,
+"name": &"head",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nv4cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ux6ed")
+}],
+"loop": true,
+"name": &"sitting",
+"speed": 4.0
+}]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ejj0u"]
+polygon = PackedVector2Array(9, -1, 9, 3, 10, 3, 10, 4, 11, 4, 11, 6, 12, 6, 12, 10, 13, 10, 13, 13, 12, 13, 12, 14, 9, 14, 9, 15, 8, 15, 8, 16, 7, 16, 7, 17, 2, 17, 2, 16, 1, 16, 1, 15, -1, 15, -1, 16, -2, 16, -2, 17, -7, 17, -7, 16, -8, 16, -8, 15, -9, 15, -9, 14, -12, 14, -12, 13, -13, 13, -13, 10, -12, 10, -12, 6, -11, 6, -11, 4, -10, 4, -10, 3, -9, 3, -9, -1, -10, -1, -10, -2, -11, -2, -11, -8, -10, -8, -10, -10, -9, -10, -9, -13, -10, -13, -10, -16, -9, -16, -9, -17, -6, -17, -6, -15, 6, -15, 6, -17, 9, -17, 9, -16, 10, -16, 10, -13, 9, -13, 9, -10, 10, -10, 10, -8, 11, -8, 11, -2, 10, -2, 10, -1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g500a"]
+polygon = PackedVector2Array(-9, -16, -6, -16, -6, -14, 6, -14, 6, -16, 9, -16, 9, -15, 10, -15, 10, -14, 11, -14, 11, -13, 10, -13, 10, -12, 9, -12.039, 9, -9, 10, -9, 10, -7, 11, -7, 11, -1, 10, -1, 10, 0, 9, 0, 9, 3, 10, 3, 10, 4, 11, 4, 11, 6, 12, 6, 12, 10, 13, 10, 13, 13, 12, 13, 12, 14, 9, 14, 9, 15, 8, 15, 8, 16, 7, 16, 7, 17, 2, 17, 2, 16, 1, 16, 1, 15, -1, 15, -1, 16, -2, 16, -2, 17, -7, 17, -7, 16, -8, 16, -8, 15, -9, 15, -9, 14, -12, 14, -12, 13, -13, 13, -13, 10, -12, 10, -12, 6, -11, 6, -11, 4, -10, 4, -10, 3, -9, 3, -9, 0, -10, 0, -10, -1, -11, -1, -11, -7, -10, -7, -10, -9, -9, -9, -9, -12, -10, -12, -10, -13, -11, -13, -11, -14, -10, -14, -10, -15, -9, -15)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_c4q4q"]
+polygon = PackedVector2Array(6, -9, 6, -11, 9, -11, 9, -10, 10, -10, 10, -7, 9, -7, 9, -4, 10, -4, 10, -2, 11, -2, 11, 4, 10, 4, 10, 5, 9, 5, 9, 6, 7, 6, 7, 7, 5, 7, 5, 6, -5, 6, -5, 7, -7, 7, -7, 6, -9, 6, -9, 5, -10, 5, -10, 4, -11, 4, -11, -2, -10, -2, -10, -4, -9, -4, -9, -7, -10, -7, -10, -10, -9, -10, -9, -11, -6, -11, -6, -9)
+
+[node name="dog" type="CharacterBody2D"]
+script = ExtResource("1_klys3")
+
+[node name="InteractionManager" parent="." instance=ExtResource("4_sk5sx")]
+script = ExtResource("5_0ritu")
+
+[node name="CollisionShape2d" parent="InteractionManager" index="0"]
+shape = SubResource("RectangleShape2D_ywtc5")
+
+[node name="CollisionShape2d" parent="InteractionManager/Bound" index="0"]
+shape = SubResource("RectangleShape2D_3gonp")
+
+[node name="dog_sprite" type="AnimatedSprite2D" parent="InteractionManager"]
+material = SubResource("ShaderMaterial_kv4ij")
+sprite_frames = SubResource("SpriteFrames_o3qvt")
+animation = &"sitting"
+autoplay = "sitting"
+script = ExtResource("3_b358l")
+
+[node name="frame_0_occluder" type="LightOccluder2D" parent="InteractionManager/dog_sprite"]
+occluder = SubResource("OccluderPolygon2D_ejj0u")
+
+[node name="frame_1_occluder" type="LightOccluder2D" parent="InteractionManager/dog_sprite"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_g500a")
+
+[node name="head_occluder" type="LightOccluder2D" parent="InteractionManager/dog_sprite"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_c4q4q")
+
+[connection signal="leave" from="InteractionManager" to="." method="_on_interaction_manager_leave"]
+[connection signal="start" from="InteractionManager" to="." method="_on_interaction_manager_start"]
+[connection signal="animation_changed" from="InteractionManager/dog_sprite" to="InteractionManager/dog_sprite" method="_on_animation_changed"]
+[connection signal="frame_changed" from="InteractionManager/dog_sprite" to="InteractionManager/dog_sprite" method="_on_frame_changed"]
+
+[editable path="InteractionManager"]

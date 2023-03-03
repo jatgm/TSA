@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://dumybwan8kujd"]
+[gd_scene load_steps=16 format=3 uid="uid://brw0p47a2i52p"]
 
 [ext_resource type="Script" path="res://objects/phonebooth.gd" id="1_kkqy8"]
 [ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="1_ve2gn"]
-[ext_resource type="Script" path="res://Hitboxes/phonebooth_manager.gd" id="2_08ie1"]
+[ext_resource type="Script" path="res://Hitboxes/Interactions/phonebooth_manager.gd" id="3_uaxij"]
 [ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="3_v6rds"]
 [ext_resource type="Texture2D" uid="uid://386o5j73jtcg" path="res://Art/phonebooth.png" id="4_82j1o"]
 [ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="6_316up"]
@@ -163,7 +163,7 @@ shape = SubResource("RectangleShape2D_jqdqw")
 
 [node name="InteractionManager" parent="." instance=ExtResource("1_ve2gn")]
 position = Vector2(420.067, -77.859)
-script = ExtResource("2_08ie1")
+script = ExtResource("3_uaxij")
 
 [node name="CollisionShape2d" parent="InteractionManager" index="0"]
 position = Vector2(-420.067, 83.859)

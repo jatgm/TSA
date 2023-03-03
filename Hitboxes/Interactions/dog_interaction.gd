@@ -1,0 +1,16 @@
+extends InteractionManager
+
+signal start(interacter)
+signal leave
+
+func enter_bound(interacter):
+	start.emit(interacter)
+
+func exit_bound():
+	leave.emit()
+
+func hover() -> void:
+	$dog_sprite.material.set_shader_parameter("opacity", 0.3)
+	
+func unhover() -> void:
+	$dog_sprite.material.set_shader_parameter("opacity", 0)

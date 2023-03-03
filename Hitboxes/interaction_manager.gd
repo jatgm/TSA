@@ -21,6 +21,9 @@ func hover() -> void:
 func unhover() -> void:
 	pass
 	
+func enter_bound(interacter) -> void:
+	pass
+	
 func _on_interaction_manager_area_entered(area):
 	current_interaction = area
 	hover()
@@ -33,3 +36,6 @@ func _on_interaction_manager_area_exited(area):
 func _on_bound_area_exited(_area):
 	current_interaction = null
 	exit_bound()
+
+func _on_bound_area_entered(area):
+	enter_bound(area)
