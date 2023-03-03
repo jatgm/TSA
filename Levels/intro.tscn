@@ -836,7 +836,7 @@ position = Vector2(211, 110)
 color = Color(0.372549, 0.427451, 0.768627, 1)
 
 [node name="dog" parent="." groups=["dogs"] instance=ExtResource("6_1ssjp")]
-position = Vector2(658, 134)
+position = Vector2(656, 21)
 
 [node name="cat" parent="." instance=ExtResource("3_1qfu2")]
 z_index = 1

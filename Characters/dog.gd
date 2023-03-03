@@ -20,7 +20,7 @@ func _on_interaction_manager_start(interacter):
 func _on_interaction_manager_leave():
 	tracking = !true
 	var tween = get_tree().create_tween()
-	tween.tween_property(camera, "zoom", Vector2(4,4), 0.5)
+	tween.tween_property(camera, "zoom", Vector2(4,4), 0.7)
 	camera.code_based_tracking = !false
 	remote_transform.update_position = !false
 	

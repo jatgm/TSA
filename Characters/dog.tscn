@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://lhemi3udisau"]
+[gd_scene load_steps=19 format=3 uid="uid://lhemi3udisau"]
 
 [ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="1_5xnwy"]
 [ext_resource type="Texture2D" uid="uid://dqm0bt5mljyx" path="res://Art/doghead.png" id="1_av5sx"]
@@ -7,6 +7,10 @@
 [ext_resource type="Script" path="res://Characters/dog_sprite.gd" id="3_b358l"]
 [ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="4_sk5sx"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/dog_interaction.gd" id="5_0ritu"]
+[ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="8_rvcv7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mbas"]
+size = Vector2(20, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywtc5"]
 size = Vector2(42, 44)
@@ -59,7 +63,12 @@ polygon = PackedVector2Array(-9, -16, -6, -16, -6, -14, 6, -14, 6, -16, 9, -16, 
 polygon = PackedVector2Array(6, -9, 6, -11, 9, -11, 9, -10, 10, -10, 10, -7, 9, -7, 9, -4, 10, -4, 10, -2, 11, -2, 11, 4, 10, 4, 10, 5, 9, 5, 9, 6, 7, 6, 7, 7, 5, 7, 5, 6, -5, 6, -5, 7, -7, 7, -7, 6, -9, 6, -9, 5, -10, 5, -10, 4, -11, 4, -11, -2, -10, -2, -10, -4, -9, -4, -9, -7, -10, -7, -10, -10, -9, -10, -9, -11, -6, -11, -6, -9)
 
 [node name="dog" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_klys3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_6mbas")
 
 [node name="InteractionManager" parent="." instance=ExtResource("4_sk5sx")]
 script = ExtResource("5_0ritu")
@@ -87,6 +96,9 @@ occluder = SubResource("OccluderPolygon2D_g500a")
 [node name="head_occluder" type="LightOccluder2D" parent="InteractionManager/dog_sprite"]
 visible = false
 occluder = SubResource("OccluderPolygon2D_c4q4q")
+
+[node name="DialogPlayer" parent="InteractionManager" instance=ExtResource("8_rvcv7")]
+scene_file_text = "res://json/dog_dialogue.json"
 
 [connection signal="leave" from="InteractionManager" to="." method="_on_interaction_manager_leave"]
 [connection signal="start" from="InteractionManager" to="." method="_on_interaction_manager_start"]

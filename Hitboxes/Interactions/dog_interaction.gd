@@ -7,6 +7,8 @@ func enter_bound(interacter):
 	start.emit(interacter)
 
 func exit_bound():
+	$DialogPlayer.finish()
+	current_interaction = null
 	leave.emit()
 
 func hover() -> void:
