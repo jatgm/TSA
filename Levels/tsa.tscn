@@ -103,6 +103,21 @@ max_value = 1.0
 step = 0.0
 value = 1.0
 
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/Settings"]
+layout_mode = 2
+
+[node name="FPSLabel" type="Label" parent="PauseMenu/Settings/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "FPS Max: 
+"
+vertical_alignment = 1
+
+[node name="FPSEnter" type="SpinBox" parent="PauseMenu/Settings/HBoxContainer"]
+layout_mode = 2
+max_value = 300.0
+suffix = "FPS"
+
 [node name="BackButton" type="Button" parent="PauseMenu/Settings"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -130,4 +145,5 @@ text = "FPS:"
 [connection signal="value_changed" from="PauseMenu/Settings/MasterSlider" to="PauseMenu" method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="PauseMenu/Settings/MusicSlider" to="PauseMenu" method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="PauseMenu/Settings/SFXSlider" to="PauseMenu" method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="PauseMenu/Settings/HBoxContainer/FPSEnter" to="PauseMenu" method="_on_fps_enter_value_changed"]
 [connection signal="pressed" from="PauseMenu/Settings/BackButton" to="PauseMenu" method="_on_back_button_pressed"]

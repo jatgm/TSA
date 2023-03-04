@@ -32,3 +32,6 @@ func _on_sfx_slider_value_changed(value):
 
 func _on_music_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(1, linear_to_db(value))
+
+func _on_fps_enter_value_changed(value):
+	Engine.max_fps = value
