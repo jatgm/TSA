@@ -20,8 +20,7 @@ func _on_animation_changed():
 
 func addrotation(degree : int):
 	rotation += degree
-	dog_head_occluder.rotation += degree
-	print(rotation)
+	
 	
 	
 

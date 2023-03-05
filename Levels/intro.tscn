@@ -911,7 +911,6 @@ position = Vector2(427, -113)
 material = SubResource("ShaderMaterial_trc88")
 
 [node name="dog2" parent="." instance=ExtResource("6_1ssjp")]
-visible = false
 position = Vector2(336, -151)
 backup_dog = true
 
@@ -922,7 +921,6 @@ material = SubResource("ShaderMaterial_4pph8")
 scene_file_text = "res://json/backup_dog_dialogue.json"
 
 [node name="dog4" parent="." instance=ExtResource("6_1ssjp")]
-visible = false
 position = Vector2(336, -74)
 backup_dog = true
 
