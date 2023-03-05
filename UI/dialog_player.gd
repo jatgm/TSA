@@ -15,11 +15,6 @@ var char_count = 0
 var in_progress = false
 var line_finished = false
 
-func _input(event):
-	if event.is_action_pressed("interact"):
-		continue_dialogue()
-		
-		
 func _process(_delta):
 	if char_count <= text_label.visible_characters:
 		line_finished = true
@@ -58,26 +53,24 @@ func finish():
 	background.visible = false
 	name_background.visible = false
 	in_progress = false
-	
 
 	#get_tree().paused = false
 		
 func start_dialogue():
-	if not in_progress:
-		get_tree().call_group("dialog_players", "finish")
-		background.visible = true
-		name_background.visible = true
-		in_progress = true
-		#selected_text = scene_text[current_index]["dialogue"]
-		visible = true
-		show_text()
-		
-func continue_dialogue():
 	if in_progress:
 		if line_finished:
 			next_line()
 		else:
 			text_label.visible_characters = 999
+	else:
+		get_tree().call_group("dialog_players", "finish")
+		background.visible = true
+		name_background.visible = true
+		in_progress = true
+		print("sdfsaldfjasfidsnkfoi")
+		#selected_text = scene_text[current_index]["dialogue"]
+		visible = true
+		show_text()
 
 func reveal_character():
 	text_label.visible_characters += 1
