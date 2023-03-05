@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://UI/dialog_player.gd" id="1_djw81"]
 [ext_resource type="Texture2D" uid="uid://yy0pn4cc8odb" path="res://Art/Dialogue-Background.png" id="1_niat1"]
 
-[node name="DialogPlayer" type="CanvasLayer"]
+[node name="DialogPlayer" type="CanvasLayer" groups=["dialog_players"]]
 process_mode = 1
 layer = 2
 visible = false

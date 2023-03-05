@@ -13,12 +13,13 @@
 size = Vector2(20, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywtc5"]
-size = Vector2(42, 44)
+size = Vector2(26, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gonp"]
 size = Vector2(164, 154)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kv4ij"]
+resource_local_to_scene = true
 shader = ExtResource("1_5xnwy")
 shader_parameter/flash_color = Color(1, 0, 0, 1)
 shader_parameter/opacity = 0.0
@@ -65,6 +66,7 @@ polygon = PackedVector2Array(6, -9, 6, -11, 9, -11, 9, -10, 10, -10, 10, -7, 9, 
 [node name="dog" type="CharacterBody2D"]
 y_sort_enabled = true
 script = ExtResource("1_klys3")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

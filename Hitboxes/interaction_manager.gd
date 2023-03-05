@@ -6,7 +6,7 @@ var current_interaction : InteractionManager # this var will be another interact
 
 func initiate_interaction() -> void:
 	if current_interaction != null:
-		current_interaction.recieve_interaction($"../../") # gives the cat
+		current_interaction.recieve_interaction($"../../.") # gives the cat
 		# run the "recieve_interaction()" func on the InteractionManager it's interacting with
 
 func recieve_interaction(interacter) -> void:

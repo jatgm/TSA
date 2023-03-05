@@ -63,6 +63,7 @@ func start_dialogue():
 		else:
 			text_label.visible_characters = 999
 	else:
+		get_tree().call_group("dialog_players", "finish")
 		background.visible = true
 		name_background.visible = true
 		in_progress = true
