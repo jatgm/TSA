@@ -13,7 +13,6 @@ func exit_bound():
 
 func hover() -> void:
 	$dog_sprite.material.set_shader_parameter("opacity", 0.3)
-	print("hovered")
 	
 func unhover() -> void:
 	$dog_sprite.material.set_shader_parameter("opacity", 0)

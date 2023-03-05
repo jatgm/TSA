@@ -876,7 +876,7 @@ layer_2/tile_data = PackedInt32Array(262157, 196609, 2, 262158, 196609, 2, 26215
 metadata/_edit_lock_ = true
 
 [node name="Camera2d" type="Camera2D" parent="."]
-position = Vector2(490, 215)
+position = Vector2(490, 176)
 zoom = Vector2(4, 4)
 limit_smoothed = true
 script = SubResource("GDScript_kohig")
@@ -911,6 +911,7 @@ position = Vector2(427, -113)
 material = SubResource("ShaderMaterial_trc88")
 
 [node name="dog2" parent="." instance=ExtResource("6_1ssjp")]
+visible = false
 position = Vector2(336, -151)
 backup_dog = true
 
@@ -921,6 +922,7 @@ material = SubResource("ShaderMaterial_4pph8")
 scene_file_text = "res://json/backup_dog_dialogue.json"
 
 [node name="dog4" parent="." instance=ExtResource("6_1ssjp")]
+visible = false
 position = Vector2(336, -74)
 backup_dog = true
 

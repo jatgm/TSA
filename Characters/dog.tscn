@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://lhemi3udisau"]
+[gd_scene load_steps=26 format=3 uid="uid://lhemi3udisau"]
 
 [ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="1_5xnwy"]
 [ext_resource type="Texture2D" uid="uid://dqm0bt5mljyx" path="res://Art/doghead.png" id="1_av5sx"]
@@ -7,7 +7,114 @@
 [ext_resource type="Script" path="res://Characters/dog_sprite.gd" id="3_b358l"]
 [ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="4_sk5sx"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/dog_interaction.gd" id="5_0ritu"]
+[ext_resource type="Texture2D" uid="uid://bxrpnf6u24any" path="res://Art/upside_down_dogheda.png" id="7_tuh1v"]
 [ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="8_rvcv7"]
+
+[sub_resource type="Animation" id="Animation_1nx7n"]
+resource_name = "move left"
+length = 0.08
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionManager/dog_sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"head"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InteractionManager/dog_sprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.04),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [45],
+"method": &"addrotation"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_rrrrj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionManager/dog_sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"head"]
+}
+
+[sub_resource type="Animation" id="Animation_ej20e"]
+resource_name = "move down"
+length = 0.08
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionManager/dog_sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"head"]
+}
+
+[sub_resource type="Animation" id="Animation_01h6x"]
+resource_name = "move up"
+length = 0.08
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionManager/dog_sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"head"]
+}
+
+[sub_resource type="Animation" id="Animation_neky6"]
+resource_name = "move right"
+length = 0.08
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionManager/dog_sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"head"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7o7kn"]
+_data = {
+"RESET": SubResource("Animation_rrrrj"),
+"move down": SubResource("Animation_ej20e"),
+"move left": SubResource("Animation_1nx7n"),
+"move right": SubResource("Animation_neky6"),
+"move up": SubResource("Animation_01h6x")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6mbas"]
 size = Vector2(20, 26)
@@ -52,6 +159,14 @@ animations = [{
 "loop": true,
 "name": &"sitting",
 "speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_tuh1v")
+}],
+"loop": false,
+"name": &"upside_down_head",
+"speed": 0.0
 }]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ejj0u"]
@@ -60,13 +175,18 @@ polygon = PackedVector2Array(9, -1, 9, 3, 10, 3, 10, 4, 11, 4, 11, 6, 12, 6, 12,
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g500a"]
 polygon = PackedVector2Array(-9, -16, -6, -16, -6, -14, 6, -14, 6, -16, 9, -16, 9, -15, 10, -15, 10, -14, 11, -14, 11, -13, 10, -13, 10, -12, 9, -12.039, 9, -9, 10, -9, 10, -7, 11, -7, 11, -1, 10, -1, 10, 0, 9, 0, 9, 3, 10, 3, 10, 4, 11, 4, 11, 6, 12, 6, 12, 10, 13, 10, 13, 13, 12, 13, 12, 14, 9, 14, 9, 15, 8, 15, 8, 16, 7, 16, 7, 17, 2, 17, 2, 16, 1, 16, 1, 15, -1, 15, -1, 16, -2, 16, -2, 17, -7, 17, -7, 16, -8, 16, -8, 15, -9, 15, -9, 14, -12, 14, -12, 13, -13, 13, -13, 10, -12, 10, -12, 6, -11, 6, -11, 4, -10, 4, -10, 3, -9, 3, -9, 0, -10, 0, -10, -1, -11, -1, -11, -7, -10, -7, -10, -9, -9, -9, -9, -12, -10, -12, -10, -13, -11, -13, -11, -14, -10, -14, -10, -15, -9, -15)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_c4q4q"]
-polygon = PackedVector2Array(6, -9, 6, -11, 9, -11, 9, -10, 10, -10, 10, -7, 9, -7, 9, -4, 10, -4, 10, -2, 11, -2, 11, 4, 10, 4, 10, 5, 9, 5, 9, 6, 7, 6, 7, 7, 5, 7, 5, 6, -5, 6, -5, 7, -7, 7, -7, 6, -9, 6, -9, 5, -10, 5, -10, 4, -11, 4, -11, -2, -10, -2, -10, -4, -9, -4, -9, -7, -10, -7, -10, -10, -9, -10, -9, -11, -6, -11, -6, -9)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ak6dg"]
+polygon = PackedVector2Array(-9, -11, -6, -11, -6, -9, 6, -9, 6, -11, 9, -11, 9, -10, 10, -10, 10, -7, 9, -7, 9, -4, 10, -4, 10, -2, 11, -2, 11, 4, 10, 4, 10, 5, 9, 5, 9, 6, 7, 6, 7, 7, 5, 7, 5, 6, -5, 6, -5, 7, -7, 7, -7, 6, -9, 6, -9, 5, -10, 5, -10, 4, -11, 4, -11, -2, -10, -2, -10, -4, -9, -4, -9, -7, -10, -7, -10, -10, -9, -10)
 
 [node name="dog" type="CharacterBody2D" groups=["dogs"]]
 y_sort_enabled = true
 script = ExtResource("1_klys3")
 metadata/_edit_group_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7o7kn")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -84,23 +204,26 @@ shape = SubResource("RectangleShape2D_3gonp")
 [node name="dog_sprite" type="AnimatedSprite2D" parent="InteractionManager"]
 material = SubResource("ShaderMaterial_kv4ij")
 sprite_frames = SubResource("SpriteFrames_o3qvt")
-animation = &"sitting"
+animation = &"head"
 autoplay = "sitting"
 script = ExtResource("3_b358l")
 
 [node name="frame_0_occluder" type="LightOccluder2D" parent="InteractionManager/dog_sprite"]
+visible = false
 occluder = SubResource("OccluderPolygon2D_ejj0u")
 
 [node name="frame_1_occluder" type="LightOccluder2D" parent="InteractionManager/dog_sprite"]
 visible = false
 occluder = SubResource("OccluderPolygon2D_g500a")
 
-[node name="head_occluder" type="LightOccluder2D" parent="InteractionManager/dog_sprite"]
-visible = false
-occluder = SubResource("OccluderPolygon2D_c4q4q")
+[node name="dog_head_occluder" type="LightOccluder2D" parent="InteractionManager/dog_sprite"]
+occluder = SubResource("OccluderPolygon2D_ak6dg")
 
 [node name="DialogPlayer" parent="InteractionManager" instance=ExtResource("8_rvcv7")]
 scene_file_text = "res://json/dog_dialogue.json"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="leave" from="InteractionManager" to="." method="_on_interaction_manager_leave"]
 [connection signal="start" from="InteractionManager" to="." method="_on_interaction_manager_start"]

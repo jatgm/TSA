@@ -1,5 +1,7 @@
 extends AnimatedSprite2D
 
+@onready var dog_head_occluder = $dog_head_occluder
+
 func _on_frame_changed():
 	if animation == "sitting":
 		if frame == 0:
@@ -13,4 +15,13 @@ func _on_animation_changed():
 	if animation != "sitting":
 		$frame_0_occluder.visible = false
 		$frame_1_occluder.visible = false
-		$head_occluder.visible = true
+		$dog_head_occluder.visible = true
+
+
+func addrotation(degree : int):
+	rotation += degree
+	dog_head_occluder.rotation += degree
+	print(rotation)
+	
+	
+
