@@ -15,8 +15,13 @@
 		"expression" : "Sad"
 	},
     "4" : {
-		"name" : "",
-		"dialogue" : "Sigh...",
+		"name" : "Cat",
+		"dialogue" : "What's that behind you?",
+		"expression" : "Sad"
+	},
+	"5" : {
+		"name" : "Dog",
+		"dialogue" : "... Nothing! If you take it, you're dead meat!",
 		"expression" : "Sad"
 	}
 }

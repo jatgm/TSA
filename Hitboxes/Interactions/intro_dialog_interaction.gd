@@ -2,18 +2,24 @@ extends DialogPlayer
 
 var paused = false
 
+func _input(event):
+	if event.is_action_pressed("interact"):
+		if not paused and current_index != "8":
+			start_dialogue()
+
 func _process(_delta):
 	if char_count <= text_label.visible_characters:
 		line_finished = true
 		if in_progress:
 			if not paused:
 				$Tooltip.visible = true
+				$AnimationPlayer.play("Blinking")
+			else:
+				$AnimationPlayer.play("RESET")
 	else:
 		$Tooltip.visible = false
 	
-	if Input.is_action_just_pressed("interact"):
-		if not paused and current_index != "8":
-			start_dialogue()
+	
 	
 	if Input.is_action_just_pressed("ui_text_backspace"):
 		$"../AnimationPlayer".play('debugskip')
@@ -54,6 +60,21 @@ func next_line():
 		show_text()
 	else:
 		finish()
+
+func start_dialogue():
+	if in_progress:
+		if line_finished:
+			next_line()
+		else:
+			text_label.visible_characters = 999
+	else:
+		background.visible = true
+		name_background.visible = true
+		in_progress = true
+		print("sdfsaldfjasfidsnkfoi@#@#")
+		#selected_text = scene_text[current_index]["dialogue"]
+		visible = true
+		show_text()
 
 func finish():
 	queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://d3oc660gsm8y2"]
+[gd_scene load_steps=61 format=3 uid="uid://d3oc660gsm8y2"]
 
 [ext_resource type="Script" path="res://Levels/intro.gd" id="1_ahy1b"]
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
@@ -17,7 +17,10 @@
 [ext_resource type="AudioStream" uid="uid://cdtx7shxmx82f" path="res://Audio/mutedrain.mp3" id="6_oanr6"]
 [ext_resource type="Script" path="res://objects/Streetlamp.gd" id="7_hbl3w"]
 [ext_resource type="Texture2D" uid="uid://ddfhmn1s0farm" path="res://Art/asdf.png" id="8_6ni4i"]
+[ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="9_fh4an"]
+[ext_resource type="Texture2D" uid="uid://dqfnl5w4tijqa" path="res://Art/Quarter_coin_Sprite.png" id="10_lx6st"]
 [ext_resource type="AudioStream" uid="uid://d32ihwrjashe" path="res://Audio/Sound Effects - Ventilation Noise And Light Buzz Ambience - Version 2.mp3" id="10_u3l6a"]
+[ext_resource type="Script" path="res://Hitboxes/Interactions/coin_interaction.gd" id="10_wf8iq"]
 [ext_resource type="AudioStream" uid="uid://3lpmfauq102c" path="res://Audio/20 Minutes of Light Rain Sounds for Focus, Relaxing and Sleep 🌧️ Epidemic Ambience.mp3" id="11_w8y1i"]
 [ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="12_qef3u"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/intro_dialog_interaction.gd" id="14_p5yrl"]
@@ -209,7 +212,92 @@ func shake():
 
 "
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qac45"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n3taf"]
+shader = ExtResource("5_fnka4")
+shader_parameter/flash_color = Color(1, 1, 0, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1a27"]
+shader = ExtResource("5_fnka4")
+shader_parameter/flash_color = Color(1, 1, 0, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="Animation" id="Animation_bp0me"]
+resource_name = "FadeMessage"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(4.92458, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_glxpe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Label:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0yx6s"]
+_data = {
+"FadeMessage": SubResource("Animation_bp0me"),
+"RESET": SubResource("Animation_glxpe")
+}
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trc88"]
+resource_local_to_scene = true
+shader = ExtResource("5_fnka4")
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4pph8"]
+resource_local_to_scene = true
+shader = ExtResource("5_fnka4")
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hmagt"]
 resource_local_to_scene = true
 shader = ExtResource("5_fnka4")
 shader_parameter/flash_color = Color(1, 0, 0, 1)
@@ -256,6 +344,44 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_he7fi"),
 "car_animation": SubResource("Animation_cn13c")
+}
+
+[sub_resource type="Animation" id="Animation_0n4ol"]
+resource_name = "Blinking"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tooltip:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tl4fh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tooltip:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6d3i2"]
+_data = {
+"Blinking": SubResource("Animation_0n4ol"),
+"RESET": SubResource("Animation_tl4fh")
 }
 
 [sub_resource type="Animation" id="Animation_gdlbs"]
@@ -798,6 +924,7 @@ _data = {
 y_sort_enabled = true
 position = Vector2(-134, -3)
 script = ExtResource("1_ahy1b")
+metadata/_edit_lock_ = true
 
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_2akbx")
@@ -823,7 +950,7 @@ layer_2/tile_data = PackedInt32Array(262157, 196609, 2, 262158, 196609, 2, 26215
 metadata/_edit_lock_ = true
 
 [node name="Camera2d" type="Camera2D" parent="."]
-position = Vector2(490, 176)
+position = Vector2(490, 215)
 zoom = Vector2(4, 4)
 limit_smoothed = true
 script = SubResource("GDScript_kohig")
@@ -849,11 +976,78 @@ texture_scale = 0.58
 position = Vector2(211, 110)
 color = Color(0.372549, 0.427451, 0.768627, 1)
 
+[node name="Coin" type="Node2D" parent="."]
+position = Vector2(514, -139)
+
+[node name="InteractionManager" parent="Coin" instance=ExtResource("9_fh4an")]
+position = Vector2(-147, -6)
+script = ExtResource("10_wf8iq")
+
+[node name="CollisionShape2d" parent="Coin/InteractionManager" index="0"]
+position = Vector2(13, 32)
+shape = SubResource("RectangleShape2D_qac45")
+
+[node name="Bound" parent="Coin/InteractionManager" index="1"]
+position = Vector2(9, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="Coin/InteractionManager"]
+material = SubResource("ShaderMaterial_n3taf")
+position = Vector2(11, 31)
+texture = ExtResource("10_lx6st")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Coin/InteractionManager"]
+material = SubResource("ShaderMaterial_s1a27")
+position = Vector2(15, 33)
+texture = ExtResource("10_lx6st")
+
+[node name="DialogPlayer" parent="Coin/InteractionManager" instance=ExtResource("12_qef3u")]
+scene_file_text = "res://json/coin_dialogue.json"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Coin"]
+libraries = {
+"": SubResource("AnimationLibrary_0yx6s")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Coin"]
+visible = false
+
+[node name="Label" type="Label" parent="Coin/CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -98.0
+offset_top = 143.0
+offset_right = 74.0
+offset_bottom = 169.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Unlocked Phonebooth"
+
 [node name="dog" parent="." groups=["dogs"] instance=ExtResource("6_1ssjp")]
-position = Vector2(469, -126)
+position = Vector2(427, -113)
 
 [node name="dog_sprite" parent="dog/InteractionManager" index="2"]
 material = SubResource("ShaderMaterial_trc88")
+
+[node name="dog2" parent="." instance=ExtResource("6_1ssjp")]
+position = Vector2(336, -151)
+backup_dog = true
+
+[node name="dog_sprite" parent="dog2/InteractionManager" index="2"]
+material = SubResource("ShaderMaterial_4pph8")
+
+[node name="DialogPlayer" parent="dog2/InteractionManager" index="3"]
+scene_file_text = "res://json/backup_dog_dialogue.json"
+
+[node name="dog4" parent="." instance=ExtResource("6_1ssjp")]
+position = Vector2(336, -74)
+backup_dog = true
+
+[node name="dog_sprite" parent="dog4/InteractionManager" index="2"]
+material = SubResource("ShaderMaterial_hmagt")
+
+[node name="DialogPlayer" parent="dog4/InteractionManager" index="3"]
+scene_file_text = "res://json/backup_dog_dialogue.json"
 
 [node name="cat" parent="." instance=ExtResource("3_1qfu2")]
 z_index = 1
@@ -963,7 +1157,13 @@ offset_right = 85.5
 offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Press [E] to continue..."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_6d3i2")
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Car")
@@ -1015,5 +1215,12 @@ offset_right = 447.0
 offset_bottom = 23.0
 color = Color(0.235294, 0.235294, 0.235294, 1)
 
+[connection signal="unlock_phonebooth" from="Coin/InteractionManager" to="Phonebooth" method="_on_interaction_manager_unlock_phonebooth"]
+
+[editable path="Coin/InteractionManager"]
 [editable path="dog"]
 [editable path="dog/InteractionManager"]
+[editable path="dog2"]
+[editable path="dog2/InteractionManager"]
+[editable path="dog4"]
+[editable path="dog4/InteractionManager"]

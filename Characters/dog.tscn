@@ -16,7 +16,7 @@ size = Vector2(20, 26)
 size = Vector2(26, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gonp"]
-size = Vector2(164, 154)
+size = Vector2(240, 176)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kv4ij"]
 resource_local_to_scene = true

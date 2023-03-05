@@ -1,0 +1,12 @@
+{
+	"1" : {
+		"name" : "Dog",
+		"dialogue" : "What do you think you're doing? Give that back right now!",
+		"expression" : "Happy"
+	},
+    "2" : {
+		"name" : "Cat",
+		"dialogue" : "No! I need it!",
+		"expression" : "Happy"
+	}
+}

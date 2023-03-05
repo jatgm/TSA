@@ -31,5 +31,5 @@ func _on_interaction_manager_enter_phonebooth(interacter):
 	else:
 		$InteractionManager/DialogPlayer.start_dialogue()
 		
-		
-
+func _on_interaction_manager_unlock_phonebooth():
+	open = true
