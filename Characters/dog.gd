@@ -11,6 +11,9 @@ var tracking = false
 var antecendant = false
 var lerp_intensity = 15
 var chasing = false
+var colliding = false
+
+signal take_damage
 
 func transform():
 	sprite.play("head")
@@ -27,13 +30,12 @@ func _physics_process(delta):
 				remote_transform.update_position = !false
 				
 	if chasing:
-		velocity = round(position.direction_to(cat.position)) * 50
+		velocity = round(position.direction_to(cat.position)) * 75
 		update_animation_parameters(position.direction_to(cat.position))
 
 		move_and_slide()	
 			
 func _on_interaction_manager_start(interacter):
-	
 	if not tracking:
 		if not backup_dog:
 			camera.code_based_tracking = false
@@ -56,9 +58,13 @@ func update_animation_parameters(move_input : Vector2):
 				$AnimationPlayer.play("move right")
 			if move_input < Vector2(-0.1,0):
 				$AnimationPlayer.play("move left")
-		else:
-			if move_input.y > 0.1:
-				$AnimationPlayer.play("move down")
-			if move_input.y < -0.1:
-				$AnimationPlayer.play("move up")
 
+func _on_hitbox_area_entered(area):
+	colliding = true
+	
+func _on_hitbox_area_exited(area):
+	colliding = false
+
+func _on_damage_timer_timeout():
+	if colliding and chasing:
+		take_damage.emit()

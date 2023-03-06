@@ -53,4 +53,3 @@ func _on_interaction_manager_disable_interaction():
 
 func _on_dialog_player_enable_interaction():
 	$HitboxPivot/InteractionManager.monitoring = true	
-	
