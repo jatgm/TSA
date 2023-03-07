@@ -12,6 +12,7 @@ var antecendant = false
 var lerp_intensity = 15
 var chasing = false
 var colliding = false
+var current_interaction : Area2D
 
 signal take_damage
 
@@ -61,10 +62,13 @@ func update_animation_parameters(move_input : Vector2):
 
 func _on_hitbox_area_entered(area):
 	colliding = true
+	current_interaction = area
 	
 func _on_hitbox_area_exited(area):
 	colliding = false
+	current_interaction = null
 
 func _on_damage_timer_timeout():
 	if colliding and chasing:
 		take_damage.emit()
+		current_interaction.take_damage()

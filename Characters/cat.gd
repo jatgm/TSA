@@ -12,6 +12,7 @@ extends CharacterBody2D
 @onready var interaction_manager = $HitboxPivot/InteractionManager
 @onready var state_machine = animation_tree.get("parameters/playback")
 
+signal shake_cam(magnitude)
 
 func _physics_process(_delta): # happens 60 times a sec, underscore can represent unused variable
 	
@@ -19,7 +20,6 @@ func _physics_process(_delta): # happens 60 times a sec, underscore can represen
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	)
-	
 	velocity = input_direction.normalized() * move_speed
 
 	#built in function for characterbody new godot 4! :D
@@ -53,3 +53,8 @@ func _on_interaction_manager_disable_interaction():
 
 func _on_dialog_player_enable_interaction():
 	$HitboxPivot/InteractionManager.monitoring = true	
+
+func _on_hurtbox_damage_taken():
+	$Sprite2d.material.set_shader_parameter("opacity", .5)
+	shake_cam.emit(1)
+	

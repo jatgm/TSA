@@ -1,12 +1,19 @@
-[gd_scene load_steps=28 format=3 uid="uid://bt5eokyn64m8k"]
+[gd_scene load_steps=32 format=3 uid="uid://bt5eokyn64m8k"]
 
 [ext_resource type="Script" path="res://Characters/cat.gd" id="1_8tuak"]
+[ext_resource type="Script" path="res://Characters/Hurtbox.gd" id="2_atask"]
 [ext_resource type="Texture2D" uid="uid://d0yjsujpop5ht" path="res://Art/Cat/cat_spreadsheet_blinking.png" id="2_jw47c"]
 [ext_resource type="Script" path="res://Characters/Sprite2d.gd" id="3_l3g3a"]
+[ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="3_wp5rc"]
 [ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="4_mdeue"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0kjs"]
 size = Vector2(14, 14)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fppqd"]
+shader = ExtResource("3_wp5rc")
+shader_parameter/flash_color = Color(1, 0, 0, 1)
+shader_parameter/opacity = 0.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_240kk"]
 polygon = PackedVector2Array(-6, -1, -5, -1, -5, -4, -4, -4, -4, -5, -3, -5, -3, -6, -2, -6, -2, -5, -1, -5, -1, -4, 1, -4, 1, -5, 2, -5, 2, -6, 3, -6, 3, -5, 4, -5, 4, -4, 5, -4, 5, -1, 6, -1, 6, 0, 5, 0, 5, 1, 6, 1, 6, 2, 5, 2, 5, 3, 4, 3, 4, 4, 3, 4, 3, 5, -3, 5, -3, 4, -4, 4, -4, 3, -5, 3, -5, 2, -6, 2, -6, 1, -5, 1, -5, 0, -6, 0)
@@ -48,6 +55,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2d:material:shader_parameter/opacity")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Hurtbox/DamageIndication/ColorRect:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.168627)]
 }
 
 [sub_resource type="Animation" id="Animation_j3syq"]
@@ -264,6 +295,21 @@ tracks/3/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_7j46h"]
+resource_name = "take damage"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hurtbox/DamageIndication/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.168627)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2fmnh"]
 _data = {
 "RESET": SubResource("Animation_ycbno"),
@@ -271,7 +317,8 @@ _data = {
 "move down": SubResource("Animation_gthwd"),
 "move left": SubResource("Animation_746cb"),
 "move right": SubResource("Animation_dnnmd"),
-"move up": SubResource("Animation_71e84")
+"move up": SubResource("Animation_71e84"),
+"take damage": SubResource("Animation_7j46h")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_va4re"]
@@ -331,11 +378,23 @@ script = ExtResource("1_8tuak")
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("2_atask")
+
+[node name="DamageIndication" type="CanvasLayer" parent="Hurtbox"]
+
+[node name="ColorRect" type="ColorRect" parent="Hurtbox/DamageIndication"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 0.168627)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_y0kjs")
 
 [node name="Sprite2d" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fppqd")
 texture = ExtResource("2_jw47c")
 hframes = 2
 vframes = 2
@@ -375,5 +434,7 @@ collision_layer = 2
 
 [node name="CollisionShape2d" parent="HitboxPivot/InteractionManager/Bound" index="0"]
 shape = SubResource("RectangleShape2D_anr7n")
+
+[connection signal="damage_taken" from="Hurtbox" to="." method="_on_hurtbox_damage_taken"]
 
 [editable path="HitboxPivot/InteractionManager"]
