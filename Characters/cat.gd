@@ -62,4 +62,3 @@ func _on_dialog_player_enable_interaction():
 
 func _on_hurtbox_damage_taken():
 	shake_cam.emit(1)
-	
