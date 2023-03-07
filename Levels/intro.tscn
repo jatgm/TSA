@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://d3oc660gsm8y2"]
+[gd_scene load_steps=54 format=3 uid="uid://d3oc660gsm8y2"]
 
 [ext_resource type="Script" path="res://Levels/intro.gd" id="1_ahy1b"]
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://b3k1ogiygsflf" path="res://Art/Tiles/cracks2.png" id="23_5n0er"]
 [ext_resource type="Texture2D" uid="uid://58yfnyxiu26w" path="res://Art/Tiles/cracks0.png" id="24_ybq0s"]
 [ext_resource type="Texture2D" uid="uid://d3kpgoiojpgqp" path="res://Art/Tiles/cracks1.png" id="25_ys4py"]
+[ext_resource type="Texture2D" uid="uid://dmg8go0wnwv6b" path="res://1houseresize.png" id="31_777p0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_utyam"]
 texture = ExtResource("2_3mu73")
@@ -891,6 +892,7 @@ offset_top = -500.0
 offset_right = 992.0
 offset_bottom = 445.0
 script = ExtResource("5_paqbe")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(510, -110)
@@ -1098,8 +1100,13 @@ offset_right = 447.0
 offset_bottom = 23.0
 color = Color(0.235294, 0.235294, 0.235294, 1)
 
+[node name="1Houseresize" type="Sprite2D" parent="."]
+position = Vector2(1019, 21)
+texture = ExtResource("31_777p0")
+
 [connection signal="disable_interaction" from="Coin/InteractionManager" to="cat" method="_on_interaction_manager_disable_interaction"]
 [connection signal="enable_interaction" from="Coin/InteractionManager/DialogPlayer" to="cat" method="_on_dialog_player_enable_interaction"]
+[connection signal="put_back_coin" from="cat" to="Coin/InteractionManager" method="_on_cat_put_back_coin"]
 [connection signal="shake_cam" from="cat" to="Camera2d" method="_on_cat_shake_cam"]
 
 [editable path="Coin"]

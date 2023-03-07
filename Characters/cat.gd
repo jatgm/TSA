@@ -13,6 +13,7 @@ extends CharacterBody2D
 @onready var state_machine = animation_tree.get("parameters/playback")
 
 signal shake_cam(magnitude)
+signal put_back_coin
 
 func _physics_process(_delta): # happens 60 times a sec, underscore can represent unused variable
 	
@@ -37,7 +38,10 @@ func _physics_process(_delta): # happens 60 times a sec, underscore can represen
 	
 	if Input.is_action_just_pressed("interact"):
 		interaction_manager.initiate_interaction()
-	
+		
+func respawn_coin():
+	put_back_coin.emit()
+
 func update_animation_parameters(move_input : Vector2):
 	if move_input != Vector2.ZERO:
 
@@ -50,9 +54,11 @@ func update_animation_parameters(move_input : Vector2):
 
 func _on_interaction_manager_disable_interaction():
 	$HitboxPivot/InteractionManager.monitoring = false
+	print("not monitoriong")
 
 func _on_dialog_player_enable_interaction():
-	$HitboxPivot/InteractionManager.monitoring = true	
+	$HitboxPivot/InteractionManager.monitoring = true
+	print("monitoring!")
 
 func _on_hurtbox_damage_taken():
 	shake_cam.emit(1)

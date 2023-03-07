@@ -3,6 +3,7 @@ extends CanvasLayer
 class_name DialogPlayer
 
 @export_file("*.json") var scene_file_text
+@export var enabled = true
 @onready var background = $Background
 @onready var text_label = $Text
 @onready var name_background = $NameBackground
@@ -18,6 +19,12 @@ var line_finished = false
 func _process(_delta):
 	if char_count <= text_label.visible_characters:
 		line_finished = true
+
+func disable():
+	enabled = false
+
+func enable():
+	enabled = true
 
 func _ready():
 	background.visible = false
@@ -57,20 +64,21 @@ func finish():
 	#get_tree().paused = false
 		
 func start_dialogue():
-	if in_progress:
-		if line_finished:
-			next_line()
+	if enabled:
+		if in_progress:
+			if line_finished:
+				next_line()
+			else:
+				text_label.visible_characters = 999
 		else:
-			text_label.visible_characters = 999
-	else:
-		get_tree().call_group("dialog_players", "finish")
-		background.visible = true
-		name_background.visible = true
-		in_progress = true
-		print("sdfsaldfjasfidsnkfoi")
-		#selected_text = scene_text[current_index]["dialogue"]
-		visible = true
-		show_text()
+			get_tree().call_group("dialog_players", "finish")
+			background.visible = true
+			name_background.visible = true
+			in_progress = true
+			print("sdfsaldfjasfidsnkfoi")
+			#selected_text = scene_text[current_index]["dialogue"]
+			visible = true
+			show_text()
 
 func reveal_character():
 	text_label.visible_characters += 1

@@ -61,7 +61,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"head"]
+"values": [&"sitting"]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -74,6 +74,42 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("InteractionManager/dog_sprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("InteractionManager/dog_sprite/frame_0_occluder:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("InteractionManager/dog_sprite/frame_1_occluder:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ej20e"]
@@ -369,7 +405,7 @@ shape = SubResource("RectangleShape2D_3gonp")
 [node name="dog_sprite" type="AnimatedSprite2D" parent="InteractionManager"]
 material = SubResource("ShaderMaterial_kv4ij")
 sprite_frames = SubResource("SpriteFrames_o3qvt")
-animation = &"head"
+animation = &"sitting"
 autoplay = "sitting"
 script = ExtResource("3_b358l")
 

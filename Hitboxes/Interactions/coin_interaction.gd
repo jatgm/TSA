@@ -29,3 +29,8 @@ func recieve_interaction(interacter) -> void:
 	visible = false
 	started_coin_interaction = true
 
+func _on_cat_put_back_coin():
+	visible = true
+	started_coin_interaction = false
+	$DialogPlayer.started_coin_dialog = false
+	$DialogPlayer.current_index = "0"

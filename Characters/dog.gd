@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var remote_transform = $"../cat/RemoteTransform2D"
 @onready var cat = $"../cat"
 @onready var sprite = $InteractionManager/dog_sprite
+@onready var original_position = position
 
 @export var backup_dog = false
 
@@ -14,19 +15,21 @@ var chasing = false
 var colliding = false
 var current_interaction : Area2D
 var hit_times = 0 
-var original_position = position
 
 signal take_damage
 signal shake_cam(magnitude)
 
 func transform():
-	sprite.play("head")
 	chasing = true
 
 func respawn():
+	if current_interaction != null:
+		current_interaction.revive()
+		current_interaction.position = Vector2(479.105,-111.709)
 	chasing = false
+	$AnimationPlayer.play("RESET")
 	position = original_position
-	current_interaction.revive()
+	hit_times = 0
 	$GameOverScreen/AnimationPlayer.play("RESET")
 
 func _physics_process(delta):
@@ -79,7 +82,6 @@ func _on_hitbox_area_exited(area):
 
 func _on_damage_timer_timeout():
 	if colliding and chasing:
-		print("This has been ran")
 		take_damage.emit()
 		$AnimationPlayer.play("redden_screen")
 		shake_cam.emit(1)
@@ -88,3 +90,4 @@ func _on_damage_timer_timeout():
 		if hit_times >= 3:
 			$GameOverScreen.die()
 			current_interaction.die()
+			get_tree().call_group("dialog_players", "enable")
