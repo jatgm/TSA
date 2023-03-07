@@ -205,7 +205,6 @@ func _process(delta):
 	if $\"../cat/RemoteTransform2D\".update_position == false and shake_timer < 0 and code_based_tracking:
 		position = cat.position
 
-
 func shake(magnitude):
 	shake_timer = shake_duration
 	shake_magnitude = magnitude

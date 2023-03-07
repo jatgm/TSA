@@ -55,6 +55,5 @@ func _on_dialog_player_enable_interaction():
 	$HitboxPivot/InteractionManager.monitoring = true	
 
 func _on_hurtbox_damage_taken():
-	$Sprite2d.material.set_shader_parameter("opacity", .5)
 	shake_cam.emit(1)
 	

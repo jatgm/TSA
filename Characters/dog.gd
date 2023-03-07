@@ -13,12 +13,21 @@ var lerp_intensity = 15
 var chasing = false
 var colliding = false
 var current_interaction : Area2D
+var hit_times = 0 
+var original_position = position
 
 signal take_damage
+signal shake_cam(magnitude)
 
 func transform():
 	sprite.play("head")
 	chasing = true
+
+func respawn():
+	chasing = false
+	position = original_position
+	current_interaction.revive()
+	$GameOverScreen/AnimationPlayer.play("RESET")
 
 func _physics_process(delta):
 	if not backup_dog:
@@ -70,5 +79,12 @@ func _on_hitbox_area_exited(area):
 
 func _on_damage_timer_timeout():
 	if colliding and chasing:
+		print("This has been ran")
 		take_damage.emit()
+		$AnimationPlayer.play("redden_screen")
+		shake_cam.emit(1)
 		current_interaction.take_damage()
+		hit_times += 1
+		if hit_times >= 3:
+			$GameOverScreen.die()
+			current_interaction.die()
