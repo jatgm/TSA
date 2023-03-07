@@ -23,7 +23,6 @@ func transform():
 	chasing = true
 
 func respawn():
-	
 	if current_interaction != null:
 		current_interaction.revive()
 		position = original_position

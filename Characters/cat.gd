@@ -54,11 +54,11 @@ func update_animation_parameters(move_input : Vector2):
 
 func _on_interaction_manager_disable_interaction():
 	$HitboxPivot/InteractionManager.monitoring = false
-	print("not monitoriong")
+	print("disabled")
 
 func _on_dialog_player_enable_interaction():
 	$HitboxPivot/InteractionManager.monitoring = true
-	print("monitoring!")
+	print("enabled")
 
 func _on_hurtbox_damage_taken():
 	shake_cam.emit(1)
