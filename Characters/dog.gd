@@ -26,7 +26,7 @@ func respawn():
 	if current_interaction != null:
 		current_interaction.revive()
 		position = original_position
-		current_interaction.get_parent().position = Vector2(479.105,-111.709)
+		current_interaction.get_parent().position = Vector2(495.105,-111.709)
 	chasing = false
 	$AnimationPlayer.play("RESET")
 	position = original_position
