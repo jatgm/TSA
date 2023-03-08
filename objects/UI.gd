@@ -2,12 +2,17 @@ extends CanvasLayer
 
 var number = ""
 signal cam_shake
+var correct = false
 
 func _process(_delta):
-	$ColorRect2/Label.text = number
+	if not correct:
+		$ColorRect2/Label.text = number
 	if len(number) >= 10:
 		if number == "4250000000":
-			
+			correct = true
+			$"../InteractionManager/DialogPlayer".start_dialogue(3) # should be passed in
+			$"../".current_interacter.step = 3
+			number = ""
 			disable_buttons()
 		else:
 			$WrongSound.playing = true

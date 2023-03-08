@@ -18,5 +18,10 @@
 		"name" : "",
 		"dialogue" : "It needs two coins. Where am I going to be able to find that??",
 		"expression" : "Sad"
+	},
+	"5" : {
+		"name" : "",
+		"dialogue" : "A poster in the booth says 'rich dogs lay north'... interesting...",
+		"expression" : "Sad"
 	}
 }
