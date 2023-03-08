@@ -10,4 +10,7 @@ func unhover() -> void:
 
 func recieve_interaction(interacter) -> void: # open the phonebooth UI
 	enter_phonebooth.emit(interacter)
+	if started:
+		started = false
+		$AudioStreamPlayer.playing = true
 

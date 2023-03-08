@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://lhemi3udisau"]
+[gd_scene load_steps=35 format=3 uid="uid://lhemi3udisau"]
 
 [ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="1_5xnwy"]
 [ext_resource type="Texture2D" uid="uid://dqm0bt5mljyx" path="res://Art/doghead.png" id="1_av5sx"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Hitboxes/Interactions/dog_interaction.gd" id="5_0ritu"]
 [ext_resource type="Texture2D" uid="uid://bxrpnf6u24any" path="res://Art/upside_down_dogheda.png" id="7_tuh1v"]
 [ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="8_rvcv7"]
+[ext_resource type="AudioStream" uid="uid://cwfq4t1yediib" path="res://Audio/hurt.wav" id="11_jnkib"]
 
 [sub_resource type="Animation" id="Animation_8yd3h"]
 length = 0.001
@@ -471,6 +472,11 @@ autostart = true
 [node name="DamageTimer" type="Timer" parent="."]
 wait_time = 0.7
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_jnkib")
+volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_exited" from="Hitbox" to="." method="_on_hitbox_area_exited"]

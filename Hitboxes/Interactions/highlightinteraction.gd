@@ -8,3 +8,6 @@ func unhover() -> void:
 
 func recieve_interaction(interacter) -> void:
 	$DialogPlayer.start_dialogue(interacter) # to pass in step
+	if started:
+		started = false
+		$AudioStreamPlayer.playing = true

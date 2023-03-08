@@ -54,6 +54,8 @@ func show_text():
 func reveal_character():
 	if not paused:
 		text_label.visible_characters += 1
+	if visible:
+		$AudioStreamPlayer.playing = true
 
 func next_line():
 	if (current_index).to_int() < len(scene_text):

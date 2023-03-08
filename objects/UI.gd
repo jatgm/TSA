@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 var number = ""
+signal cam_shake
 
 func _process(_delta):
 	$ColorRect2/Label.text = number
@@ -9,6 +10,8 @@ func _process(_delta):
 			
 			disable_buttons()
 		else:
+			$WrongSound.playing = true
+			cam_shake.emit()
 			number = ""
 		
 func disable_buttons():

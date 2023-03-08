@@ -2,6 +2,11 @@ extends InteractionManager
 
 signal start(interacter)
 signal leave
+var enabled = true
+
+func recieve_interaction(interacter) -> void:
+	if enabled:
+		super.recieve_interaction(interacter)
 
 func enter_bound(interacter):
 	start.emit(interacter)

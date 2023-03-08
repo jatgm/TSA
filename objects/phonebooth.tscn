@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://brw0p47a2i52p"]
+[gd_scene load_steps=21 format=3 uid="uid://brw0p47a2i52p"]
 
 [ext_resource type="Script" path="res://objects/phonebooth.gd" id="1_kkqy8"]
 [ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="1_ve2gn"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://objects/UI.gd" id="8_1pd2j"]
 [ext_resource type="Texture2D" uid="uid://bqxnjmc1g5csc" path="res://Art/Tiles/cracks3.png" id="8_vo3sx"]
 [ext_resource type="Texture2D" uid="uid://b3k1ogiygsflf" path="res://Art/Tiles/cracks2.png" id="9_ap2a8"]
+[ext_resource type="AudioStream" uid="uid://c5ebtlf5i5j2f" path="res://Audio/explosion.wav" id="11_t0c8y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqdqw"]
 size = Vector2(28, 47)
@@ -202,6 +203,7 @@ color = Color(0.231373, 0.231373, 0.231373, 0)
 metadata/_edit_lock_ = true
 
 [node name="UI" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("8_1pd2j")
 
 [node name="ColorRect2" type="ColorRect" parent="UI"]
@@ -386,6 +388,10 @@ offset_bottom = 117.5
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="WrongSound" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource("11_t0c8y")
+bus = &"SFX"
+
 [node name="blackbars" type="CanvasLayer" parent="."]
 visible = false
 
@@ -393,8 +399,8 @@ visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -840.0
-offset_right = 876.0
+offset_left = -264.0
+offset_right = 1452.0
 offset_bottom = 38.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 1)
@@ -405,10 +411,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -864.0
-offset_top = -96.0
-offset_right = 852.0
-offset_bottom = -58.0
+offset_left = -288.0
+offset_top = 552.0
+offset_right = 1428.0
+offset_bottom = 590.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0, 0, 0, 1)

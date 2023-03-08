@@ -8,6 +8,7 @@ func start_dialogue(step = null):
 		scene_text = load_scene_text()
 	super.start_dialogue()
 	
+	
 func next_line():
 	if (current_index).to_int() < len(scene_text):
 		show_text()

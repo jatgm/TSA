@@ -3,6 +3,7 @@ extends Area2D
 class_name InteractionManager
 
 var current_interaction : InteractionManager # this var will be another interactionmanager
+var started = true
 
 func initiate_interaction() -> void:
 	if current_interaction != null:
@@ -11,6 +12,9 @@ func initiate_interaction() -> void:
 
 func recieve_interaction(interacter) -> void:
 	$DialogPlayer.start_dialogue()
+	if started:
+		started = false
+		$AudioStreamPlayer.playing = true
 	
 func exit_bound() -> void: # These two can be overriden 
 	$DialogPlayer.finish()

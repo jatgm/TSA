@@ -8,11 +8,11 @@ class_name DialogPlayer
 @onready var text_label = $Text
 @onready var name_background = $NameBackground
 @onready var name_label = $NameText
+@onready var char_count = 0
 
 var scene_text = {}
 var selected_text = []
 var current_index = "0"
-var char_count = 0
 var in_progress = false
 var line_finished = false
 
@@ -60,6 +60,7 @@ func finish():
 	background.visible = false
 	name_background.visible = false
 	in_progress = false
+	$"../".started = true
 
 	#get_tree().paused = false
 		
@@ -82,6 +83,8 @@ func start_dialogue():
 
 func reveal_character():
 	text_label.visible_characters += 1
+	if background.visible: # messy workaround but whatevers
+		$AudioStreamPlayer.playing = true
 
 func _on_timer_timeout():
 	if char_count >= text_label.visible_characters:

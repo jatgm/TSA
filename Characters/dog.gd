@@ -21,6 +21,7 @@ signal shake_cam(magnitude)
 
 func transform():
 	chasing = true
+	$InteractionManager.enabled = false
 
 func entered_phonebooth():
 	in_phonebooth = true
@@ -33,6 +34,7 @@ func respawn():
 		position = original_position
 		current_interaction.get_parent().position = Vector2(495.105,-111.709)
 	chasing = false
+	$InteractionManager.enabled = true
 	$DamageIndication/AnimationPlayer.play("RESET")
 	position = original_position
 	hit_times = 0
@@ -92,6 +94,7 @@ func _on_hitbox_area_exited(area):
 
 func _on_damage_timer_timeout():
 	if colliding and chasing:
+		$AudioStreamPlayer.playing = true
 		take_damage.emit()
 		$DamageIndication/AnimationPlayer.play("damage_screen")
 		shake_cam.emit(1)
