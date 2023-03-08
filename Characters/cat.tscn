@@ -397,6 +397,13 @@ collision_layer = 2
 [node name="CollisionShape2d" parent="HitboxPivot/InteractionManager/Bound" index="0"]
 shape = SubResource("RectangleShape2D_anr7n")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+
 [connection signal="damage_taken" from="Hurtbox" to="." method="_on_hurtbox_damage_taken"]
 
 [editable path="HitboxPivot/InteractionManager"]

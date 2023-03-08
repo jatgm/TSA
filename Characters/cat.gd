@@ -17,7 +17,7 @@ signal shake_cam(magnitude)
 signal put_back_coin
 
 func _physics_process(_delta): # happens 60 times a sec, underscore can represent unused variable
-	
+	$CanvasLayer/Label.text = str(step)
 	var input_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")

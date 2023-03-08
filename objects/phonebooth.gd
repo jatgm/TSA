@@ -10,7 +10,7 @@ func _on_interaction_manager_enter_phonebooth(interacter):
 	current_interacter = interacter
 	if open:
 		if state == PHONEBOOTH_STATE.USING:
-			if interacter.step != 0:
+			if interacter.step != 1:
 				state = PHONEBOOTH_STATE.COOLDOWN
 				var tween = get_tree().create_tween()
 				$AnimationPlayer.play("remove_blackbars")
@@ -22,6 +22,8 @@ func _on_interaction_manager_enter_phonebooth(interacter):
 				state = PHONEBOOTH_STATE.NOT_USING
 				return
 		if state == PHONEBOOTH_STATE.NOT_USING:
+			if interacter.step <= 1:
+				interacter.step = 1
 			state = PHONEBOOTH_STATE.USING
 			var tween = get_tree().create_tween()
 			interacter.moving = false
@@ -29,11 +31,11 @@ func _on_interaction_manager_enter_phonebooth(interacter):
 			$AnimationPlayer.play("add_blackbars")
 			await get_tree().create_timer(0.4).timeout
 			if state == PHONEBOOTH_STATE.USING:
-				if not interacter.step == 0: # first time you enter
+				if not interacter.step == 1: # first time you enter
 					$UI.visible = true
 			get_tree().call_group("dogs", "entered_phonebooth")
 			
-		if interacter.step == 0:
+		if interacter.step == 1:
 			$InteractionManager/DialogPlayer.start_dialogue(interacter.step)
 			return
 	else:
@@ -43,6 +45,6 @@ func _on_interaction_manager_unlock_phonebooth():
 	open = true
 
 func _on_dialog_player_finish_first_time_dialog():
-	
-	current_interacter.step += 1
-	$UI.visible = true
+	if current_interacter.step == 1:
+		$UI.visible = true
+		current_interacter.step += 1

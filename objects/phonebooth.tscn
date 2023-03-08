@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://brw0p47a2i52p"]
+[gd_scene load_steps=20 format=3 uid="uid://brw0p47a2i52p"]
 
 [ext_resource type="Script" path="res://objects/phonebooth.gd" id="1_kkqy8"]
 [ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="1_ve2gn"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://386o5j73jtcg" path="res://Art/phonebooth.png" id="4_82j1o"]
 [ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="6_316up"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/first_time_inside_phonebooth_interaction.gd" id="7_0fywn"]
+[ext_resource type="Script" path="res://objects/UI.gd" id="8_1pd2j"]
+[ext_resource type="Texture2D" uid="uid://bqxnjmc1g5csc" path="res://Art/Tiles/cracks3.png" id="8_vo3sx"]
+[ext_resource type="Texture2D" uid="uid://b3k1ogiygsflf" path="res://Art/Tiles/cracks2.png" id="9_ap2a8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqdqw"]
 size = Vector2(28, 47)
@@ -199,7 +202,7 @@ color = Color(0.231373, 0.231373, 0.231373, 0)
 metadata/_edit_lock_ = true
 
 [node name="UI" type="CanvasLayer" parent="."]
-visible = false
+script = ExtResource("8_1pd2j")
 
 [node name="ColorRect2" type="ColorRect" parent="UI"]
 anchors_preset = 8
@@ -215,7 +218,32 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.298039, 0.0627451, 0.0235294, 1)
 
-[node name="Button" type="Button" parent="UI/ColorRect2"]
+[node name="Label" type="Label" parent="UI/ColorRect2"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 35.0
+offset_right = 228.0
+offset_bottom = 77.0
+text = "(xxx) xxx-xxxx"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -226.5
+offset_right = 95.0
+offset_bottom = -183.5
+grow_horizontal = 2
+grow_vertical = 2
+editable = false
+
+[node name="Button0" type="Button" parent="UI/ColorRect2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -223,8 +251,22 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -39.0
-offset_top = -147.5
+offset_top = 123.0
 offset_right = 39.0
+offset_bottom = 208.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button1" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = -147.5
+offset_right = -43.0
 offset_bottom = -62.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -236,9 +278,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -121.0
+offset_left = -39.0
 offset_top = -147.5
-offset_right = -43.0
+offset_right = 39.0
 offset_bottom = -62.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -256,22 +298,9 @@ offset_right = 121.0
 offset_bottom = -62.5
 grow_horizontal = 2
 grow_vertical = 2
+icon = ExtResource("8_vo3sx")
 
 [node name="Button4" type="Button" parent="UI/ColorRect2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -39.0
-offset_top = -57.5
-offset_right = 39.0
-offset_bottom = 27.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button5" type="Button" parent="UI/ColorRect2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -284,6 +313,21 @@ offset_right = -43.0
 offset_bottom = 27.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Button5" type="Button" parent="UI/ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -57.5
+offset_right = 39.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("9_ap2a8")
 
 [node name="Button6" type="Button" parent="UI/ColorRect2"]
 layout_mode = 1
@@ -306,24 +350,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -39.0
+offset_left = -121.0
 offset_top = 32.5
-offset_right = 39.0
+offset_right = -43.0
 offset_bottom = 117.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button11" type="Button" parent="UI/ColorRect2"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -39.0
-offset_top = 123.0
-offset_right = 39.0
-offset_bottom = 208.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -334,12 +364,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -121.0
+offset_left = -39.0
 offset_top = 32.5
-offset_right = -43.0
+offset_right = 39.0
 offset_bottom = 117.5
 grow_horizontal = 2
 grow_vertical = 2
+icon = ExtResource("8_vo3sx")
 
 [node name="Button9" type="Button" parent="UI/ColorRect2"]
 layout_mode = 1
@@ -390,5 +421,15 @@ libraries = {
 
 [connection signal="enter_phonebooth" from="InteractionManager" to="." method="_on_interaction_manager_enter_phonebooth"]
 [connection signal="finish_first_time_dialog" from="InteractionManager/DialogPlayer" to="." method="_on_dialog_player_finish_first_time_dialog"]
+[connection signal="pressed" from="UI/ColorRect2/Button0" to="UI" method="_on_button_0_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button1" to="UI" method="_on_button_1_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button2" to="UI" method="_on_button_2_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button3" to="UI" method="_on_button_3_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button4" to="UI" method="_on_button_4_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button5" to="UI" method="_on_button_5_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button6" to="UI" method="_on_button_6_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button7" to="UI" method="_on_button_7_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button8" to="UI" method="_on_button_8_pressed"]
+[connection signal="pressed" from="UI/ColorRect2/Button9" to="UI" method="_on_button_9_pressed"]
 
 [editable path="InteractionManager"]
