@@ -32,7 +32,8 @@ func _input(event):
 					reset()
 					shake_cam.emit()
 				if current_order == "bryg":
-					$LevelCompleteAnimation.play("complete_level")
+					$AnimationPlayer.play("complete_level")
+					$CompleteLevel.visible = true
 					print("yipp[ie]!")
 
 func reset():

@@ -29,12 +29,27 @@ shader_parameter/opacity = 0.0
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7rw05"]
 load_path = "res://.godot/imported/bluewire (1).png-95955da6d77e792051a81e01a1db0f47.ctex"
 
-[sub_resource type="Animation" id="Animation_5ucq0"]
+[sub_resource type="Animation" id="Animation_yw5gg"]
+resource_name = "complete_level"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CompleteLevel/Label:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ks7dq"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:theme_override_colors/font_color")
+tracks/0/path = NodePath("CompleteLevel/Label:theme_override_colors/font_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -44,26 +59,10 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_3pw66"]
-resource_name = "complete_level"
-length = 3.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:theme_override_colors/font_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wg4lx"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bmfcr"]
 _data = {
-"RESET": SubResource("Animation_5ucq0"),
-"complete_level": SubResource("Animation_3pw66")
+"RESET": SubResource("Animation_ks7dq"),
+"complete_level": SubResource("Animation_yw5gg")
 }
 
 [node name="Wires" type="Node2D"]
@@ -109,12 +108,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BlueWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/BlueWire"]
-visible = false
 position = Vector2(41, 202.858)
 scale = Vector2(16.25, 13.9286)
 texture = SubResource("CompressedTexture2D_7rw05")
 
 [node name="CutBlueWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/BlueWire"]
+visible = false
 position = Vector2(41, 204)
 scale = Vector2(16.25, 13.9286)
 texture = ExtResource("5_fib7y")
@@ -134,12 +133,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="RedWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/RedWire"]
-visible = false
 position = Vector2(41, 203)
 scale = Vector2(16.25, 13.9286)
 texture = ExtResource("7_q3ekx")
 
 [node name="CutRedWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/RedWire"]
+visible = false
 position = Vector2(41, 202.858)
 scale = Vector2(16.25, 13.9286)
 texture = ExtResource("8_hy6il")
@@ -159,12 +158,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GreenWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/GreenWire"]
-visible = false
 position = Vector2(41, 203)
 scale = Vector2(16.25, 13.9286)
 texture = ExtResource("9_djg58")
 
 [node name="CutGreenWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/GreenWire"]
+visible = false
 position = Vector2(41, 202.858)
 scale = Vector2(16.25, 13.9286)
 texture = ExtResource("10_wfge3")
@@ -184,12 +183,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="YellowWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/YellowWire"]
-visible = false
 position = Vector2(41, 203)
 scale = Vector2(16.25, 13.9286)
 texture = ExtResource("11_ww805")
 
 [node name="CutYellowWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/YellowWire"]
+visible = false
 position = Vector2(41, 202.858)
 scale = Vector2(16.25, 13.9286)
 texture = ExtResource("12_316fh")
@@ -197,12 +196,6 @@ texture = ExtResource("12_316fh")
 [node name="WrongSound" type="AudioStreamPlayer" parent="InteractionManager3"]
 stream = ExtResource("13_cp8ey")
 bus = &"SFX"
-
-[node name="LevelCompleteAnimation" type="AnimationPlayer" parent="."]
-root_node = NodePath("../CompleteLevel/Label")
-libraries = {
-"": SubResource("AnimationLibrary_wg4lx")
-}
 
 [node name="CompleteLevel" type="CanvasLayer" parent="."]
 visible = false
@@ -213,15 +206,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -473.0
+offset_left = -533.0
 offset_top = -22.5
-offset_right = -176.0
+offset_right = -236.0
 offset_bottom = 22.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "Level Two Complete!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bmfcr")
+}
 
 [connection signal="mouse_entered" from="InteractionManager3/CanvasLayer/BlueWire" to="." method="_on_blue_wire_mouse_entered"]
 [connection signal="mouse_entered" from="InteractionManager3/CanvasLayer/RedWire" to="." method="_on_red_wire_mouse_entered"]
