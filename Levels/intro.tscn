@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://d3oc660gsm8y2"]
+[gd_scene load_steps=72 format=3 uid="uid://d3oc660gsm8y2"]
 
 [ext_resource type="Script" path="res://Levels/intro.gd" id="1_ahy1b"]
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
@@ -12,15 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://lhemi3udisau" path="res://Characters/dog.tscn" id="6_1ssjp"]
 [ext_resource type="Texture2D" uid="uid://chmpxfyftorxk" path="res://Art/Tiles/streetlamp.png" id="6_ehbo0"]
 [ext_resource type="Texture2D" uid="uid://ce44venj4q0ow" path="res://Art/concrete.png" id="6_gvbc2"]
-[ext_resource type="AudioStream" uid="uid://bdngvgonjt718" path="res://Audio/lightningclap.mp3" id="6_humli"]
 [ext_resource type="Texture2D" uid="uid://ce54jiim0gd2l" path="res://Art/light.png" id="6_nvfre"]
-[ext_resource type="AudioStream" uid="uid://cdtx7shxmx82f" path="res://Audio/mutedrain.mp3" id="6_oanr6"]
 [ext_resource type="Texture2D" uid="uid://tvo5rxi8htb2" path="res://Art/barbedwire-2.png.png" id="7_45tu1"]
 [ext_resource type="Script" path="res://objects/Streetlamp.gd" id="7_hbl3w"]
 [ext_resource type="Texture2D" uid="uid://ddfhmn1s0farm" path="res://Art/asdf.png" id="8_6ni4i"]
 [ext_resource type="PackedScene" uid="uid://b5s33kn80k8xh" path="res://objects/coin.tscn" id="9_yjatu"]
-[ext_resource type="AudioStream" uid="uid://d32ihwrjashe" path="res://Audio/Sound Effects - Ventilation Noise And Light Buzz Ambience - Version 2.mp3" id="10_u3l6a"]
-[ext_resource type="AudioStream" uid="uid://3lpmfauq102c" path="res://Audio/20 Minutes of Light Rain Sounds for Focus, Relaxing and Sleep 🌧️ Epidemic Ambience.mp3" id="11_w8y1i"]
 [ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="12_qef3u"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/intro_dialog_interaction.gd" id="14_p5yrl"]
 [ext_resource type="Texture2D" uid="uid://vdas54pbu2p5" path="res://Art/car.png" id="16_0hrji"]
@@ -1012,16 +1008,13 @@ gravity = Vector2(-30, 300)
 color = Color(0.65098, 0.686275, 1, 1)
 
 [node name="RainSound" type="AudioStreamPlayer" parent="cat/RainParticles"]
-stream = ExtResource("11_w8y1i")
 bus = &"Ambience"
 
 [node name="MuffledRainSound" type="AudioStreamPlayer" parent="cat/RainParticles"]
-stream = ExtResource("6_oanr6")
 volume_db = -3.0
 bus = &"SFX"
 
 [node name="Lightning" type="AudioStreamPlayer" parent="cat/RainParticles"]
-stream = ExtResource("6_humli")
 volume_db = -7.0
 bus = &"SFX"
 
@@ -1045,7 +1038,6 @@ texture_scale = 0.37
 
 [node name="LightHum" type="AudioStreamPlayer2D" parent="Streetlamp"]
 position = Vector2(-22, -20)
-stream = ExtResource("10_u3l6a")
 volume_db = 15.0
 max_distance = 200.0
 panning_strength = 3.0
