@@ -5,7 +5,6 @@ extends CharacterBody2D
 @onready var cat = $"../cat"
 @onready var sprite = $InteractionManager/dog_sprite
 @onready var original_position = position
-
 @export var backup_dog = false
 
 var tracking = false
@@ -15,6 +14,7 @@ var chasing = false
 var colliding = false
 var current_interaction : Area2D
 var hit_times = 0 
+var in_phonebooth = false
 
 signal take_damage
 signal shake_cam(magnitude)
@@ -22,16 +22,22 @@ signal shake_cam(magnitude)
 func transform():
 	chasing = true
 
+func entered_phonebooth():
+	in_phonebooth = true
+	await get_tree().create_timer(5.0).timeout
+	get_tree().call_group("dogs", "queue_free")
+
 func respawn():
 	if current_interaction != null:
 		current_interaction.revive()
 		position = original_position
 		current_interaction.get_parent().position = Vector2(495.105,-111.709)
 	chasing = false
-	$AnimationPlayer.play("RESET")
+	$DamageIndication/AnimationPlayer.play("RESET")
 	position = original_position
 	hit_times = 0
 	$GameOverScreen/AnimationPlayer.play("RESET")
+	$AnimationPlayer.play("RESET")
 
 func _physics_process(delta):
 	if not backup_dog:
@@ -44,7 +50,10 @@ func _physics_process(delta):
 				remote_transform.update_position = !false
 				
 	if chasing:
-		velocity = round(position.direction_to(cat.position)) * 75
+		if not in_phonebooth:
+			velocity = round(position.direction_to(cat.position)) * 75
+		if in_phonebooth:
+			velocity = round(position.direction_to(Vector2(134.303,585.86))) * 75
 		update_animation_parameters(position.direction_to(cat.position))
 
 		move_and_slide()	
@@ -84,7 +93,7 @@ func _on_hitbox_area_exited(area):
 func _on_damage_timer_timeout():
 	if colliding and chasing:
 		take_damage.emit()
-		$AnimationPlayer.play("redden_screen")
+		$DamageIndication/AnimationPlayer.play("damage_screen")
 		shake_cam.emit(1)
 		current_interaction.take_damage()
 		hit_times += 1

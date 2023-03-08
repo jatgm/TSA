@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://lhemi3udisau"]
+[gd_scene load_steps=34 format=3 uid="uid://lhemi3udisau"]
 
 [ext_resource type="Shader" path="res://shaders/noteshader.gdshader" id="1_5xnwy"]
 [ext_resource type="Texture2D" uid="uid://dqm0bt5mljyx" path="res://Art/doghead.png" id="1_av5sx"]
@@ -47,6 +47,43 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_8yd3h"),
 "blinking": SubResource("Animation_kqauj")
+}
+
+[sub_resource type="Animation" id="Animation_y7g7t"]
+resource_name = "damage_screen"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.207843), Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_j3vl4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1gk6o"]
+_data = {
+"RESET": SubResource("Animation_j3vl4"),
+"damage_screen": SubResource("Animation_y7g7t")
 }
 
 [sub_resource type="Animation" id="Animation_rrrrj"]
@@ -112,54 +149,6 @@ tracks/4/keys = {
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_ej20e"]
-resource_name = "move down"
-length = 0.08
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("InteractionManager/dog_sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"head"]
-}
-
-[sub_resource type="Animation" id="Animation_1nx7n"]
-resource_name = "move left"
-length = 0.08
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("InteractionManager/dog_sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"head"]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InteractionManager/dog_sprite")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.04),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [45],
-"method": &"addrotation"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_neky6"]
 resource_name = "move right"
 length = 0.08
@@ -210,20 +199,52 @@ tracks/0/keys = {
 "values": [&"head", &"upside_down_head"]
 }
 
-[sub_resource type="Animation" id="Animation_vo6w6"]
-resource_name = "redden_screen"
-length = 0.5
+[sub_resource type="Animation" id="Animation_1nx7n"]
+resource_name = "move left"
+length = 0.08
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DamageIndication/ColorRect:color")
+tracks/0/path = NodePath("InteractionManager/dog_sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.74902, 0, 0, 0.160784), Color(1, 0, 0, 0)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"head"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InteractionManager/dog_sprite")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.04),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [45],
+"method": &"addrotation"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ej20e"]
+resource_name = "move down"
+length = 0.08
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractionManager/dog_sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"head"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7o7kn"]
@@ -232,8 +253,7 @@ _data = {
 "move down": SubResource("Animation_ej20e"),
 "move left": SubResource("Animation_1nx7n"),
 "move right": SubResource("Animation_neky6"),
-"move up": SubResource("Animation_01h6x"),
-"redden_screen": SubResource("Animation_vo6w6")
+"move up": SubResource("Animation_01h6x")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqhjb"]
@@ -336,14 +356,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -236.5
-offset_top = -101.0
-offset_right = 236.5
-offset_bottom = -56.0
+offset_left = -249.5
+offset_top = 25.0
+offset_right = 249.5
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "\"You can't run... but you can hide!\""
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="GameOverScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.5
+offset_top = -95.0
+offset_right = 315.5
+offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 30
-text = "\"You can't run... but you can hide!\""
+text = "You were caught and returned your money!"
+horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="GameOverScreen"]
 anchors_preset = 8
@@ -376,6 +413,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DamageIndication"]
+libraries = {
+"": SubResource("AnimationLibrary_1gk6o")
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

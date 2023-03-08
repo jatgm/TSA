@@ -9,7 +9,7 @@ func next_line():
 		show_text()
 	else:
 		get_tree().call_group("dogs", "transform")
-		get_tree().call_group("dialog_players", "disable")
+		#get_tree().call_group("dialog_players", "disable")
 		enable_interaction.emit()
 		finish()
 
