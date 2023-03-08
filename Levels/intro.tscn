@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://d3oc660gsm8y2"]
+[gd_scene load_steps=81 format=3 uid="uid://d3oc660gsm8y2"]
 
 [ext_resource type="Script" path="res://Levels/intro.gd" id="1_ahy1b"]
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
@@ -30,9 +30,14 @@
 [ext_resource type="Texture2D" uid="uid://dmg8go0wnwv6b" path="res://1houseresize.png" id="31_777p0"]
 [ext_resource type="Texture2D" uid="uid://020xmmgfuwr3" path="res://Art/2houseresize.png" id="32_18mi1"]
 [ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="32_roq0d"]
+[ext_resource type="Script" path="res://Hitboxes/Interactions/sticky_note_interaction.gd" id="33_6lffh"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/firsthouseinteraction.gd" id="33_iuei2"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/house_1_interaction.gd" id="33_udstx"]
+[ext_resource type="Texture2D" uid="uid://de4jhotgbb1h6" path="res://Art/fuseboxtest-1.png.png" id="35_jhecm"]
+[ext_resource type="Script" path="res://Hitboxes/Interactions/fusebox_interaction.gd" id="35_p8o6t"]
 [ext_resource type="Texture2D" uid="uid://b8a40c5r475sr" path="res://Art/stickynote.png" id="37_0ys2d"]
+[ext_resource type="Texture2D" uid="uid://b4opnjxkn6piu" path="res://Art/fuseboxresize.png" id="37_68iua"]
+[ext_resource type="Texture2D" uid="uid://sjf8e8hinid6" path="res://Art/bluewire.png" id="38_gd373"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_utyam"]
 texture = ExtResource("2_3mu73")
@@ -897,15 +902,31 @@ size = Vector2(283, 103)
 size = Vector2(166, 78)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mld5l"]
-size = Vector2(20, 45)
+size = Vector2(127, 85)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38woy"]
 size = Vector2(53.25, 86.75)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eivb1"]
+shader = ExtResource("5_fnka4")
+shader_parameter/flash_color = Color(1, 1, 0, 1)
+shader_parameter/opacity = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ufhv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3kj05"]
 radius = 58.9406
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7x3ha"]
+shader = ExtResource("5_fnka4")
+shader_parameter/flash_color = Color(1, 1, 0, 1)
+shader_parameter/opacity = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ik13i"]
+size = Vector2(25.4375, 27.5625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mva0o"]
+size = Vector2(122, 124)
 
 [node name="introscene" type="Node2D"]
 y_sort_enabled = true
@@ -950,6 +971,7 @@ offset_top = -353.0
 offset_right = 1442.0
 offset_bottom = 445.0
 script = ExtResource("5_paqbe")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(269, -110)
@@ -1215,26 +1237,27 @@ shape = SubResource("RectangleShape2D_gqina")
 position = Vector2(583, 114)
 shape = SubResource("RectangleShape2D_oaoqx")
 
-[node name="House1" type="Sprite2D" parent="."]
-z_index = -1
-z_as_relative = false
+[node name="InteractionManager2" parent="." instance=ExtResource("32_roq0d")]
 position = Vector2(852, 45)
-texture = ExtResource("18_jprdl")
-
-[node name="InteractionManager" parent="House1" instance=ExtResource("32_roq0d")]
 script = ExtResource("33_iuei2")
 
-[node name="CollisionShape2d" parent="House1/InteractionManager" index="0"]
-position = Vector2(-28, 55.5)
+[node name="CollisionShape2d" parent="InteractionManager2" index="0"]
+position = Vector2(-0.5, 35.5)
 shape = SubResource("RectangleShape2D_mld5l")
 
-[node name="CollisionShape2d" parent="House1/InteractionManager/Bound" index="0"]
+[node name="CollisionShape2d" parent="InteractionManager2/Bound" index="0"]
 position = Vector2(-28, 65)
 shape = SubResource("RectangleShape2D_38woy")
 
-[node name="DialogPlayer" parent="House1/InteractionManager" instance=ExtResource("12_qef3u")]
+[node name="DialogPlayer" parent="InteractionManager2" instance=ExtResource("12_qef3u")]
 script = ExtResource("33_udstx")
 scene_file_text = "res://json/first_house_dialogue.json"
+
+[node name="House1" type="Sprite2D" parent="InteractionManager2"]
+z_index = -1
+z_as_relative = false
+material = SubResource("ShaderMaterial_eivb1")
+texture = ExtResource("18_jprdl")
 
 [node name="House2" type="Sprite2D" parent="."]
 position = Vector2(1046, 26)
@@ -1244,22 +1267,67 @@ texture = ExtResource("31_777p0")
 position = Vector2(1286, -81)
 texture = ExtResource("32_18mi1")
 
-[node name="Stickynote" type="Sprite2D" parent="."]
-position = Vector2(911, 146)
-texture = ExtResource("37_0ys2d")
+[node name="InteractionManager" parent="." instance=ExtResource("32_roq0d")]
+position = Vector2(998, 155)
+script = ExtResource("33_6lffh")
 
-[node name="InteractionManager" parent="Stickynote" instance=ExtResource("32_roq0d")]
-
-[node name="CollisionShape2d" parent="Stickynote/InteractionManager" index="0"]
+[node name="CollisionShape2d" parent="InteractionManager" index="0"]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_6ufhv")
 
-[node name="CollisionShape2d" parent="Stickynote/InteractionManager/Bound" index="0"]
+[node name="CollisionShape2d" parent="InteractionManager/Bound" index="0"]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_3kj05")
 
-[node name="DialogPlayer" parent="Stickynote/InteractionManager" instance=ExtResource("12_qef3u")]
+[node name="DialogPlayer" parent="InteractionManager" instance=ExtResource("12_qef3u")]
 scene_file_text = "res://json/sticky_note_dialogue.json"
+
+[node name="Stickynote" type="Sprite2D" parent="InteractionManager"]
+z_index = -1
+material = SubResource("ShaderMaterial_7x3ha")
+texture = ExtResource("37_0ys2d")
+
+[node name="InteractionManager3" parent="." instance=ExtResource("32_roq0d")]
+script = ExtResource("35_p8o6t")
+
+[node name="CollisionShape2d" parent="InteractionManager3" index="0"]
+position = Vector2(1082.28, 110.219)
+shape = SubResource("RectangleShape2D_ik13i")
+
+[node name="CollisionShape2d" parent="InteractionManager3/Bound" index="0"]
+position = Vector2(1082, 110)
+shape = SubResource("RectangleShape2D_mva0o")
+
+[node name="Fuseboxtest-1png" type="Sprite2D" parent="InteractionManager3"]
+z_index = 1
+position = Vector2(1083, 110)
+texture = ExtResource("35_jhecm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="InteractionManager3"]
+
+[node name="Control" type="Control" parent="InteractionManager3/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractionManager3/CanvasLayer/Control"]
+position = Vector2(20, 20)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("37_68iua")
+
+[node name="BlueWire" type="Sprite2D" parent="InteractionManager3/CanvasLayer/Control"]
+position = Vector2(-91, 18)
+scale = Vector2(15.75, 13.5)
+texture = ExtResource("38_gd373")
 
 [connection signal="disable_interaction" from="Coin/InteractionManager" to="cat" method="_on_interaction_manager_disable_interaction"]
 [connection signal="unlock_phonebooth" from="Coin/InteractionManager" to="Phonebooth" method="_on_interaction_manager_unlock_phonebooth"]
@@ -1278,5 +1346,6 @@ scene_file_text = "res://json/sticky_note_dialogue.json"
 [editable path="dog4/InteractionManager"]
 [editable path="Phonebooth"]
 [editable path="Phonebooth/InteractionManager"]
-[editable path="House1/InteractionManager"]
-[editable path="Stickynote/InteractionManager"]
+[editable path="InteractionManager2"]
+[editable path="InteractionManager"]
+[editable path="InteractionManager3"]
