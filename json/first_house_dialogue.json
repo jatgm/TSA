@@ -6,12 +6,12 @@
 	},
     "2" : {
 		"name" : "",
-		"dialogue" : "Maybe I should go over to that utility shed eastward shut off the electricity...",
+		"dialogue" : "Maybe I should go over to that utility shed eastward and shut off the electricity...",
 		"expression" : "Happy"
 	},
 	"3" : {
 		"name" : "",
-		"dialogue" : "They maybe they'll come out?",
+		"dialogue" : "Then maybe they'll come out?",
 		"expression" : "Happy"
 	}
 }

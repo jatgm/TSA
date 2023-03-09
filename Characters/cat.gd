@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @export var moving: bool = true
 @export var is_sprite_visible: bool = true
-var step = 0 
+var step = 5
 
 #when script starts we get this var
 @onready var animation_player = $AnimationPlayer

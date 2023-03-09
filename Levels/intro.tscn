@@ -1,9 +1,10 @@
-[gd_scene load_steps=78 format=3 uid="uid://d3oc660gsm8y2"]
+[gd_scene load_steps=84 format=3 uid="uid://d3oc660gsm8y2"]
 
 [ext_resource type="Script" path="res://Levels/intro.gd" id="1_ahy1b"]
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
 [ext_resource type="Texture2D" uid="uid://bt1btga73qexr" path="res://Art/Tiles/New Piskel (2).png" id="2_2rssx"]
 [ext_resource type="Texture2D" uid="uid://d02jqu0rkn13k" path="res://Art/grass.png" id="2_3mu73"]
+[ext_resource type="Texture2D" uid="uid://dno35nmnn02t" path="res://Art/New_Piskel.png" id="2_b5xt6"]
 [ext_resource type="PackedScene" uid="uid://bt5eokyn64m8k" path="res://Characters/cat.tscn" id="3_1qfu2"]
 [ext_resource type="PackedScene" uid="uid://cyelnsseuf60e" path="res://objects/Note.tscn" id="4_5eapv"]
 [ext_resource type="Texture2D" uid="uid://d20tpmh5nrfo2" path="res://Art/barbedwire.png" id="4_mkf7m"]
@@ -30,10 +31,14 @@
 [ext_resource type="Texture2D" uid="uid://dmg8go0wnwv6b" path="res://1houseresize.png" id="31_777p0"]
 [ext_resource type="Texture2D" uid="uid://020xmmgfuwr3" path="res://Art/2houseresize.png" id="32_18mi1"]
 [ext_resource type="PackedScene" uid="uid://c2gxsjplum3s0" path="res://Hitboxes/interaction_manager.tscn" id="32_roq0d"]
+[ext_resource type="Script" path="res://Hitboxes/Interactions/thirdhouseinteraction.gd" id="32_vdnvg"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/sticky_note_interaction.gd" id="33_6lffh"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/firsthouseinteraction.gd" id="33_iuei2"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/house_1_interaction.gd" id="33_udstx"]
+[ext_resource type="Texture2D" uid="uid://bndq1ch25iw43" path="res://Art/cipher.png" id="33_x6md6"]
+[ext_resource type="Script" path="res://Levels/OMG.gd" id="34_wrho7"]
 [ext_resource type="PackedScene" uid="uid://0kla80l6fl5a" path="res://wires.tscn" id="35_45dkj"]
+[ext_resource type="PackedScene" uid="uid://vhgfnfstypc1" path="res://GAMEOVER.tscn" id="36_cew4g"]
 [ext_resource type="Texture2D" uid="uid://b8a40c5r475sr" path="res://Art/stickynote.png" id="37_0ys2d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_utyam"]
@@ -893,10 +898,10 @@ size = Vector2(130, 141)
 size = Vector2(127, 161)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hc2g3"]
-size = Vector2(126, 173)
+size = Vector2(126, 225)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gqina"]
-size = Vector2(283, 103)
+size = Vector2(283, 153)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oaoqx"]
 size = Vector2(166, 78)
@@ -918,6 +923,11 @@ size = Vector2(52, 144)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xdfeg"]
 size = Vector2(160, 225)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jceu4"]
+shader = ExtResource("5_fnka4")
+shader_parameter/flash_color = Color(1, 1, 0, 1)
+shader_parameter/opacity = 0.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ufhv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3kj05"]
@@ -933,6 +943,20 @@ y_sort_enabled = true
 position = Vector2(-134, -3)
 script = ExtResource("1_ahy1b")
 metadata/_edit_lock_ = true
+
+[node name="STARTSCREEN" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="STARTSCREEN"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.607843, 0.380392, 0.380392, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="STARTSCREEN"]
+position = Vector2(547, 301)
+texture = ExtResource("2_b5xt6")
 
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_2akbx")
@@ -1225,11 +1249,11 @@ position = Vector2(777.5, 164.5)
 shape = SubResource("RectangleShape2D_g0a0q")
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
-position = Vector2(1017, 50.5)
+position = Vector2(1017, 76.5)
 shape = SubResource("RectangleShape2D_hc2g3")
 
 [node name="CollisionShape2D12" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
-position = Vector2(1017.5, 70.5)
+position = Vector2(1017.5, 95.5)
 shape = SubResource("RectangleShape2D_gqina")
 
 [node name="CollisionShape2D13" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
@@ -1262,19 +1286,88 @@ texture = ExtResource("18_jprdl")
 position = Vector2(1046, 26)
 texture = ExtResource("31_777p0")
 
-[node name="InteractionManager3" parent="." instance=ExtResource("32_roq0d")]
+[node name="HOUSE 3" parent="." instance=ExtResource("32_roq0d")]
 position = Vector2(1286, -29)
+script = ExtResource("32_vdnvg")
 
-[node name="CollisionShape2d" parent="InteractionManager3" index="0"]
+[node name="CollisionShape2d" parent="HOUSE 3" index="0"]
 position = Vector2(0, 64)
 shape = SubResource("RectangleShape2D_3pfpi")
 
-[node name="CollisionShape2d" parent="InteractionManager3/Bound" index="0"]
+[node name="CollisionShape2d" parent="HOUSE 3/Bound" index="0"]
 position = Vector2(-2, 58)
 shape = SubResource("RectangleShape2D_xdfeg")
 
-[node name="House3" type="Sprite2D" parent="InteractionManager3"]
+[node name="House3" type="Sprite2D" parent="HOUSE 3"]
+material = SubResource("ShaderMaterial_jceu4")
 texture = ExtResource("32_18mi1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="HOUSE 3"]
+visible = false
+script = ExtResource("34_wrho7")
+
+[node name="ColorRect" type="ColorRect" parent="HOUSE 3/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -276.0
+offset_right = 457.0
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.329412, 0.627451, 0.54902, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="HOUSE 3/CanvasLayer"]
+position = Vector2(660, 156)
+scale = Vector2(5.28333, 5.28333)
+texture = ExtResource("33_x6md6")
+
+[node name="Label" type="Label" parent="HOUSE 3/CanvasLayer"]
+offset_left = 567.0
+offset_top = 492.0
+offset_right = 996.0
+offset_bottom = 518.0
+text = "note for grandma: password is \"catlitter\"! love you <3 "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HOUSE 3/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LineEdit" type="LineEdit" parent="HOUSE 3/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -39.5
+offset_right = 95.0
+offset_bottom = 39.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Password"
+max_length = 10
+
+[node name="Button" type="Button" parent="HOUSE 3/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 68.0
+offset_right = 80.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SUBMIT"
+
+[node name="Node2D" parent="HOUSE 3" instance=ExtResource("36_cew4g")]
+position = Vector2(-1152, 32)
 
 [node name="InteractionManager" parent="." instance=ExtResource("32_roq0d")]
 position = Vector2(998, 155)
@@ -1307,6 +1400,8 @@ position = Vector2(1084.5, 117.219)
 [connection signal="put_back_coin" from="cat" to="Coin/InteractionManager" method="_on_cat_put_back_coin"]
 [connection signal="shake_cam" from="cat" to="Camera2d" method="_on_cat_shake_cam"]
 [connection signal="cam_shake" from="Phonebooth/UI" to="Camera2d" method="_on_ui_cam_shake"]
+[connection signal="text_changed" from="HOUSE 3/CanvasLayer/LineEdit" to="HOUSE 3" method="_on_line_edit_text_changed"]
+[connection signal="pressed" from="HOUSE 3/CanvasLayer/Button" to="HOUSE 3" method="_on_button_pressed"]
 [connection signal="freeze_cat" from="Wires" to="cat" method="_on_wires_freeze_cat"]
 [connection signal="shake_cam" from="Wires" to="Camera2d" method="_on_wires_shake_cam"]
 [connection signal="unfreeze_cat" from="Wires" to="cat" method="_on_wires_unfreeze_cat"]
@@ -1322,7 +1417,8 @@ position = Vector2(1084.5, 117.219)
 [editable path="Phonebooth"]
 [editable path="Phonebooth/InteractionManager"]
 [editable path="InteractionManager2"]
-[editable path="InteractionManager3"]
+[editable path="HOUSE 3"]
+[editable path="HOUSE 3/Node2D"]
 [editable path="InteractionManager"]
 [editable path="Wires"]
 [editable path="Wires/InteractionManager3"]
