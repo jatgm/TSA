@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://d3oc660gsm8y2"]
+[gd_scene load_steps=78 format=3 uid="uid://d3oc660gsm8y2"]
 
 [ext_resource type="Script" path="res://Levels/intro.gd" id="1_ahy1b"]
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
@@ -912,6 +912,12 @@ shader = ExtResource("5_fnka4")
 shader_parameter/flash_color = Color(1, 1, 0, 1)
 shader_parameter/opacity = 0.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pfpi"]
+size = Vector2(52, 144)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdfeg"]
+size = Vector2(160, 225)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ufhv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3kj05"]
@@ -949,7 +955,6 @@ layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(262157, 196609, 2, 262158, 196609, 2, 262159, 196609, 2, 262160, 196609, 2, 262161, 196609, 2, -131060, 2, 0, -131061, 2, 0, -131062, 2, 0, -393199, 2, 0, -393200, 2, 0, -393201, 2, 0, -393202, 2, 0, -393203, 2, 0, -393204, 2, 0, -393205, 2, 0, -393206, 2, 0, -393207, 5, 0, -327671, 5, 0, -262135, 5, 0, -196599, 5, 0, -131063, 5, 0)
-metadata/_edit_lock_ = true
 
 [node name="Camera2d" type="Camera2D" parent="."]
 position = Vector2(490, 176)
@@ -1257,8 +1262,18 @@ texture = ExtResource("18_jprdl")
 position = Vector2(1046, 26)
 texture = ExtResource("31_777p0")
 
-[node name="House3" type="Sprite2D" parent="."]
-position = Vector2(1286, -81)
+[node name="InteractionManager3" parent="." instance=ExtResource("32_roq0d")]
+position = Vector2(1286, -29)
+
+[node name="CollisionShape2d" parent="InteractionManager3" index="0"]
+position = Vector2(0, 64)
+shape = SubResource("RectangleShape2D_3pfpi")
+
+[node name="CollisionShape2d" parent="InteractionManager3/Bound" index="0"]
+position = Vector2(-2, 58)
+shape = SubResource("RectangleShape2D_xdfeg")
+
+[node name="House3" type="Sprite2D" parent="InteractionManager3"]
 texture = ExtResource("32_18mi1")
 
 [node name="InteractionManager" parent="." instance=ExtResource("32_roq0d")]
@@ -1292,7 +1307,9 @@ position = Vector2(1084.5, 117.219)
 [connection signal="put_back_coin" from="cat" to="Coin/InteractionManager" method="_on_cat_put_back_coin"]
 [connection signal="shake_cam" from="cat" to="Camera2d" method="_on_cat_shake_cam"]
 [connection signal="cam_shake" from="Phonebooth/UI" to="Camera2d" method="_on_ui_cam_shake"]
+[connection signal="freeze_cat" from="Wires" to="cat" method="_on_wires_freeze_cat"]
 [connection signal="shake_cam" from="Wires" to="Camera2d" method="_on_wires_shake_cam"]
+[connection signal="unfreeze_cat" from="Wires" to="cat" method="_on_wires_unfreeze_cat"]
 
 [editable path="Coin"]
 [editable path="Coin/InteractionManager"]
@@ -1305,6 +1322,7 @@ position = Vector2(1084.5, 117.219)
 [editable path="Phonebooth"]
 [editable path="Phonebooth/InteractionManager"]
 [editable path="InteractionManager2"]
+[editable path="InteractionManager3"]
 [editable path="InteractionManager"]
 [editable path="Wires"]
 [editable path="Wires/InteractionManager3"]

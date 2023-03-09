@@ -63,3 +63,8 @@ func _on_dialog_player_enable_interaction():
 
 func _on_hurtbox_damage_taken():
 	shake_cam.emit(1)
+
+func _on_wires_freeze_cat():
+	moving = false
+func _on_wires_unfreeze_cat():
+	moving = true

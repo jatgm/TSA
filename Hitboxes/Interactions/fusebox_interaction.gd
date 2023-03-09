@@ -10,6 +10,8 @@ func recieve_interaction(interacter) -> void:
 		if started:
 			started = false
 			$AudioStreamPlayer.playing = true
+	if interacter.step == 5:
+		$DialogPlayer.start_dialogue()
 
 func hover() -> void:
 	$"Fuseboxtest-1png".material.set_shader_parameter("opacity", 0.4)

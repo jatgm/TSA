@@ -4,6 +4,8 @@ var current_hovering : String
 var current_order = ""
 
 signal shake_cam
+signal freeze_cat
+signal unfreeze_cat
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -34,7 +36,11 @@ func _input(event):
 				if current_order == "bryg":
 					$AnimationPlayer.play("complete_level")
 					$CompleteLevel.visible = true
-					print("yipp[ie]!")
+					$"../cat".step = 5
+					$InteractionManager3/DialogPlayer.start_dialogue()
+					$InteractionManager3/CanvasLayer.visible = false
+					freeze_cat.emit()
+					
 
 func reset():
 	$InteractionManager3/CanvasLayer/BlueWire/BlueWire.visible = true
@@ -60,3 +66,6 @@ func _on_green_wire_mouse_entered():
 
 func _on_yellow_wire_mouse_entered():
 	current_hovering = "yellow"
+
+func _on_dialog_player_done():
+	unfreeze_cat.emit()
