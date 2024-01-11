@@ -125,6 +125,7 @@ text = "Back"
 
 [node name="FPSCounter" type="CanvasLayer" parent="."]
 layer = 128
+visible = false
 script = ExtResource("4_24j20")
 
 [node name="Label" type="Label" parent="FPSCounter"]

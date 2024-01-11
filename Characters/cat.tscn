@@ -398,6 +398,7 @@ collision_layer = 2
 shape = SubResource("RectangleShape2D_anr7n")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_right = 40.0

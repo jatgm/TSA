@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://d3oc660gsm8y2"]
+[gd_scene load_steps=86 format=3 uid="uid://d3oc660gsm8y2"]
 
 [ext_resource type="Script" path="res://Levels/intro.gd" id="1_ahy1b"]
 [ext_resource type="Texture2D" uid="uid://boe5luks3kr7p" path="res://Art/Tiles/New Piskel (1).png" id="1_dbw02"]
@@ -20,9 +20,11 @@
 [ext_resource type="PackedScene" uid="uid://b5s33kn80k8xh" path="res://objects/coin.tscn" id="9_yjatu"]
 [ext_resource type="PackedScene" uid="uid://yd6y3s48r64d" path="res://UI/dialog_player.tscn" id="12_qef3u"]
 [ext_resource type="Script" path="res://Hitboxes/Interactions/intro_dialog_interaction.gd" id="14_p5yrl"]
+[ext_resource type="AudioStream" uid="uid://cxa1oed02kwdv" path="res://Audio/Rain And Thunder Strikes-SoundBible.com-2084356876.mp3" id="15_rpp8k"]
 [ext_resource type="Texture2D" uid="uid://vdas54pbu2p5" path="res://Art/car.png" id="16_0hrji"]
 [ext_resource type="PackedScene" uid="uid://brw0p47a2i52p" path="res://objects/phonebooth.tscn" id="17_hoya0"]
 [ext_resource type="Texture2D" uid="uid://ccm2ybfba4am8" path="res://Art/Real_House_Sprite.png" id="18_jprdl"]
+[ext_resource type="AudioStream" uid="uid://b81pvkj26gbwa" path="res://Audio/fluorescent_light_humming-Mike_Koenig-43042887.wav" id="20_cyevw"]
 [ext_resource type="Texture2D" uid="uid://2fb1yld37wtk" path="res://Art/Tiles/cracks4.png" id="21_6osvo"]
 [ext_resource type="Texture2D" uid="uid://bqxnjmc1g5csc" path="res://Art/Tiles/cracks3.png" id="22_qyt55"]
 [ext_resource type="Texture2D" uid="uid://b3k1ogiygsflf" path="res://Art/Tiles/cracks2.png" id="23_5n0er"]
@@ -1053,6 +1055,7 @@ gravity = Vector2(-30, 300)
 color = Color(0.65098, 0.686275, 1, 1)
 
 [node name="RainSound" type="AudioStreamPlayer" parent="cat/RainParticles"]
+stream = ExtResource("15_rpp8k")
 bus = &"Ambience"
 
 [node name="MuffledRainSound" type="AudioStreamPlayer" parent="cat/RainParticles"]
@@ -1083,6 +1086,7 @@ texture_scale = 0.37
 
 [node name="LightHum" type="AudioStreamPlayer2D" parent="Streetlamp"]
 position = Vector2(-22, -20)
+stream = ExtResource("20_cyevw")
 volume_db = 15.0
 max_distance = 200.0
 panning_strength = 3.0
@@ -1330,7 +1334,7 @@ offset_left = 567.0
 offset_top = 492.0
 offset_right = 996.0
 offset_bottom = 518.0
-text = "note for grandma: password is \"catlitter\"! love you <3 "
+text = "note for grandma: password is \"TCSKHSSDQ\"! love you <3 "
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HOUSE 3/CanvasLayer"]
 offset_right = 40.0
@@ -1400,6 +1404,7 @@ position = Vector2(1084.5, 117.219)
 [connection signal="put_back_coin" from="cat" to="Coin/InteractionManager" method="_on_cat_put_back_coin"]
 [connection signal="shake_cam" from="cat" to="Camera2d" method="_on_cat_shake_cam"]
 [connection signal="cam_shake" from="Phonebooth/UI" to="Camera2d" method="_on_ui_cam_shake"]
+[connection signal="freeze_cat" from="HOUSE 3" to="cat" method="_on_house_3_freeze_cat"]
 [connection signal="text_changed" from="HOUSE 3/CanvasLayer/LineEdit" to="HOUSE 3" method="_on_line_edit_text_changed"]
 [connection signal="pressed" from="HOUSE 3/CanvasLayer/Button" to="HOUSE 3" method="_on_button_pressed"]
 [connection signal="freeze_cat" from="Wires" to="cat" method="_on_wires_freeze_cat"]

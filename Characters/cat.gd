@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @export var moving: bool = true
 @export var is_sprite_visible: bool = true
-var step = 5
+var step = 0
 
 #when script starts we get this var
 @onready var animation_player = $AnimationPlayer
@@ -17,6 +17,7 @@ signal shake_cam(magnitude)
 signal put_back_coin
 
 func _physics_process(_delta): # happens 60 times a sec, underscore can represent unused variable
+
 	$CanvasLayer/Label.text = str(step)
 	var input_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
@@ -68,3 +69,6 @@ func _on_wires_freeze_cat():
 	moving = false
 func _on_wires_unfreeze_cat():
 	moving = true
+
+func _on_house_3_freeze_cat():
+	moving = false
