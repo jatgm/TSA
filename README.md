@@ -1,8 +1,10 @@
-# TSA
+# TSA 2022-2023 Competition
 
-## Used the [coi-serviceworker](https://github.com/gzuidhof/coi-serviceworker) license by Guido Zuidhof in order to enable SharedArrayBuffer for the github.io page- thank you! :D
+## Click [here](https://jatgm.itch.io/catastrophe-team-2052-2) to play!
 
-Click [here](https://jatgm.github.io/TSA/builds/HTML%20Builds/build3/index.html) to play!
+Used the [coi-serviceworker](https://github.com/gzuidhof/coi-serviceworker) license by Guido Zuidhof in order to enable SharedArrayBuffer for the github.io page- thank you! :D
+
+
 
 >MIT License
 >
